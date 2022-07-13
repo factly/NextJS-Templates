@@ -2,6 +2,12 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "iris": "apps/iris",
+    "iris-e2e": "apps/iris-e2e",
+    "lily": "apps/lily",
+    "lily-e2e": "apps/lily-e2e",
+    "petal": "apps/petal",
+    "petal-e2e": "apps/petal-e2e",
     "tulip": "apps/tulip",
     "tulip-e2e": "apps/tulip-e2e"
   }
