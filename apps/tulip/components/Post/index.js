@@ -7,8 +7,7 @@ import ShareButtonGroup from './ShareButtonGroup';
 import FactCheckWidget from './FactCheckWidget';
 import Tag from './Tag';
 import Excerpt from './Excerpt';
-import parseEditorJsData from '../../src/utils/parseEditorJsData';
-
+import parseTiptapContent from '../../src/utils/parseTipTapEditorData';
 /**
  * TODO: URI encoding
  * TODO: borderradius in theme ui
@@ -60,11 +59,7 @@ const Post = ({ post, observer }) => {
           <h1
             sx={{
               fontWeight: 'bold',
-              fontSize: (theme) => [
-                `${theme.fontSizes.h4}`,
-                null,
-                `${theme.fontSizes.h3}`,
-              ],
+              fontSize: (theme) => [`${theme.fontSizes.h4}`, null, `${theme.fontSizes.h3}`],
               py: (theme) => `${theme.space.spacing3}`,
             }}
           >
@@ -86,18 +81,14 @@ const Post = ({ post, observer }) => {
               <ShareButtonGroup
                 setRef={headerSocialIcon}
                 data={{
-                  url: encodeURIComponent(
-                    process.browser ? window.location.href : null
-                  ),
+                  url: encodeURIComponent(process.browser ? window.location.href : null),
                   title: encodeURIComponent(post.title),
                 }}
               />
             </div>
           )}
         </div>
-        {!post.is_page && (
-          <Excerpt excerpt={post.excerpt} image={post.medium} />
-        )}
+        {!post.is_page && <Excerpt excerpt={post.excerpt} image={post.medium} />}
 
         <div
           sx={{
@@ -108,7 +99,7 @@ const Post = ({ post, observer }) => {
         >
           {post.claims && <FactCheckWidget claims={post.claims} />}
           <div className="parsed">
-            {parseEditorJsData({ content: post.description, scripts: true })}
+            {process.browser && parseTiptapContent(post.description_html)}
           </div>
           {post.claims &&
             post.claims.map((claim, i) => (
@@ -149,10 +140,7 @@ const Post = ({ post, observer }) => {
                 )}
 
                 <div className="parsed">
-                  {parseEditorJsData({
-                    content: claim.description,
-                    scripts: true,
-                  })}
+                  {process.browser && parseTiptapContent(claim.description_html)}
                 </div>
               </React.Fragment>
             ))}

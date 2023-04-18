@@ -5,26 +5,19 @@ import React from 'react';
 import Link from 'next/link';
 import gql from 'graphql-tag';
 import { jsx } from 'theme-ui';
-import {
-  FaTwitterSquare,
-  FaFacebookSquare,
-  FaWhatsappSquare,
-} from 'react-icons/fa';
-import Post from 'components/Post';
-import { client } from 'store/client';
+import { FaTwitterSquare, FaFacebookSquare, FaWhatsappSquare } from 'react-icons/fa';
+import Post from '../components/Post';
+import { client } from '../store/client';
 import Head from 'next/head';
-import parseDate from 'src/utils/parseDate';
-import StoryCard from 'components/StoryCard';
-
+import parseDate from '../src/utils/parseDate';
+import StoryCard from '../components/StoryCard';
 export default function PostDetails({ post, posts }) {
   const filteredPosts = posts.nodes.filter((p) => p.id !== post.id).slice(0, 6);
 
   const [showSocialIcon, setShowSocialIcon] = React.useState(false);
-  const [postActiveIndex, setPostActiveIndex] = React.useState(
-    parseInt(post.id)
-  );
+  const [postActiveIndex, setPostActiveIndex] = React.useState(parseInt(post.id));
   const [observer, setObserver] = React.useState({
-    observe: () => {},
+    observe: () => { },
   });
 
   const handleShowSocialIcon = (entry) => {
@@ -72,9 +65,7 @@ export default function PostDetails({ post, posts }) {
         <meta name="description" content={post.excerpt} />
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.excerpt} />
-        {post.medium && (
-          <meta property="og:image" content={post.medium?.url.proxy} />
-        )}
+        {post.medium && <meta property="og:image" content={post.medium?.url.proxy} />}
         <meta property="og:url" content={url} />
         <meta property="og:type" content="article" />
         {post.schemas &&
@@ -228,6 +219,7 @@ export async function getServerSideProps({ params }) {
           published_date
           is_page
           description
+          description_html
           excerpt
           id
           schemas

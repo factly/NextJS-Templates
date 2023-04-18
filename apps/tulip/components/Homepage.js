@@ -4,7 +4,7 @@ import React from 'react'; // eslint-disable-line no-unused-vars
 import { jsx } from 'theme-ui';
 import Link from 'next/link';
 import parseDate from '../src/utils/parseDate';
-import StoryCard from 'components/StoryCard';
+import StoryCard from './StoryCard';
 
 function Homepage({ data }) {
   const { posts, featuredCategories } = data;
@@ -19,12 +19,7 @@ function Homepage({ data }) {
             display: 'grid',
             columnGap: [null, null, null, '2rem'],
             gridTemplateColumns: [null, null, null, 'repeat(12,1fr)'],
-            gridTemplateRows: [
-              null,
-              null,
-              null,
-              'minmax(2rem,auto) repeat(2,1fr)',
-            ],
+            gridTemplateRows: [null, null, null, 'minmax(2rem,auto) repeat(2,1fr)'],
             px: ['1.5rem', null, null, 'initial'],
             '& > *': {
               mt: ['2rem', null, null, 'initial'],
@@ -53,23 +48,15 @@ function Homepage({ data }) {
             {posts.nodes.slice(1, 3).map((post) => (
               <div
                 key={post.id}
-                sx={{
-                  borderTop: '1px solid #d9d9d9',
-                  display: 'block',
-                  py: '1rem',
-                }}
+                sx={{ borderTop: '1px solid #d9d9d9', display: 'block', py: '1rem' }}
               >
-                <Link passHref href={`/${post.slug}`}>
-                  <a>
-                    <img src={post.medium?.url.proxy} alt="" />
-                  </a>
+                <Link href={`/${post.slug}`}>
+
+                  <img src={post.medium?.url.proxy} alt="" />
+
                 </Link>
                 {post.categories.length > 0 && (
-                  <Link
-                    key={post.categories[0].slug}
-                    href={`/category/${post.categories[0].slug}`}
-                    passHref
-                  >
+                  <Link key={post.id} href={`/category/${post.categories[0].slug}`} passHref>
                     <a
                       sx={{
                         fontSize: '0.75rem',
@@ -82,20 +69,18 @@ function Homepage({ data }) {
                     </a>
                   </Link>
                 )}
-                <Link href={`/${post.slug}`} passHref>
+                <Link key={post.id} href={`/${post.slug}`} passHref>
                   <a sx={{ display: 'block' }}>
                     <h3 sx={{ fontSize: '1rem' }}>{post.title}</h3>
                   </a>
                 </Link>
 
-                <Link href={`/author/${post?.users[0]?.slug}`} passHref>
+                <Link key={post.id} href={`/author/${post?.users[0]?.slug}`} passHref>
                   <a sx={{ fontSize: '0.75rem', textTransform: 'uppercase' }}>
                     {post?.users[0]?.display_name}
                   </a>
                 </Link>
-                <p sx={{ fontSize: '0.675rem' }}>
-                  {parseDate(post.published_date)}
-                </p>
+                <p sx={{ fontSize: '0.675rem' }}>{parseDate(post.published_date)}</p>
               </div>
             ))}
           </div>
@@ -111,41 +96,25 @@ function Homepage({ data }) {
           >
             <div>
               <Link href={`/${featuredPost?.slug}`} passHref>
-                <a>
-                  <div>
-                    <img
-                      src={featuredPost?.medium?.url?.proxy}
-                      alt={featuredPost?.title}
-                      sx={{
-                        width: '100%',
-                        maxHeight: '25rem',
-                        objectFit: 'cover',
-                      }}
-                    />
-                  </div>
+                <div>
+                  <img
+                    src={featuredPost?.medium?.url?.proxy}
+                    alt={featuredPost?.title}
+                    sx={{ width: '100%', maxHeight: '25rem', objectFit: 'cover' }}
+                  />
+                </div>
 
-                  <div sx={{ p: '1rem' }}>
-                    <p
-                      sx={{
-                        fontSize: '0.75rem',
-                        textTransform: 'uppercase',
-                        color: '#df1c22',
-                      }}
-                    >
-                      {featuredPost?.categories[0]?.name}
-                    </p>
-                    <h2 sx={{ fontSize: '2.25rem' }}>{featuredPost?.title}</h2>
-                    <p sx={{ fontSize: '1rem', my: '0.5rem' }}>
-                      {featuredPost?.excerpt}
-                    </p>
-                    <p sx={{ fontSize: '0.75rem', textTransform: 'uppercase' }}>
-                      {featuredPost?.users[0].display_name}
-                    </p>
-                    <p sx={{ fontSize: '0.675rem' }}>
-                      {parseDate(featuredPost?.published_date)}
-                    </p>
-                  </div>
-                </a>
+                <div sx={{ p: '1rem' }}>
+                  <p sx={{ fontSize: '0.75rem', textTransform: 'uppercase', color: '#df1c22' }}>
+                    {featuredPost?.categories[0]?.name}
+                  </p>
+                  <h2 sx={{ fontSize: '2.25rem' }}>{featuredPost?.title}</h2>
+                  <p sx={{ fontSize: '1rem', my: '0.5rem' }}>{featuredPost?.excerpt}</p>
+                  <p sx={{ fontSize: '0.75rem', textTransform: 'uppercase' }}>
+                    {featuredPost?.users[0].display_name}
+                  </p>
+                  <p sx={{ fontSize: '0.675rem' }}>{parseDate(featuredPost?.published_date)}</p>
+                </div>
               </Link>
             </div>
           </div>
@@ -184,11 +153,7 @@ function Homepage({ data }) {
                 >
                   <div>
                     {post.categories.length > 0 && (
-                      <Link
-                        key={post.categories[0].slug}
-                        href={`/category/${post.categories[0].slug}`}
-                        passHref
-                      >
+                      <Link key={post.id} href={`/category/${post.categories[0].slug}`} passHref>
                         <a
                           sx={{
                             fontSize: '0.75rem',
@@ -201,36 +166,21 @@ function Homepage({ data }) {
                         </a>
                       </Link>
                     )}
-                    <Link href={`/${post.slug}`} passHref>
+                    <Link key={post.id} href={`/${post.slug}`} passHref>
                       <a sx={{ display: 'block' }}>
                         <h3 sx={{ fontSize: '1rem' }}>{post.title}</h3>
                       </a>
                     </Link>
-                    <div
-                      sx={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}
-                    >
-                      <Link href={`/author/${post?.users[0]?.slug}`} passHref>
-                        <a
-                          sx={{
-                            fontSize: '0.75rem',
-                            textTransform: 'uppercase',
-                          }}
-                        >
+                    <div sx={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                      <Link key={post.id} href={`/author/${post?.users[0]?.slug}`} passHref>
+                        <a sx={{ fontSize: '0.75rem', textTransform: 'uppercase' }}>
                           {post?.users[0]?.display_name}
                         </a>
                       </Link>
-                      <p sx={{ fontSize: '0.675rem' }}>
-                        {parseDate(post.published_date)}
-                      </p>
+                      <p sx={{ fontSize: '0.675rem' }}>{parseDate(post.published_date)}</p>
                     </div>
                   </div>
-                  <div
-                    sx={{
-                      maxWidth: '7.5rem',
-                      maxWidth: '25%',
-                      flex: '1 0 25%',
-                    }}
-                  >
+                  <div sx={{ maxWidth: '7.5rem', maxWidth: '25%', flex: '1 0 25%' }}>
                     <img src={post.medium?.url?.proxy} alt={post.title} />
                   </div>
                 </div>
@@ -245,29 +195,18 @@ function Homepage({ data }) {
               return (
                 category.posts.nodes.length > 0 && (
                   <section key={category.id} sx={{ my: '1.5rem' }}>
-                    <h4 sx={{ borderBottom: '1px solid black', pb: '0.75rem' }}>
-                      {category.name}
-                    </h4>
+                    <h4 sx={{ borderBottom: '1px solid black', pb: '0.75rem' }}>{category.name}</h4>
                     <div
                       sx={{
                         display: 'grid',
-                        gridTemplateColumns: [
-                          '1fr',
-                          null,
-                          'repeat( 2, 1fr )',
-                          'repeat( 3, 1fr)',
-                        ],
+                        gridTemplateColumns: ['1fr', null, 'repeat( 2, 1fr )', 'repeat( 3, 1fr)'],
                         px: [null, null, (theme) => `${theme.space.spacing6}`],
                         mt: (theme) => `${theme.space.spacing7}`,
                         gridGap: (theme) => `${theme.space.spacing7}`,
                       }}
                     >
                       {category.posts?.nodes.slice(0, 6).map((post) => (
-                        <StoryCard
-                          cardStyle="tulip"
-                          key={post.id}
-                          storyData={post}
-                        />
+                        <StoryCard cardStyle="tulip" key={post.id} storyData={post} />
                       ))}
                     </div>
                   </section>

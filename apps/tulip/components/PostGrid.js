@@ -11,11 +11,7 @@ const PostGrid = ({ type, posts, formats, item, header, useSlug = true }) => {
     <header>
       <h1
         sx={{
-          fontSize: [
-            (theme) => `${theme.fontSizes.h5}`,
-            null,
-            (theme) => `${theme.fontSizes.h4}`,
-          ],
+          fontSize: [(theme) => `${theme.fontSizes.h5}`, null, (theme) => `${theme.fontSizes.h4}`],
           mb: (theme) => `${theme.space.spacing5}`,
           textTransform: 'capitalize',
           px: (theme) => theme.space.layout2,
@@ -37,12 +33,7 @@ const PostGrid = ({ type, posts, formats, item, header, useSlug = true }) => {
     >
       <div
         className="main-content"
-        sx={{
-          order: [2, null, null, null, 1],
-          maxWidth: 1560,
-          width: '100%',
-          mx: 'auto',
-        }}
+        sx={{ order: [2, null, null, null, 1], maxWidth: 1560, width: '100%', mx: 'auto' }}
       >
         <div
           sx={{
@@ -56,12 +47,7 @@ const PostGrid = ({ type, posts, formats, item, header, useSlug = true }) => {
             <div
               sx={{
                 display: 'grid',
-                gridTemplateColumns: [
-                  '1fr',
-                  null,
-                  'repeat( 2, 1fr )',
-                  'repeat( 3, 1fr)',
-                ],
+                gridTemplateColumns: ['1fr', null, 'repeat( 2, 1fr )', 'repeat( 3, 1fr)'],
                 px: [null, null, (theme) => `${theme.space.spacing6}`],
                 mt: (theme) => `${theme.space.spacing7}`,
                 gridGap: (theme) => `${theme.space.spacing7}`,

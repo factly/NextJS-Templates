@@ -3,10 +3,10 @@
 import React, { useState, useEffect } from 'react'; // eslint-disable-line no-unused-vars
 import { jsx } from 'theme-ui';
 import gql from 'graphql-tag';
-import parseEditorJsData from 'src/utils/parseEditorJsData';
-import PostGrid from 'components/PostGrid';
+import parseEditorJsData from 'apps/tulip/src/utils/parseEditorJsData';
+import PostGrid from 'apps/tulip/components/PostGrid';
 
-import { client } from 'store/client';
+import { client } from 'apps/tulip/store/client';
 import Head from 'next/head';
 
 function TagDetailsAll({ data }) {
@@ -21,10 +21,7 @@ function TagDetailsAll({ data }) {
       >
         <h1
           sx={{
-            fontSize: [
-              (theme) => `${theme.fontSizes.h5}`,
-              (theme) => `${theme.fontSizes.h4}`,
-            ],
+            fontSize: [(theme) => `${theme.fontSizes.h5}`, (theme) => `${theme.fontSizes.h4}`],
             mb: (theme) => `${theme.space.spacing5}`,
             textTransform: 'capitalize',
             px: (theme) => theme.space.layout2,

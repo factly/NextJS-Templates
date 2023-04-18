@@ -3,11 +3,12 @@
 import React, { useState, useEffect } from 'react'; // eslint-disable-line no-unused-vars
 import { jsx } from 'theme-ui';
 import gql from 'graphql-tag';
-import parseEditorJsData from 'src/utils/parseEditorJsData';
-import PostGrid from 'components/PostGrid';
+import parseEditorJsData from 'apps/tulip/src/utils/parseEditorJsData';
+import PostGrid from 'apps/tulip/components/PostGrid';
 
-import { client } from 'store/client';
+import { client } from 'apps/tulip/store/client';
 import Head from 'next/head';
+import parseTiptapContent from '../../src/utils/parseTipTapEditorData';
 
 function CategoryDetailsAll({ data }) {
   const [readMore, setReadMore] = React.useState(true);
@@ -30,10 +31,7 @@ function CategoryDetailsAll({ data }) {
       >
         <h1
           sx={{
-            fontSize: [
-              (theme) => `${theme.fontSizes.h5}`,
-              (theme) => `${theme.fontSizes.h4}`,
-            ],
+            fontSize: [(theme) => `${theme.fontSizes.h5}`, (theme) => `${theme.fontSizes.h4}`],
             mb: (theme) => `${theme.space.spacing5}`,
             textTransform: 'capitalize',
             px: (theme) => theme.space.layout2,
@@ -44,13 +42,12 @@ function CategoryDetailsAll({ data }) {
         <div
           id="category-description"
           sx={{
-            maxHeight: (theme) =>
-              readMore ? `calc(${theme.lineHeights.normal}em * 6 )` : '100%',
+            maxHeight: (theme) => (readMore ? `calc(${theme.lineHeights.normal}em * 6 )` : '100%'),
             overflow: 'hidden',
             px: (theme) => `${theme.space.spacing5}`,
           }}
         >
-          {parseEditorJsData({ content: item.description })}
+          {process.browser && parseTiptapContent(item.description_html)}
         </div>
         {item.description && isReadMoreNeeded && (
           <button
@@ -92,6 +89,7 @@ export async function getServerSideProps({ params }) {
       query ($slug: String!) {
         category(slug: $slug) {
           description
+          description_html
           id
           medium {
             alt_text

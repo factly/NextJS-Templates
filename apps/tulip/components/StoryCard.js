@@ -50,65 +50,43 @@ const StoryCard = ({
         >
           <div
             className="tulip"
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              width: 'full',
-              maxWidth: 'full',
-            }}
+            sx={{ display: 'flex', flexDirection: 'column', width: 'full', maxWidth: 'full' }}
           >
-            <Link passHref href={`/${storyData.slug}`}>
-              <a>
+            <Link href={`/${storyData.slug}`}>
+
+              <div sx={{ maxWidth: '100%', width: '100%', display: 'flex', overflow: 'hidden' }}>
                 <div
                   sx={{
-                    maxWidth: '100%',
-                    width: '100%',
-                    display: 'flex',
+                    paddingBottom: '56.24999999%',
                     overflow: 'hidden',
+                    position: 'relative',
+                    width: '100%',
                   }}
                 >
                   <div
                     sx={{
-                      paddingBottom: '56.24999999%',
-                      overflow: 'hidden',
-                      position: 'relative',
+                      position: 'absolute',
                       width: '100%',
+                      height: ' 100%',
+                      background: '#eff8fa',
                     }}
                   >
-                    <div
-                      sx={{
-                        position: 'absolute',
-                        width: '100%',
-                        height: ' 100%',
-                        background: '#eff8fa',
-                      }}
-                    >
-                      <img
-                        sx={{
-                          height: '100%',
-                          objectFit: 'cover',
-                          width: '100%',
-                        }}
-                        src={storyData.medium?.url.proxy}
-                      />
-                    </div>
+                    <img
+                      sx={{ height: '100%', objectFit: 'cover', width: '100%' }}
+                      src={storyData.medium?.url.proxy}
+                    />
                   </div>
                 </div>
-              </a>
+              </div>
             </Link>
             <div
               key={storyData.id}
-              sx={{
-                borderTop: '1px solid #d9d9d9',
-                display: 'block',
-                py: '1rem',
-                px: ['1rem', 0],
-              }}
+              sx={{ borderTop: '1px solid #d9d9d9', display: 'block', py: '1rem', px: ['1rem', 0] }}
             >
               {storyData?.categories?.length > 0 && (
                 <Link
-                  key={storyData.categories[0].slug}
-                  href={`category/${storyData.categories[0].slug}`}
+                  key={storyData.id}
+                  href={`/category/${storyData.categories[0].slug}`}
                   passHref
                 >
                   <a
@@ -123,23 +101,17 @@ const StoryCard = ({
                   </a>
                 </Link>
               )}
-              <Link href={`/${storyData.slug}`} passHref>
+              <Link key={storyData.id} href={`/${storyData.slug}`} passHref>
                 <a sx={{ display: 'block' }}>
                   <h3 sx={{ fontSize: '1rem' }}>{storyData.title}</h3>
                 </a>
               </Link>
-              <Link
-                key={storyData.id}
-                href={`/author/${storyData?.users[0]?.slug}`}
-                passHref
-              >
+              <Link key={storyData.id} href={`/author/${storyData?.users[0]?.slug}`} passHref>
                 <a sx={{ fontSize: '0.75rem', textTransform: 'uppercase' }}>
                   {storyData?.users[0]?.display_name}
                 </a>
               </Link>
-              <p sx={{ fontSize: '0.675rem' }}>
-                {parseDate(storyData.published_date)}
-              </p>
+              <p sx={{ fontSize: '0.675rem' }}>{parseDate(storyData.published_date)}</p>
             </div>
           </div>
         </div>
@@ -158,11 +130,7 @@ const StoryCard = ({
           borderColor: (theme) => `${theme.colors.borderPrimary}`,
         }}
       >
-        <Link
-          passHref
-          href={`/${storyData.slug}`}
-          className="vertical horizontal"
-        >
+        <Link passHref href={`/${storyData.slug}`} className="vertical horizontal">
           <a
             sx={{
               width: 'full',
@@ -191,13 +159,11 @@ const StoryCard = ({
                     objectFit: 'cover',
                     borderRadius: 'default',
                   }}
-                  // onError={addDefaultSrc}
+                // onError={addDefaultSrc}
                 />
               )}
             </div>
-            <div
-              sx={{ width: 'full', display: 'flex', flexDirection: 'column' }}
-            >
+            <div sx={{ width: 'full', display: 'flex', flexDirection: 'column' }}>
               <p
                 sx={{
                   color: (theme) => `${theme.colors.textLinkPrimary}`,
@@ -235,13 +201,7 @@ const StoryCard = ({
                   {storyData.excerpt}
                 </p>
               )}
-              <div
-                sx={{
-                  display: 'flex',
-                  mt: 'auto',
-                  pt: (theme) => `${theme.space.spacing3}`,
-                }}
-              >
+              <div sx={{ display: 'flex', mt: 'auto', pt: (theme) => `${theme.space.spacing3}` }}>
                 <div
                   className="vertical horizontal"
                   sx={{
@@ -252,13 +212,7 @@ const StoryCard = ({
                     alignItems: 'flex-start',
                   }}
                 >
-                  <div
-                    sx={{
-                      display: 'flex',
-                      flexDirection: 'row',
-                      flexWrap: 'wrap',
-                    }}
-                  >
+                  <div sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
                     <p
                       sx={{
                         color: (theme) => `${theme.colors.textSecondary}`,
@@ -273,8 +227,7 @@ const StoryCard = ({
                     >
                       {storyData.users.map((user, i, arr) => (
                         <span key={i}>
-                          {`${user.first_name} ${user.last_name}`}{' '}
-                          {arr.length - i > 1 && ','}
+                          {`${user.first_name} ${user.last_name}`} {arr.length - i > 1 && ','}
                         </span>
                       ))}
                     </p>
@@ -340,7 +293,7 @@ const StoryCard = ({
                     objectFit: 'cover',
                     borderRadius: 'default',
                   }}
-                  // onError={addDefaultSrc}
+                // onError={addDefaultSrc}
                 />
               )}
             </div>
@@ -379,27 +332,9 @@ const StoryCard = ({
             </p>
           </a>
         </Link>
-        <div
-          sx={{
-            flex: 'none',
-            mt: 'auto',
-            py: (theme) => `${theme.space.spacing5}`,
-          }}
-        >
-          <div
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            }}
-          >
-            <div
-              sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
+        <div sx={{ flex: 'none', mt: 'auto', py: (theme) => `${theme.space.spacing5}` }}>
+          <div sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <p
                 sx={{
                   color: (theme) => `${theme.colors.gray[6]}`,
@@ -466,13 +401,11 @@ const StoryCard = ({
                     objectFit: 'cover',
                     borderRadius: 'default',
                   }}
-                  // onError={addDefaultSrc}
+                // onError={addDefaultSrc}
                 />
               )}
             </div>
-            <div
-              sx={{ width: 'full', display: 'flex', flexDirection: 'column' }}
-            >
+            <div sx={{ width: 'full', display: 'flex', flexDirection: 'column' }}>
               <div
                 id="nav-0"
                 //  className="active"
@@ -495,13 +428,7 @@ const StoryCard = ({
                 {storyData.excerpt}
               </p>
 
-              <div
-                sx={{
-                  display: 'flex',
-                  mt: 'auto',
-                  pt: (theme) => `${theme.space.spacing3}`,
-                }}
-              >
+              <div sx={{ display: 'flex', mt: 'auto', pt: (theme) => `${theme.space.spacing3}` }}>
                 <div
                   className="vertical horizontal"
                   sx={{
@@ -512,13 +439,7 @@ const StoryCard = ({
                     alignItems: 'flex-start',
                   }}
                 >
-                  <div
-                    sx={{
-                      display: 'flex',
-                      flexDirection: 'row',
-                      flexWrap: 'wrap',
-                    }}
-                  >
+                  <div sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
                     <p
                       sx={{
                         color: (theme) => `${theme.colors.textSecondary}`,
@@ -566,11 +487,7 @@ const StoryCard = ({
             }}
           >
             <div
-              style={{
-                minWidth: '15rem',
-                maxWidth: '15rem',
-                maxHeight: '15rem',
-              }}
+              style={{ minWidth: '15rem', maxWidth: '15rem', maxHeight: '15rem' }}
               sx={{ borderRadius: 'lg' }}
             >
               {storyData.medium && (
@@ -583,7 +500,7 @@ const StoryCard = ({
                     objectFit: 'cover',
                     borderRadius: 'default',
                   }}
-                  //onError={addDefaultSrc}
+                //onError={addDefaultSrc}
                 />
               )}
             </div>
@@ -595,9 +512,7 @@ const StoryCard = ({
                 justifyContent: 'space-between',
               }}
             >
-              <h2 sx={{ pb: (theme) => `${theme.space.spacing3}` }}>
-                {storyData.title}
-              </h2>
+              <h2 sx={{ pb: (theme) => `${theme.space.spacing3}` }}>{storyData.title}</h2>
               <p sx={{ fontSize: (theme) => `${theme.fontSizes.h8}` }}>
                 {_.truncate(storyData.excerpt, {
                   length: 150,
@@ -629,21 +544,9 @@ const StoryCard = ({
       >
         <div
           className="iframely-card"
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            width: 'full',
-            maxWidth: 'full',
-          }}
+          sx={{ display: 'flex', flexDirection: 'column', width: 'full', maxWidth: 'full' }}
         >
-          <div
-            sx={{
-              maxWidth: '100%',
-              width: '100%',
-              display: 'flex',
-              overflow: 'hidden',
-            }}
-          >
+          <div sx={{ maxWidth: '100%', width: '100%', display: 'flex', overflow: 'hidden' }}>
             <div
               sx={{
                 paddingBottom: '56.24999999%',
@@ -652,9 +555,7 @@ const StoryCard = ({
                 width: '100%',
               }}
             >
-              <div
-                sx={{ position: 'absolute', width: '100%', height: ' 100%' }}
-              >
+              <div sx={{ position: 'absolute', width: '100%', height: ' 100%' }}>
                 <Link passHref href={`/${storyData.slug}`}>
                   <a
                     sx={{
@@ -686,9 +587,7 @@ const StoryCard = ({
                 flex: '1 0 auto',
               }}
             >
-              <h3 sx={{ fontSize: (theme) => `${theme.fontSizes.h6}` }}>
-                {storyData.title}
-              </h3>
+              <h3 sx={{ fontSize: (theme) => `${theme.fontSizes.h6}` }}>{storyData.title}</h3>
               {excerpt && (
                 <p sx={{ fontSize: (theme) => `${theme.fontSizes.bodySmall}` }}>
                   {_.truncate(storyData.excerpt, {
@@ -738,12 +637,7 @@ const StoryCard = ({
       >
         <div
           className="iframely-small"
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            width: 'full',
-            maxWidth: 'full',
-          }}
+          sx={{ display: 'flex', alignItems: 'center', width: 'full', maxWidth: 'full' }}
         >
           <div sx={{ width: '150px', maxWidth: '150px', height: '150px' }}>
             <Link passHref href={`/${storyData.slug}`}>
@@ -756,7 +650,7 @@ const StoryCard = ({
                   backgroundSize: ' cover',
                   backgroundImage: `url(${storyData.medium?.url.proxy.replace(
                     '/dega.factly.in/',
-                    '/'
+                    '/',
                   )})`,
                   textDecoration: 'none',
                   touchAction: 'manipulation',

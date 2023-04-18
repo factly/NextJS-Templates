@@ -44,7 +44,7 @@ const FactCheckWidget = ({ claims }) => {
 
     const maxScroll = Math.round(
       sliderElement.current.children[1].getBoundingClientRect().x -
-        sliderElement.current.firstElementChild.getBoundingClientRect().x
+        sliderElement.current.firstElementChild.getBoundingClientRect().x,
     );
     setScrollWidth(maxScroll);
   }, []);
@@ -97,9 +97,7 @@ const FactCheckWidget = ({ claims }) => {
                 opacity: disable.left ? 0.5 : null,
               }}
             >
-              <FaChevronLeft
-                sx={{ fill: 'currentColor', width: 4, height: 4 }}
-              />
+              <FaChevronLeft sx={{ fill: 'currentColor', width: 4, height: 4 }} />
             </button>
             <h2
               sx={{
@@ -130,19 +128,13 @@ const FactCheckWidget = ({ claims }) => {
                 opacity: disable.right ? 0.5 : null,
               }}
             >
-              <FaChevronRight
-                sx={{ fill: 'currentColor', width: 4, height: 4 }}
-              />
+              <FaChevronRight sx={{ fill: 'currentColor', width: 4, height: 4 }} />
             </button>
           </div>
           <div
             ref={sliderElement}
             className="sliderF"
-            sx={{
-              display: 'flex',
-              overflowX: 'auto',
-              pb: (theme) => `${theme.space.spacing6}`,
-            }}
+            sx={{ display: 'flex', overflowX: 'auto', pb: (theme) => `${theme.space.spacing6}` }}
           >
             {claims.map((claim, i) => (
               <div
@@ -165,11 +157,7 @@ const FactCheckWidget = ({ claims }) => {
                   }}
                 >
                   <div
-                    sx={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                    }}
+                    sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
                   >
                     <div
                       sx={{
@@ -178,12 +166,7 @@ const FactCheckWidget = ({ claims }) => {
                         alignItems: 'baseline',
                       }}
                     >
-                      <h2
-                        sx={{
-                          fontWeight: 'bold',
-                          mr: (theme) => `${theme.space.spacing3}`,
-                        }}
-                      >
+                      <h2 sx={{ fontWeight: 'bold', mr: (theme) => `${theme.space.spacing3}` }}>
                         Claimant:{' '}
                       </h2>
                       {claim.claimant.name}
@@ -198,12 +181,7 @@ const FactCheckWidget = ({ claims }) => {
                       bg: CLAIM_RATING[claim.rating.slug],
                     }}
                   >
-                    <h2
-                      sx={{
-                        fontWeight: 'bold',
-                        py: (theme) => `${theme.space.spacing3}`,
-                      }}
-                    >
+                    <h2 sx={{ fontWeight: 'bold', py: (theme) => `${theme.space.spacing3}` }}>
                       Claim:{' '}
                     </h2>
                     <div className="parsed" sx={{ display: 'flex' }}>

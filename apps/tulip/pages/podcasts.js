@@ -51,35 +51,23 @@ const PodcastsPage = () => {
               }}
             />
           </div>
-          <div
-            sx={{
-              alignSelf: 'center',
-              mt: [(theme) => `${theme.space.spacing6}`, null, 0],
-            }}
-          >
+          <div sx={{ alignSelf: 'center', mt: [(theme) => `${theme.space.spacing6}`, null, 0] }}>
             <h1
               sx={{
                 textAlign: 'center',
-                fontSize: [
-                  (theme) => `${theme.fontSizes.h5}`,
-                  (theme) => `${theme.fontSizes.h4}`,
-                ],
+                fontSize: [(theme) => `${theme.fontSizes.h5}`, (theme) => `${theme.fontSizes.h4}`],
               }}
             >
               Un-Viral
             </h1>
             <p
               sx={{
-                fontSize: [
-                  (theme) => `${theme.fontSizes.h7}`,
-                  (theme) => `${theme.fontSizes.h6}`,
-                ],
+                fontSize: [(theme) => `${theme.fontSizes.h7}`, (theme) => `${theme.fontSizes.h6}`],
               }}
             >
-              Un-Viral is a podcast from Factly where we tackle that dangerous
-              combination of the two kinds of virality—misinformation about
-              health. Tune in to discern the real from the fake, and remember to
-              Un-Viral.{' '}
+              Un-Viral is a podcast from Factly where we tackle that dangerous combination of the
+              two kinds of virality—misinformation about health. Tune in to discern the real from
+              the fake, and remember to Un-Viral.{' '}
             </p>
             <div
               sx={{

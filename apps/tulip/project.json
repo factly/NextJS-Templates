@@ -1,4 +1,5 @@
 {
+  "name": "tulip",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/tulip",
   "projectType": "application",
@@ -12,7 +13,9 @@
         "outputPath": "dist/apps/tulip"
       },
       "configurations": {
-        "development": {},
+        "development": {
+          "outputPath": "apps/tulip"
+        },
         "production": {}
       }
     },
@@ -38,14 +41,6 @@
       "executor": "@nrwl/next:export",
       "options": {
         "buildTarget": "tulip:build:production"
-      }
-    },
-    "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/tulip"],
-      "options": {
-        "jestConfig": "apps/tulip/jest.config.ts",
-        "passWithNoTests": true
       }
     },
     "lint": {

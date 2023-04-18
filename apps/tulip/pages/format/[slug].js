@@ -8,9 +8,7 @@ import { jsx } from 'theme-ui';
 import Head from 'next/head';
 
 function FormatPage({ data }) {
-  const filteredPosts = data.posts.nodes.filter(
-    (post) => post.published_date !== null
-  );
+  const filteredPosts = data.posts.nodes.filter((post) => post.published_date !== null);
   return (
     <>
       <Head>
@@ -22,10 +20,7 @@ function FormatPage({ data }) {
             mt: (theme) => `${theme.space.layout4}`,
             mb: (theme) => `${theme.space.layout2}`,
             px: (theme) => theme.space.layout2,
-            fontSize: [
-              (theme) => `${theme.fontSizes.h5}`,
-              (theme) => `${theme.fontSizes.h4}`,
-            ],
+            fontSize: [(theme) => `${theme.fontSizes.h5}`, (theme) => `${theme.fontSizes.h4}`],
           }}
         >
           {filteredPosts[0]?.format.name}
@@ -42,12 +37,7 @@ function FormatPage({ data }) {
             <div
               sx={{
                 display: 'grid',
-                gridTemplateColumns: [
-                  '1fr',
-                  null,
-                  'repeat( 2, 1fr )',
-                  'repeat( 3, 1fr)',
-                ],
+                gridTemplateColumns: ['1fr', null, 'repeat( 2, 1fr )', 'repeat( 3, 1fr)'],
                 px: [null, null, (theme) => `${theme.space.spacing6}`],
                 mt: (theme) => `${theme.space.spacing7}`,
                 gridGap: (theme) => `${theme.space.spacing7}`,

@@ -4,10 +4,10 @@ import React from 'react'; // eslint-disable-line no-unused-vars
 
 import { jsx } from 'theme-ui';
 import { FaRegClock } from 'react-icons/fa';
-import parseDate from 'src/utils/parseDate';
+import parseDate from 'apps/tulip/src/utils/parseDate';
 import Link from 'next/link';
 
-/* 
+/*
  TODO 1. Add Author image above their names
  TODO 2. Improve multiple authors and categories
  TODO 3. Check for layout spacing issues
@@ -30,14 +30,7 @@ const PostInfo = ({ users, categories, date }) => (
         fontSize: (theme) => `${theme.fontSizes.h7}`,
       }}
     >
-      <div
-        sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-          alignItems: 'baseline',
-        }}
-      >
+      <div sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', alignItems: 'baseline' }}>
         {users &&
           users.map((user, i, arr) => (
             <React.Fragment key={i}>
@@ -58,9 +51,7 @@ const PostInfo = ({ users, categories, date }) => (
                   {`${user?.first_name} ${user?.last_name}`}
                 </a>
               </Link>
-              {arr.length - i > 1 &&
-                (user?.first_name || user?.last_name) &&
-                ','}
+              {arr.length - i > 1 && (user?.first_name || user?.last_name) && ','}
             </React.Fragment>
           ))}
 
@@ -84,8 +75,7 @@ const PostInfo = ({ users, categories, date }) => (
                       color: (theme) => `${theme.colors.textLinkPrimary}`,
                       fontSize: (theme) => `${theme.fontSizes.h7}`,
                       '&:hover': {
-                        color: (theme) =>
-                          `${theme.colors.textLinkHoverPrimary}`,
+                        color: (theme) => `${theme.colors.textLinkHoverPrimary}`,
                       },
                     }}
                   >
@@ -107,12 +97,7 @@ const PostInfo = ({ users, categories, date }) => (
           alignItems: 'center',
         }}
       >
-        <FaRegClock
-          sx={{
-            display: 'inline-block',
-            mr: (theme) => `${theme.space.spacing2}`,
-          }}
-        />{' '}
+        <FaRegClock sx={{ display: 'inline-block', mr: (theme) => `${theme.space.spacing2}` }} />{' '}
         {parseDate(date)}
       </span>
     </div>

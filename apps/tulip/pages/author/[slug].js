@@ -11,9 +11,9 @@ import {
   FaTwitterSquare,
 } from 'react-icons/fa';
 
-import PostGrid from 'components/PostGrid';
+import PostGrid from 'apps/tulip/components/PostGrid';
 import gql from 'graphql-tag';
-import { client } from 'store/client';
+import { client } from 'apps/tulip/store/client';
 import Head from 'next/head';
 
 function UserDetailsAll({ data }) {
@@ -41,12 +41,7 @@ function UserDetailsAll({ data }) {
 
   const header = (item) => {
     return (
-      <div
-        sx={{
-          mb: (theme) => `${theme.space.spacing5}`,
-          px: (theme) => theme.space.layout2,
-        }}
-      >
+      <div sx={{ mb: (theme) => `${theme.space.spacing5}`, px: (theme) => theme.space.layout2 }}>
         {item.medium && (
           <img
             src={item.medium?.url.proxy}
@@ -70,9 +65,7 @@ function UserDetailsAll({ data }) {
           {name}
         </h1>
         {item.description && (
-          <p sx={{ pb: (theme) => `${theme.space.spacing5}` }}>
-            {item.description}
-          </p>
+          <p sx={{ pb: (theme) => `${theme.space.spacing5}` }}>{item.description}</p>
         )}
 
         <div sx={{ display: 'flex' }}>

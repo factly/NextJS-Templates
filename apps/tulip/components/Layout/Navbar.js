@@ -66,12 +66,7 @@ export default function NavBar({ logo, data }) {
           }}
         >
           {mainMenu?.menu.map((item) => (
-            <ActiveLink
-              href={item.url}
-              key={item.title}
-              passHref
-              activeClassName="active"
-            >
+            <ActiveLink href={item.url} key={item.title} passHref activeClassName="active">
               <a
                 sx={{
                   p: '1rem 1.5rem',

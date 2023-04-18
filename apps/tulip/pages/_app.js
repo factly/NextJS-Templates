@@ -2,10 +2,10 @@ import React from 'react';
 import { ThemeProvider } from 'theme-ui';
 import Router from 'next/router';
 import NProgress from 'nprogress';
-import theme from 'src/utils/theme.js';
-import Layout from 'components/Layout';
-import 'styles/global.css';
-import { client } from 'store/client';
+import theme from '../src/utils/theme';
+import Layout from '../components/Layout';
+import '../styles/global.css';
+import { client } from '../store/client';
 import { gql } from 'graphql-tag';
 import App from 'next/app';
 

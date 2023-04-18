@@ -5,12 +5,12 @@
     "next/core-web-vitals",
     "../../.eslintrc.json"
   ],
-  "ignorePatterns": ["!**/*"],
+  "ignorePatterns": ["!**/*", ".next/**/*"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
-        "@next/next/no-html-link-for-pages": ["error", "apps/dega-tulip/pages"]
+        "@next/next/no-html-link-for-pages": ["error", "apps/tulip/pages"]
       }
     },
     {

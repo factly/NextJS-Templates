@@ -15,11 +15,7 @@ const Layout = ({ children, data }) => {
         style={{ maxWidth: '1560px' }}
         sx={{
           width: 'full',
-          fontSize: [
-            (theme) => `${theme.fontSizes.h6}`,
-            null,
-            (theme) => `${theme.fontSizes.h5}`,
-          ],
+          fontSize: [(theme) => `${theme.fontSizes.h6}`, null, (theme) => `${theme.fontSizes.h5}`],
           color: (theme) => `${theme.colors.textPrimary}`,
           lineHeight: 'normal',
           pt: [(theme) => `${theme.space.spacing5}`, 0, 0],

@@ -213,10 +213,7 @@ const parseEditorJsData = ({ content, scripts = false, amp = false }) => {
               // eslint-disable-next-line no-nested-ternary
               if (!scripts) {
                 return (
-                  <div
-                    className="ed-embeds"
-                    dangerouslySetInnerHTML={{ __html: data.html }}
-                  />
+                  <div className="ed-embeds" dangerouslySetInnerHTML={{ __html: data.html }} />
                 );
               }
               return amp ? (
