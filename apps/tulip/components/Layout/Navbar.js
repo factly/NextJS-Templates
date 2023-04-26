@@ -54,6 +54,11 @@ export default function NavBar({ logo, data }) {
             </a>
           </Link>
         </div>
+        <div sx={{ display: 'flex', gap: '24px', justifyContent: 'center' }}>
+          <Link href="/">Home</Link>
+          <Link href="/authors">Authors</Link>
+          <Link href="/categories">Categories</Link>
+        </div>
         <div
           sx={{
             boxShadow: 'inset 0 -15px 5px -16px #111',

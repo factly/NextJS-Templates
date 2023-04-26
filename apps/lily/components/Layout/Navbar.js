@@ -7,6 +7,7 @@ import { FaHome, FaBars, FaFacebook, FaTwitter } from 'react-icons/fa';
 import Link from 'next/link';
 import ActiveLink from '../ActiveLink';
 
+
 export default function NavBar({ logo, data }) {
   const { menu, categories, space } = data;
   const mainMenu = menu.nodes.filter((i) => i.slug === 'main')[0];
@@ -73,11 +74,13 @@ export default function NavBar({ logo, data }) {
               gap: '24px',
             }}>
               <p>Home</p>
-              <p>Products</p>
-              <p>Resources</p>
-              <p>Pricing</p>
             </a>
-
+          </Link>
+          <Link href="/authors">
+            Authors
+          </Link>
+          <Link href="/categories">
+            Categories
           </Link>
         </div>
         <div sx={{
@@ -161,6 +164,6 @@ export default function NavBar({ logo, data }) {
 
       </div>
       <hr />
-    </React.Fragment >
+    </React.Fragment>
   );
 }

@@ -88,26 +88,15 @@ export default function NavBar({ logo, data }) {
           alignItems: 'center',
           ml: '25rem'
         }}>
-          <Link href="/">
-            <p sx={{
+          <Link href="/authors">
+            <h4 sx={{
               fontSize: '16px',
-              lineHeight: '24px',
-              color: '#667085',
-            }}>Sign in</p>
+            }}>Authors</h4>
           </Link>
-          <Link href="/" passHref>
-            <a sx={{
-              border: '1px solid',
-              padding: '10px',
-              borderRadius: '8px',
-              bg: '#7855F7',
-            }}>
-              <p sx={{
-                fontSize: '16px',
-                lineHeight: '24px',
-                color: 'white'
-              }}>Sign up</p>
-            </a>
+          <Link href="/categories">
+            <h4 sx={{
+              fontSize: '16px',
+            }}>Categories</h4>
           </Link>
         </div>
         {/* <div
