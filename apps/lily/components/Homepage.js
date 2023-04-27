@@ -226,8 +226,6 @@ function Homepage({ data }) {
 
   return (
     <>
-
-
       <main sx={{ p: [null, null, null, '2rem'], pt: '2rem' }}>
         <div sx={{
           display: 'flex',

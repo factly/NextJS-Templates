@@ -18,7 +18,7 @@ const ShareButtonGroup = ({ data, setRef }) => {
   const { socialFacebook, socialTwitter, socialWhatsapp } = colors;
   const { h4 } = theme.fontSizes;
   let title = encodeURIComponent(data.title);
-  // let url = encodeURIComponent(data.url)
+  // let url = encodeURIComponent(url)
   return (
     <div
       social-icon=""

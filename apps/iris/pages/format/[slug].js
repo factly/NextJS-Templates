@@ -2,8 +2,8 @@
 /** @jsxRuntime classic */
 import React from 'react'; // eslint-disable-line no-unused-vars
 import { jsx } from 'theme-ui';
-import Layout from 'components/Layout';
-import BlogCard from 'components/BlogCard';
+import Layout from 'apps/iris/components/Layout';
+import BlogCard from 'apps/iris/components/BlogCard';
 
 const FormatDetails = ({ data }) => {
   const { posts } = data;

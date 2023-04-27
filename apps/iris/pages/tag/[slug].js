@@ -3,7 +3,7 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
 import { jsx } from 'theme-ui';
 
-import PostGrid from 'components/PostGrid';
+import PostGrid from 'apps/iris/components/PostGrid';
 
 const TagDetailsFormat = ({ data }) => {
   const { posts, tag, formats } = data;
