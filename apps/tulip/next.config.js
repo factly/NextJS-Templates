@@ -7,7 +7,6 @@ const basePath =
     ? ''
     : process.env.NX_NEXT_PUBLIC_BASE_PATH;
 
-
 /**
  * @type {import('@nrwl/next/plugins/with-nx').WithNxOptions}
  **/
@@ -18,6 +17,10 @@ const nextConfig = {
     svgr: true,
   },
   reactStrictMode: true,
+  generateBuildId: async () => {
+    // You can, for example, get the latest git commit hash here
+    return 'my-build-id';
+  },
   // eslint: {
   //   ignoreDuringBuilds: true,
   // },
@@ -30,17 +33,15 @@ const nextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   publicRuntimeConfig: {
-    degaAPIKey: process.env.NEXT_PUBLIC_DEGA_API_KEY,
-    spaceId: process.env.NEXT_PUBLIC_SPACE_ID,
-    apiUrl: process.env.NEXT_PUBLIC_API_URL,
-    kratosURL: process.env.NEXT_PUBLIC_KRATOS_URL,
-    kavachProfileURL: process.env.NEXT_PUBLIC_KAVACH_PROFILE_URL,
-    siteURL: process.env.NEXT_PUBLIC_SITE_URL,
-    basePath: process.env.NEXT_PUBLIC_BASE_PATH,
+    degaAPIKey: process.env.NX_PUBLIC_DEGA_API_KEY,
+    spaceId: process.env.NX_PUBLIC_SPACE_ID,
+    apiUrl: process.env.NX_PUBLIC_API_URL,
+    kratosURL: process.env.NX_PUBLIC_KRATOS_URL,
+    kavachProfileURL: process.env.NX_PUBLIC_KAVACH_PROFILE_URL,
+    siteURL: process.env.NX_PUBLIC_SITE_URL,
+    basePath: process.env.NX_PUBLIC_BASE_PATH,
   },
-  serverRuntimeConfig: {
-
-  },
+  serverRuntimeConfig: {},
 };
 
 module.exports = withNx(nextConfig);
