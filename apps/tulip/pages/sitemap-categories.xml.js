@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import { client } from 'store/client';
+import { client } from '../store/client';
 import getConfig from 'next/config';
 
 function generateSiteMap(categories) {
