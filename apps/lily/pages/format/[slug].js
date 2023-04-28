@@ -2,8 +2,8 @@
 /** @jsxRuntime classic */
 import React from 'react';
 import gql from 'graphql-tag';
-import StoryCard from 'components/StoryCard';
-import { client } from 'store/client';
+import StoryCard from 'apps/lily/components/StoryCard';
+import { client } from 'apps/lily/store/client';
 import { jsx } from 'theme-ui';
 import Head from 'next/head';
 

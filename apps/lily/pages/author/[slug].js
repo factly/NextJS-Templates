@@ -68,6 +68,7 @@ function UserDetailsAll({ data }) {
           mt: '20px'
         }}>
           <p>{user.display_name}</p>
+
         </div>
 
         <div sx={{
