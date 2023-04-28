@@ -6,7 +6,7 @@ import gql from 'graphql-tag';
 import parseEditorJsData from 'src/utils/parseEditorJsData';
 import PostGrid from 'components/PostGrid';
 
-import { client } from 'store/client';
+import { client } from '../store/client';
 import Head from 'next/head';
 
 function TagDetailsAll({ data }) {
