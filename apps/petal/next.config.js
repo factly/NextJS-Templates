@@ -2,12 +2,10 @@
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { withNx } = require('@nrwl/next/plugins/with-nx');
-
 const basePath =
   process.env.NODE_ENV === 'production'
     ? ''
     : process.env.NX_NEXT_PUBLIC_BASE_PATH;
-
 
 /**
  * @type {import('@nrwl/next/plugins/with-nx').WithNxOptions}
@@ -19,6 +17,10 @@ const nextConfig = {
     svgr: true,
   },
   reactStrictMode: true,
+  generateBuildId: async () => {
+    // You can, for example, get the latest git commit hash here
+    return 'my-build-id';
+  },
   // eslint: {
   //   ignoreDuringBuilds: true,
   // },
