@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
-import { client } from 'store/client';
 import getConfig from 'next/config';
+import { client } from '../store/client';
 
 function generateSiteMap(users) {
   const { publicRuntimeConfig } = getConfig();
