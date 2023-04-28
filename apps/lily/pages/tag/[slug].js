@@ -3,11 +3,9 @@
 import React, { useState, useEffect } from 'react'; // eslint-disable-line no-unused-vars
 import { jsx } from 'theme-ui';
 import gql from 'graphql-tag';
-import parseEditorJsData from 'src/utils/parseEditorJsData';
-import PostGrid from 'components/PostGrid';
-
-import { client } from '../store/client';
+import PostGrid from 'apps/lily/components/PostGrid';
 import Head from 'next/head';
+import { client } from 'apps/tulip/store/client';
 
 function TagDetailsAll({ data }) {
   const header = (item) => {
