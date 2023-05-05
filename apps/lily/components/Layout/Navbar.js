@@ -3,9 +3,7 @@
 /** @jsxRuntime classic */
 import React, { useState, useEffect } from 'react';
 import { jsx } from 'theme-ui';
-import { FaHome, FaBars, FaFacebook, FaTwitter } from 'react-icons/fa';
 import Link from 'next/link';
-import ActiveLink from '../ActiveLink';
 
 
 export default function NavBar({ logo, data }) {
@@ -39,51 +37,40 @@ export default function NavBar({ logo, data }) {
         display: 'flex',
         gap: '48px',
         justifyContent: 'space-Between',
-        ml: '3rem',
-        mr: '3rem',
-        paddingTop: '12px'
-        //borderBottom: '1px solid'
+        mx: ['1rem', null, '3rem'],
+        my: '12px'
       }}>
-        <div sx={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '24px',
-        }}>
-          <div
-            sx={{
-              // my: '0.5rem',
-              // mx: 'auto',
-              // textAlign: 'center',
-              // display: 'flex',
-              // justifyContent: 'center',
-            }}
-          >
-            <Link href="/" passHref>
-              <a sx={{ mx: 'auto' }}>
-                <img
-                  src={space?.logo?.url?.proxy || `/logo.png`}
-                  alt={space.site_title}
-                  sx={{ maxWidth: '4rem', display: 'block', mx: 'auto' }}
-                />
-              </a>
-            </Link>
-          </div>
+        <div
+          sx={{
+            // my: '0.5rem',
+            // mx: 'auto',
+            // textAlign: 'center',
+            // display: 'flex',
+            // justifyContent: 'center',
+          }}
+        >
           <Link href="/" passHref>
-            <a sx={{
-              display: 'flex',
-              gap: '24px',
-            }}>
-              <p>Home</p>
+            <a sx={{ mx: 'auto' }}>
+              <img
+                src={space?.logo?.url?.proxy || `/logo.png`}
+                alt={space.site_title}
+                sx={{ maxWidth: '4rem', display: 'block', mx: 'auto' }}
+              />
             </a>
           </Link>
-          <Link href="/authors">
-            Authors
+        </div>
+        <div sx={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
+          <Link href="/" >
+            Home
           </Link>
           <Link href="/categories">
             Categories
           </Link>
+          <Link href="/authors">
+            Authors
+          </Link>
         </div>
-        <div sx={{
+        {/* <div sx={{
           display: 'flex',
           alignItems: 'center',
           gap: '24px'
@@ -123,7 +110,7 @@ export default function NavBar({ logo, data }) {
             <a href="">
               Subscribe</a>
           </p>
-        </div>
+        </div> */}
         {/* <div
           sx={{
             boxShadow: 'inset 0 -15px 5px -16px #111',

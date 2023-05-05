@@ -227,21 +227,22 @@ function Homepage({ data }) {
   return (
     <>
       <main sx={{ p: [null, null, null, '2rem'], pt: '2rem' }}>
-        <div sx={{
-          display: 'flex',
-          gap: '24px'
-        }}>
+        <div>
           <div sx={{
-            display: 'flex',
-            gap: '3rem',
-            flex: '1 0 50%',
-            maxWidth: '50%'
+            // display: 'flex',
+            // gap: '3rem',
+            // flex: '1 0 50%',
+            // maxWidth: '50%'
+            display: 'grid',
+            gridTemplateColumns: ['1fr', null, '3fr 2fr'],
+            gridGap: '48px',
+            px: '16px'
           }}>
-            {posts.nodes.slice(0, 1).map((post) => (
+            {posts.nodes.slice(0, 2).map((post) => (
               <StoryCard cardStyle="featured" key={post.id} storyData={post} />
             ))}
           </div>
-          <div sx={{
+          {/* <div sx={{
             display: 'flex',
             flexDirection: 'column',
             gap: '3rem',
@@ -251,7 +252,7 @@ function Homepage({ data }) {
             {posts.nodes.slice(1, 3).map((post) => (
               <StoryCard cardStyle="featuredSmall" key={post.id} storyData={post} />
             ))}
-          </div>
+          </div> */}
         </div>
         <hr />
 
@@ -264,12 +265,12 @@ function Homepage({ data }) {
               sx={{
                 display: 'grid',
                 gridTemplateColumns: ['1fr', null, 'repeat( 2, 1fr )', 'repeat( 3, 1fr)'],
-                px: [null, null, (theme) => `${theme.space.spacing6}`],
                 mt: (theme) => `${theme.space.spacing7}`,
                 gridGap: (theme) => `${theme.space.spacing7}`,
+                px: '16px'
               }}
             >
-              {posts.nodes.slice(4, 13).map((post) => (
+              {posts.nodes.slice(3, 13).map((post) => (
                 <StoryCard cardStyle="tulip" key={post.id} storyData={post} />
               ))}
             </div>

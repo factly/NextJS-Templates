@@ -227,7 +227,7 @@ const Post = ({ post }) => {
           <div sx={{
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
+            //alignItems: 'center',
             gap: '24px',
 
           }}>

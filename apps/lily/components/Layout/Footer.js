@@ -4,32 +4,35 @@ import React from 'react'; // eslint-disable-line no-unused-vars
 import { jsx } from 'theme-ui';
 import Link from 'next/link';
 
-const FooterTwo = () => (
+const Footer = () => (
   <footer
     sx={{
       display: 'flex',
-      justifyContent: 'space-around',
-      height: '136px',
+      justifyContent: 'space-between',
       alignItems: 'center',
       background: '#143F6B',
       color: '#98A2B3',
       fontWeight: 400,
       fontSize: '16px',
-      lineHeight: '24px'
+      lineHeight: '24px',
+      p: '2rem',
+      mt: '3rem',
     }}
   >
+    <p>© {new Date().getFullYear()} Lily - All rights reserved</p>
     <p>
-      © 2022 Tulip - All rights reserved
+      Powered by{' '}
+      <a
+        href="https://dega.factly.in"
+        sx={{
+          fontWeight: 600,
+          color: '#F55353',
+        }}
+      >
+        Dega
+      </a>
     </p>
-    <p>
-      Data & Privacy . Contact
-    </p>
-    <p>Powered by <Link passHref href="/"><a sx={{
-      fontWeight: 600,
-      color: '#F55353'
-    }}>Tulip</a></Link></p>
-
   </footer>
 );
 
-export default FooterTwo;
+export default Footer;

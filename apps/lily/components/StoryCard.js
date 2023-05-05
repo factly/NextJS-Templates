@@ -87,7 +87,7 @@ const StoryCard = ({
               sx={{ borderTop: '1px solid #d9d9d9', display: 'block', py: '1rem', px: ['1rem', 0] }}
             >
               <div sx={{
-                display: 'flex', gap: '6px', alignItems: 'center', fontWeight: 600,
+                fontWeight: 600,
                 fontSize: '14px',
                 lineHeight: '20px',
                 color: '#F55353',
@@ -115,38 +115,40 @@ const StoryCard = ({
                   </a>
                 </Link>
               )} */}
-              <Link key={storyData.id} href={`/${storyData.slug}`} passHref>
-                <a sx={{ display: 'block' }}>
-                  <h3 sx={{ fontSize: '1rem', mb: '8px' }}>{storyData.title.slice(0, 60)}..</h3>
-                </a>
-              </Link>
-              <p sx={{
+              <div sx={{ display: 'flex', flexDirection: 'column' }}>
+                <Link key={storyData.id} href={`/${storyData.slug}`} passHref>
+                  <a sx={{ display: 'block' }}>
+                    <h3 sx={{ fontSize: '1rem', mb: '8px' }}>{storyData.title.slice(0, 60)}</h3>
+                  </a>
+                </Link>
+                {/* <p sx={{
                 fonWeight: 400,
                 fontSize: '16px',
                 lineHeight: '24px',
                 color: '#667085',
                 mb: '10px'
-              }}>{storyData.excerpt.slice(0, 60)}..</p>
+              }}>{storyData.excerpt.slice(0, 60)}..</p> */}
 
-              {storyData?.categories?.length > 0 && (
-                <Link key={storyData.id} href={`/category/${storyData.categories[0].slug}`} passHref>
-                  <a
-                    sx={{
-                      fontSize: '14px',
-                      textTransform: 'uppercase',
-                      color: '#6941C6',
-                      fontWeight: 500,
-                      lineHeight: '20px',
-                      border: '1px',
-                      padding: '6px 12px',
-                      borderRadius: '16px',
-                      background: '#F9F5FF'
-                    }}
-                  >
-                    {storyData.categories[0].name}
-                  </a>
-                </Link>
-              )}
+                {storyData?.categories?.length > 0 && (
+                  <Link key={storyData.id} href={`/category/${storyData.categories[0].slug}`} passHref>
+                    <a
+                      sx={{
+                        fontSize: '14px',
+                        textTransform: 'uppercase',
+                        color: '#6941C6',
+                        fontWeight: 500,
+                        lineHeight: '20px',
+                        border: '1px',
+                        padding: '6px 12px',
+                        borderRadius: '16px',
+                        background: '#F9F5FF'
+                      }}
+                    >
+                      {storyData.categories[0].name}
+                    </a>
+                  </Link>
+                )}
+              </div>
               {/* <Link key={storyData.id} href={`/author/${storyData?.users[0]?.slug}`} passHref>
                 <a sx={{ fontSize: '0.75rem', textTransform: 'uppercase' }}>
                   {storyData?.users[0]?.display_name}
