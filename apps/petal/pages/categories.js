@@ -14,13 +14,13 @@ function CategoriesListPage({ data }) {
       <Head>
         <title> Categories </title>
       </Head>
-      <div sx={{ maxWidth: '1400px', mx: 'auto', fontSize: '32px', px: '32px', textAlign: 'center' }}>
+      <div sx={{ maxWidth: '1400px', mx: 'auto', fontSize: '32px', px: '32px', textAlign: 'center', my: '12px' }}>
         <h1>Categories</h1>
       </div>
       <div sx={{ maxWidth: '1400px', mx: 'auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(256px, 1fr))', gridGap: '32px', p: '32px' }}>
         {data.categories.nodes.map((category) => (
           <div sx={{ display: 'flex', flexDirection: 'column', gap: '24px', bg: '#D6BBFB', p: '48px', textAlign: 'center', borderRadius: '8px' }}>
-            <Link sx={{ display: 'flex', justifyContent: 'center' }} href={category.slug}>
+            <Link sx={{ display: 'flex', justifyContent: 'center' }} href={`/category/${category.slug}/`}>
               <img sx={{ width: '96px', height: '96px', bg: '#000', borderRadius: '50%', objectFit: 'cover', maxWidth: "100%" }} src="https://source.unsplash.com/random" alt="" />
             </Link>
             <Link sx={{ fontWeight: 700 }} href={`/category/${category.slug}/`}>

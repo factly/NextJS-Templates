@@ -264,7 +264,9 @@ const Post = ({ post }) => {
           <div
             sx={{
               display: 'flex',
-              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: '12px',
+              justifyContent: ['center', null, 'space-between'],
               alignItems: 'center',
               mt: (theme) => `${theme.space.spacing6}`,
               pb: (theme) => `${theme.space.spacing6}`,
@@ -274,6 +276,8 @@ const Post = ({ post }) => {
 
             <div sx={{
               display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
               alignItems: 'center',
               gap: '12px',
 
@@ -285,8 +289,8 @@ const Post = ({ post }) => {
                   justifyContent: 'center',
                   alignItems: 'center',
                   padding: '0px',
-                  width: '40px',
-                  height: '40px',
+                  width: '60px',
+                  height: '60px',
                   background: 'black',
                   borderRadius: '200px',
                 }}>

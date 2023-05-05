@@ -102,7 +102,7 @@ const StoryCard = ({
                   color: '#101828',
                   marginBottom: '16px'
                 }}>
-                  <h3 sx={{ fontSize: '24px' }}>{storyData.title.slice(0, 60)}..</h3>
+                  <h3 sx={{ fontSize: '24px' }}>{storyData.title.slice(0, 60)}</h3>
                 </a>
               </Link>
               <p
@@ -115,7 +115,7 @@ const StoryCard = ({
                   color: '#667085',
                   alignSelf: 'stretch',
                 }}>
-                {storyData.excerpt.slice(0, 60)}...
+                {storyData.excerpt.slice(0, 60)}
               </p>
               <div
                 sx={{

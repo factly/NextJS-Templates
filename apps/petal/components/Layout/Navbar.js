@@ -36,10 +36,10 @@ export default function NavBar({ logo, data }) {
     <React.Fragment>
       <div sx={{
         display: 'flex',
+        justifyContent: "space-between",
+        marginLeft: '4rem',
         alignItems: 'center',
-        gap: '7rem',
-        ml: '12rem',
-        mr: '10rem',
+        marginRight: '4rem',
         mt: '2rem'
       }}>
         <div sx={{
@@ -58,86 +58,24 @@ export default function NavBar({ logo, data }) {
               </a>
             </Link>
           </div>
-          <p>
-            <FaBars />
-          </p>
-        </div>
-        <div sx={{
-
-          border: '1px solid',
-          width: '320px',
-          height: '48px',
-          borderRadius: '8px'
-        }}>
-          <div sx={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            marginTop: '12px',
-            paddingLeft: '12px'
-          }}>
-            <FaSistrix />
-            <p>search</p>
-          </div>
         </div>
         <div sx={{
           display: 'flex',
           gap: '32px',
-          height: '48px',
-          width: '200px',
-          alignItems: 'center',
-          ml: '25rem'
+          flexWrap: 'wrap'
         }}>
+          <Link href="/">
+            Home
+          </Link>
           <Link href="/authors">
-            <h4 sx={{
-              fontSize: '16px',
-            }}>Authors</h4>
+            Authors
           </Link>
           <Link href="/categories">
-            <h4 sx={{
-              fontSize: '16px',
-            }}>Categories</h4>
+            Categories
           </Link>
         </div>
-        {/* <div
-          sx={{
-            boxShadow: 'inset 0 -15px 5px -16px #111',
-            // inset 0 15px 5px -16px #111'
-            display: 'flex',
-            justifyContent: [null, null, null, 'center'],
-            fontSize: '0.75rem',
-            overflowX: 'scroll',
-            scrollbarWidth: 'none',
-          }}
-        >
-          {mainMenu?.menu.map((item) => (
-            <ActiveLink href={item.url} key={item.title} passHref activeClassName="active">
-              <a
-                sx={{
-                  p: '1rem 1.5rem',
-                  display: 'block',
-                  textTransform: 'uppercase',
-                  whiteSpace: 'nowrap',
-                  '&:not(:first-of-type)': {
-                    position: 'relative',
-                  },
-                  '&:not(:first-of-type)::before': {
-                    borderLeft: '1px solid #ea364a',
-                    content: `""`,
-                    height: '1rem',
-                    left: '-.5px',
-                    overflow: 'hidden',
-                    position: 'absolute',
-                  },
-                }}
-              >
-                {item.name}
-              </a>
-            </ActiveLink>
-          ))}
-        </div> */}
       </div>
       <hr />
-    </React.Fragment >
+    </React.Fragment>
   );
 }
