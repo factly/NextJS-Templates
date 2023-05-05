@@ -36,7 +36,7 @@ const Layout = ({ children, data }) => {
           color: (theme) => `${theme.colors.textPrimary}`,
           lineHeight: 'normal',
           pt: [(theme) => `${theme.space.spacing5}`, 0, 0],
-          mt: '60px',
+          //mt: '60px',
           minHeight: 'calc(100vh - 60px)',
           mx: 'auto',
           display: 'flex',

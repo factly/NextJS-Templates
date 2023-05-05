@@ -9,6 +9,9 @@ import Post from '../components/Post';
 import { client } from '../store/client';
 import Head from 'next/head';
 import BlogCard from '../components/BlogCard';
+
+
+
 export default function PostDetails({ post, posts }) {
   const filteredPosts = posts.nodes.filter((p) => p.id !== post.id).slice(0, 6);
 

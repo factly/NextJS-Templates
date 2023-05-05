@@ -6,6 +6,7 @@ import { jsx } from 'theme-ui';
 import Head from 'next/head';
 import gql from 'graphql-tag';
 import { client } from '../store/client';
+import Link from 'next/link';
 
 function CategoriesListPage({ data }) {
   return (
@@ -13,7 +14,7 @@ function CategoriesListPage({ data }) {
       <Head>
         <title> Categories </title>
       </Head>
-      <div sx={{ maxWidth: '1270px', mx: 'auto', fontSize: '32px', px: '32px', mb: '32px', textAlign: 'center' }}>
+      <div sx={{ maxWidth: '1270px', mx: 'auto', fontSize: '32px', px: '32px', my: '32px', textAlign: 'center' }}>
         <h1>
           Categories
         </h1>
@@ -22,9 +23,9 @@ function CategoriesListPage({ data }) {
         {data.categories.nodes.map((category) => (
           <>
             <div sx={{}}>
-              <a href={category.slug}> {category.medium}
+              <Link href={`/category/${category.slug}/`}> {category.medium}
                 <img sx={{ borderRadius: '24px' }} src="https://source.unsplash.com/random/280x230" alt="" />
-              </a>
+              </Link>
 
               <a href={`/category/${category.slug}/`}>
                 <p sx={{ mt: '24px', fontWeight: 700 }}> {category.name}</p>

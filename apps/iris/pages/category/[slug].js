@@ -39,7 +39,7 @@ const CategoryDetailsFormat = ({ data }) => {
         >
           {item.name}
         </h1>
-        <div
+        {/* <div
           id="category-description"
           sx={{
             maxHeight: (theme) => (readMore ? `calc(${theme.lineHeights.normal}em * 6 )` : '100%'),
@@ -48,7 +48,7 @@ const CategoryDetailsFormat = ({ data }) => {
           }}
         >
           {process.browser && parseTiptapContent(item.description_html)}
-        </div>
+        </div> */}
         {item.description && isReadMoreNeeded && (
           <button
             type="button"
