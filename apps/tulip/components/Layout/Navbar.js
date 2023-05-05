@@ -54,7 +54,7 @@ export default function NavBar({ logo, data }) {
             </a>
           </Link>
         </div>
-        <div sx={{ display: 'flex', gap: '24px', justifyContent: 'center' }}>
+        <div sx={{ display: 'flex', gap: '24px', justifyContent: 'center', flexWrap: 'wrap', mb: '12px' }}>
           <Link href="/">Home</Link>
           <Link href="/authors">Authors</Link>
           <Link href="/categories">Categories</Link>
@@ -97,6 +97,6 @@ export default function NavBar({ logo, data }) {
           ))}
         </div>
       </div>
-    </React.Fragment>
+    </React.Fragment >
   );
 }

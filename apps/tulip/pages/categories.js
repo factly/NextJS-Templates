@@ -16,7 +16,7 @@ const CategoriesListPage = ({ data }) => {
       <Head>
         <title> Categories </title>
       </Head>
-      <div sx={{ maxWidth: '1400px', mx: 'auto', fontSize: '32px', px: '32px', textAlign: 'center' }}>
+      <div sx={{ maxWidth: '1400px', mx: 'auto', fontSize: '32px', px: '32px', textAlign: 'center', my: '12px' }}>
         <h1>Categories</h1>
       </div>
       <div sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(256px, 1fr))', gridGap: '32px', maxWidth: '1400px', mx: 'auto', mb: '48px', p: '32px' }}>

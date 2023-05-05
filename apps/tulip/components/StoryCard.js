@@ -83,35 +83,39 @@ const StoryCard = ({
               key={storyData.id}
               sx={{ borderTop: '1px solid #d9d9d9', display: 'block', py: '1rem', px: ['1rem', 0] }}
             >
-              {storyData?.categories?.length > 0 && (
-                <Link
-                  key={storyData.id}
-                  href={`/category/${storyData.categories[0].slug}`}
-                  passHref
-                >
-                  <a
-                    sx={{
-                      fontSize: '0.75rem',
-                      textTransform: 'uppercase',
-                      color: '#df1c22',
-                      display: 'block',
-                    }}
+              <div sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                {storyData?.categories?.length > 0 && (
+                  <Link
+                    key={storyData.id}
+                    href={`/category/${storyData.categories[0].slug}`}
+                    passHref
                   >
-                    {storyData.categories[0].name}
+                    <a
+                      sx={{
+                        fontSize: '0.75rem',
+                        textTransform: 'uppercase',
+                        color: '#df1c22',
+                        display: 'block',
+                      }}
+                    >
+                      {storyData.categories[0].name}
+                    </a>
+                  </Link>
+                )}
+                <Link key={storyData.id} href={`/${storyData.slug}`} passHref>
+                  <a sx={{ display: 'block' }}>
+                    <h3 sx={{ fontSize: '1rem' }}>{storyData.title}</h3>
                   </a>
                 </Link>
-              )}
-              <Link key={storyData.id} href={`/${storyData.slug}`} passHref>
-                <a sx={{ display: 'block' }}>
-                  <h3 sx={{ fontSize: '1rem' }}>{storyData.title}</h3>
-                </a>
-              </Link>
-              <Link key={storyData.id} href={`/author/${storyData?.users[0]?.slug}`} passHref>
-                <a sx={{ fontSize: '0.75rem', textTransform: 'uppercase' }}>
-                  {storyData?.users[0]?.display_name}
-                </a>
-              </Link>
-              <p sx={{ fontSize: '0.675rem' }}>{parseDate(storyData.published_date)}</p>
+              </div>
+              <div>
+                <Link key={storyData.id} href={`/author/${storyData?.users[0]?.slug}`} passHref>
+                  <a sx={{ fontSize: '0.75rem', textTransform: 'uppercase' }}>
+                    {storyData?.users[0]?.display_name}
+                  </a>
+                </Link>
+                <p sx={{ fontSize: '0.675rem' }}>{parseDate(storyData.published_date)}</p>
+              </div>
             </div>
           </div>
         </div>

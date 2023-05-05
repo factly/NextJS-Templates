@@ -27,63 +27,66 @@ function Homepage({ data }) {
           }}
         >
           {/* Left */}
-          <div
-            className="left"
-            sx={{
-              gridColumn: [null, null, null, '1/span 3'],
-              gridRowStart: [null, null, null, 1],
-              position: 'relative',
-              order: [2, null, null, 'initial'],
-              '::after': {
-                content: `""`,
-                position: 'absolute',
-                top: 0,
-                bottom: 0,
-                left: 'auto',
-                right: 'calc((2rem / 2) * -1)',
-                borderRight: '1px solid #d9d9d9',
-              },
-            }}
-          >
-            {posts.nodes.slice(1, 3).map((post) => (
-              <div
-                key={post.id}
-                sx={{ borderTop: '1px solid #d9d9d9', display: 'block', py: '1rem' }}
-              >
-                <Link href={`/${post.slug}`}>
+          <>
+            <div
+              className="left"
+              sx={{
+                gridColumn: [null, null, null, '1/span 3'],
+                gridRowStart: [null, null, null, 1],
+                position: 'relative',
+                order: [2, null, null, 'initial'],
+                '::after': {
+                  content: `""`,
+                  position: 'absolute',
+                  top: 0,
+                  bottom: 0,
+                  left: 'auto',
+                  right: 'calc((2rem / 2) * -1)',
+                  borderRight: '1px solid #d9d9d9',
+                },
+              }}
+            >
+              {posts.nodes.slice(1, 3).map((post) => (
+                <div
+                  key={post.id}
+                  sx={{ borderTop: '1px solid #d9d9d9', display: 'block', py: '1rem' }}
+                >
+                  <Link href={`/${post.slug}`}>
 
-                  <img src={post.medium?.url.proxy} alt="" />
+                    <img src={post.medium?.url.proxy} alt="" />
 
-                </Link>
-                {post.categories.length > 0 && (
-                  <Link key={post.id} href={`/category/${post.categories[0].slug}`} passHref>
-                    <a
-                      sx={{
-                        fontSize: '0.75rem',
-                        textTransform: 'uppercase',
-                        color: '#df1c22',
-                        display: 'block',
-                      }}
-                    >
-                      {post.categories[0].name}
+                  </Link>
+                  <div sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                    {post.categories.length > 0 && (
+                      <Link key={post.id} href={`/category/${post.categories[0].slug}`} passHref>
+                        <a
+                          sx={{
+                            fontSize: '0.75rem',
+                            textTransform: 'uppercase',
+                            color: '#df1c22',
+                            display: 'block',
+                          }}
+                        >
+                          {post.categories[0].name}
+                        </a>
+                      </Link>
+                    )}
+                    <Link key={post.id} href={`/${post.slug}`} passHref>
+                      <a sx={{ display: 'block' }}>
+                        <h3 sx={{ fontSize: '1rem' }}>{post.title}</h3>
+                      </a>
+                    </Link>
+                  </div>
+                  <Link key={post.id} href={`/author/${post?.users[0]?.slug}`} passHref>
+                    <a sx={{ fontSize: '0.75rem', textTransform: 'uppercase' }}>
+                      {post?.users[0]?.display_name}
                     </a>
                   </Link>
-                )}
-                <Link key={post.id} href={`/${post.slug}`} passHref>
-                  <a sx={{ display: 'block' }}>
-                    <h3 sx={{ fontSize: '1rem' }}>{post.title}</h3>
-                  </a>
-                </Link>
-
-                <Link key={post.id} href={`/author/${post?.users[0]?.slug}`} passHref>
-                  <a sx={{ fontSize: '0.75rem', textTransform: 'uppercase' }}>
-                    {post?.users[0]?.display_name}
-                  </a>
-                </Link>
-                <p sx={{ fontSize: '0.675rem' }}>{parseDate(post.published_date)}</p>
-              </div>
-            ))}
-          </div>
+                  <p sx={{ fontSize: '0.675rem' }}>{parseDate(post.published_date)}</p>
+                </div>
+              ))}
+            </div>
+          </>
           {/* Center */}
           <div
             className="center"
@@ -171,7 +174,7 @@ function Homepage({ data }) {
                         <h3 sx={{ fontSize: '1rem' }}>{post.title}</h3>
                       </a>
                     </Link>
-                    <div sx={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                    <div sx={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap' }}>
                       <Link key={post.id} href={`/author/${post?.users[0]?.slug}`} passHref>
                         <a sx={{ fontSize: '0.75rem', textTransform: 'uppercase' }}>
                           {post?.users[0]?.display_name}
@@ -200,7 +203,7 @@ function Homepage({ data }) {
                       sx={{
                         display: 'grid',
                         gridTemplateColumns: ['1fr', null, 'repeat( 2, 1fr )', 'repeat( 3, 1fr)'],
-                        px: [null, null, (theme) => `${theme.space.spacing6}`],
+                        px: ['1.5rem', null, '1.5rem'],
                         mt: (theme) => `${theme.space.spacing7}`,
                         gridGap: (theme) => `${theme.space.spacing7}`,
                       }}

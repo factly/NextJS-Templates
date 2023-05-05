@@ -48,8 +48,8 @@ const PostGrid = ({ type, posts, formats, item, header, useSlug = true }) => {
               sx={{
                 display: 'grid',
                 gridTemplateColumns: ['1fr', null, 'repeat( 2, 1fr )', 'repeat( 3, 1fr)'],
-                px: [null, null, (theme) => `${theme.space.spacing6}`],
-                mt: (theme) => `${theme.space.spacing7}`,
+                px: ['1.5rem', null, '1.5rem'],
+                //mt: (theme) => `${theme.space.spacing7}`,
                 gridGap: (theme) => `${theme.space.spacing7}`,
               }}
             >
