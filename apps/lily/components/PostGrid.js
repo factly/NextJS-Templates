@@ -11,7 +11,7 @@ const PostGrid = ({ type, posts, formats, item, header, useSlug = true }) => {
     <header>
       <h1
         sx={{
-          fontSize: [(theme) => `${theme.fontSizes.h5}`, null, (theme) => `${theme.fontSizes.h4}`],
+          fontSize: '48px',
           mb: (theme) => `${theme.space.spacing5}`,
           textTransform: 'capitalize',
           px: (theme) => theme.space.layout2,
@@ -47,8 +47,8 @@ const PostGrid = ({ type, posts, formats, item, header, useSlug = true }) => {
             <div
               sx={{
                 display: 'grid',
-                gridTemplateColumns: ['1fr', null, 'repeat( 2, 1fr )', 'repeat( 3, 1fr)'],
-                px: ['1rem', null, '1rem'],
+                gridTemplateColumns: ['1fr', null, 'repeat( 2, 1fr )', 'repeat(6, minmax(0, 1fr))'],
+                px: ['1.5rem', null, '1.5rem'],
                 //mt: (theme) => `${theme.space.spacing7}`,
                 gridGap: (theme) => `${theme.space.spacing7}`,
               }}
@@ -56,8 +56,8 @@ const PostGrid = ({ type, posts, formats, item, header, useSlug = true }) => {
               {filteredPosts.map((item, index) => (
                 <StoryCard
                   key={index}
-                  cardStyle="tulip"
-                  storyData={item}
+                  type="basic"
+                  post={item}
                   excerpt={item.format.slug !== 'fact-check'}
                 />
               ))}

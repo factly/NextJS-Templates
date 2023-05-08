@@ -8,6 +8,7 @@ import '../styles/global.css'
 import { client } from '../store/client';
 import { gql } from 'graphql-tag';
 import App from 'next/app';
+import '../styles/screen.css'
 
 NProgress.configure({ showSpinner: false });
 Router.events.on('routeChangeStart', () => {
