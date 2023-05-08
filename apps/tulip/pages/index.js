@@ -1,7 +1,7 @@
 import React from 'react';
 import { client } from '../store/client';
 import gql from 'graphql-tag';
-import Homepage from '../components/Homepage';
+import Homepage from '../components/Homepage'
 import Head from 'next/head';
 
 export default function Home(props) {

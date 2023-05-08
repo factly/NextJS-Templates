@@ -54,7 +54,7 @@ export default function NavBar({ logo, data }) {
             </a>
           </Link>
         </div>
-        <div sx={{ display: 'flex', gap: '24px', justifyContent: 'center', flexWrap: 'wrap', mb: '12px' }}>
+        <div sx={{ display: 'flex', gap: '24px', justifyContent: 'center', flexWrap: 'wrap', mb: '12px', textDecoration: 'underline', textTransform: 'uppercase', fontSize: '12px', fontWeight: 700 }}>
           <Link href="/">Home</Link>
           <Link href="/authors">Authors</Link>
           <Link href="/categories">Categories</Link>
@@ -68,6 +68,7 @@ export default function NavBar({ logo, data }) {
             fontSize: '0.75rem',
             overflowX: 'scroll',
             scrollbarWidth: 'none',
+            mb: '2rem'
           }}
         >
           {mainMenu?.menu.map((item) => (
@@ -97,6 +98,6 @@ export default function NavBar({ logo, data }) {
           ))}
         </div>
       </div>
-    </React.Fragment >
+    </React.Fragment>
   );
 }
