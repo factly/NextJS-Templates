@@ -35,6 +35,7 @@ function UserDetailsAll({ data }) {
     }
   };
 
+
   const name = data.user.display_name
     ? `${data.user.display_name}`
     : `${data.user.first_name} ${data.user.last_name}`;

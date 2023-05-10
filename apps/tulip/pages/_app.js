@@ -5,6 +5,7 @@ import NProgress from 'nprogress';
 import theme from '../src/utils/theme';
 import Layout from '../components/Layout';
 import '../styles/global.css';
+import '../styles/normalize.css';
 import { client } from '../store/client';
 import { gql } from 'graphql-tag';
 import App from 'next/app';

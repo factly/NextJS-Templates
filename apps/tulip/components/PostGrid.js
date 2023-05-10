@@ -7,19 +7,19 @@ import StoryCard from './StoryCard';
 const PostGrid = ({ type, posts, formats, item, header, useSlug = true }) => {
   const slug = useSlug ? item.slug : item.id;
   const filteredPosts = posts.filter((post) => post.published_date !== null);
+
   const defaultHeader = (item) => (
-    <header>
-      <h1
-        sx={{
-          fontSize: '24px',
-          mb: (theme) => `${theme.space.spacing5}`,
-          textTransform: 'capitalize',
-          px: (theme) => theme.space.layout2,
-        }}
-      >
-        {item.name}
-      </h1>
-      {item?.description && <p>{item.description}</p>}
+    <header className="c-page-header">
+      <div className="l-grid l-grid--2-columns">
+        <div>
+          <h1 className="c-topper__headline u-font-headline u-font-family-sansSerif">
+            {item.name}
+          </h1>
+          <p className="c-topper__standfirst u-font-standfirst u-mt-8 u-font-family-sansSerif">
+            {item.description}
+          </p>
+        </div>
+      </div>
     </header>
   );
   return (
@@ -44,22 +44,9 @@ const PostGrid = ({ type, posts, formats, item, header, useSlug = true }) => {
         >
           {header ? header(item) : defaultHeader(item)}
           {filteredPosts.length > 0 ? (
-            <div
-              sx={{
-                display: 'grid',
-                gridTemplateColumns: ['1fr', null, 'repeat( 2, 1fr )', 'repeat(4, minmax(0, 1fr))'],
-                px: ['1.5rem', null, '1.5rem'],
-                //mt: (theme) => `${theme.space.spacing7}`,
-                gridGap: (theme) => `${theme.space.spacing7}`,
-              }}
-            >
+            <div className="l-grid l-grid--4-columns">
               {filteredPosts.map((item, index) => (
-                <StoryCard
-                  key={index}
-                  cardStyle="tulip"
-                  storyData={item}
-                  excerpt={item.format.slug !== 'fact-check'}
-                />
+                <StoryCard key={index} storyData={item} />
               ))}
             </div>
           ) : (
