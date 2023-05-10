@@ -1,81 +1,118 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /** @jsx jsx */
 /** @jsxRuntime classic */
+
 import React, { useState, useEffect } from 'react';
-import { jsx } from 'theme-ui';
-import { FaHome, FaBars, FaSistrix } from 'react-icons/fa';
 import Link from 'next/link';
-import ActiveLink from '../ActiveLink';
+import { jsx } from 'theme-ui';
+import { FaHome, FaBars, FaTimes } from 'react-icons/fa';
 
-export default function NavBar({ logo, data }) {
-  const { menu, categories, space } = data;
+/**
+ * @component Navbar
+ * @typedef Props
+ * @prop {string} logo - url for logo
+ * @param {Props} props - arguments for Navbar with logo and menu properties
+ * @param {string} props.logo - url for logo
+ * @param {Object} props.menu - menu item
+ */
+
+const Navbar = ({ data }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const { menu, space } = data;
   const mainMenu = menu.nodes.filter((i) => i.slug === 'main')[0];
-  const [showMenu, setShowMenu] = useState(false);
-  const [width, setWidth] = useState(0);
 
-  const updateWidth = () => {
-    const windowWidth = window.innerWidth;
-    setWidth(windowWidth);
-  };
+  const defaultMenuItems = [
+    { url: '/categories', title: 'Categories', name: 'Categories' },
+    { url: '/authors', title: 'Authors', name: 'Authors' },
+  ];
 
-  useEffect(() => {
-    updateWidth();
-    window.addEventListener('resize', updateWidth);
-    if (width >= 1024) {
-      setShowMenu(true);
-    } else {
-      setShowMenu(false);
-    }
-    return () => window.removeEventListener('resize', updateWidth);
-  }, [width]);
-
-  const handleClick = () => {
-    setShowMenu((prevState) => !prevState);
-  };
   return (
-    <React.Fragment>
-      <div sx={{
-        display: 'flex',
-        justifyContent: "space-between",
-        marginLeft: '4rem',
-        alignItems: 'center',
-        marginRight: '4rem',
-        mt: '2rem'
-      }}>
-        <div sx={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '12px'
-        }}>
-          <div>
-            <Link href="/" passHref>
-              <a sx={{ mx: 'auto' }}>
-                <img
-                  src={space?.logo?.url?.proxy || `/logo.png`}
-                  alt={space.site_title}
-                  sx={{ maxWidth: '4rem', display: 'block', mx: 'auto' }}
-                />
-              </a>
-            </Link>
+    <div data-header="sticky">
+      <header className="header">
+        <div className="container">
+          <div className="row">
+            <div className="col-xs-12 header__left flex items-center">
+              {/* <Link className="header__brand nav-current" href="/">
+                {' '}
+                <img className="header__logo" src={space.logo?.url?.proxy} alt="logo" />
+              </Link> */}
+              <Link href="/" sx={{
+                fontSize: '1.5rem', fontWeight: '700', '&:hover': {
+                  color: '#7450f7'
+                }
+              }}>
+                KITE
+              </Link>
+              <div className="flex-1"></div>
+
+              <button
+                className={`header__menu--toggle flex-cc js-menu-toggle ${isOpen ? 'is-active' : ''
+                  }`}
+                tabindex="0"
+                type="button"
+                title="Menu"
+                aria-label="Menu"
+                onClick={() => setIsOpen((prev) => !prev)}
+              >
+                <i className="icon icon-menu icon--sm">
+                  <FaBars className="icon__svg" />
+                </i>{' '}
+                <i className="icon icon-x icon--sm">
+                  <FaTimes className="icon__svg" />
+                </i>{' '}
+              </button>
+            </div>
+
+            <div className="col-md-6 col-lg-8 header__center middle-xs flex-1" tabindex="0">
+              <ul className="nav" role="menu">
+                <li role="menuitem">
+                  <Link href="/">
+                    <span>Home</span>
+                  </Link>
+                  {/* <Link href="/categories">
+                    <span>Categories</span>
+                  </Link>
+                  <Link href="/">
+                    <span>Authors</span>
+                  </Link> */}
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div sx={{
-          display: 'flex',
-          gap: '32px',
-          flexWrap: 'wrap'
-        }}>
-          <Link href="/">
-            Home
-          </Link>
-          <Link href="/authors">
-            Authors
-          </Link>
-          <Link href="/categories">
-            Categories
-          </Link>
-        </div>
-      </div>
-      <hr />
-    </React.Fragment>
+      </header>
+      <nav className="menu js-menu" data-menu-active={isOpen}>
+        <ul className="nav" role="menu">
+          <li role="menuitem">
+            <Link href="/">
+              <i className="icon icon--sm">
+                <FaHome />
+              </i>{' '}
+              <span>Home</span>
+            </Link>
+          </li>
+          {!mainMenu?.menu &&
+            defaultMenuItems.map((item) => (
+              <li role="menuitem" key={item.title}>
+                <Link href={item.url}>
+                  <i className="icon icon--sm">
+                    <FaHome />
+                  </i>{' '}
+                  <span>{item.name}</span>
+                </Link>
+              </li>
+            ))}
+          {mainMenu?.menu.map((item) => (
+            <li role="menuitem" key={item.title}>
+              <Link href={item.url}>
+                <span>{item.name}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
   );
-}
+};
+
+export default Navbar;

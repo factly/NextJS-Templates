@@ -12,6 +12,7 @@ const Layout = ({ children, data }) => {
     <>
       {data && data.menu && <Navbar data={data} />}
       <main
+        data-grid-columns="3"
         style={{ maxWidth: '1560px' }}
         sx={{
           width: 'full',
@@ -21,6 +22,7 @@ const Layout = ({ children, data }) => {
           pt: [(theme) => `${theme.space.spacing5}`, 0, 0],
           minHeight: 'calc(100vh - 60px)',
           mx: 'auto',
+          mt: '2rem',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
