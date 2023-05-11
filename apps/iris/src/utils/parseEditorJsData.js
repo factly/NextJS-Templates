@@ -5,7 +5,7 @@ import InnerHTML from 'dangerously-set-html-content';
 import { jsx } from 'theme-ui';
 
 const parseEditorJsData = ({ content, scripts = false, amp = false }) => {
-
+  //  console.log(scripts, amp);
   const patterns = {
     youtube: [
       /^https?:\/\/(?:www\.)?youtube\.com\/(?:tv#\/)?watch\/?\?(?:[^&]+&)*v=([a-zA-Z0-9_-]+)/i,

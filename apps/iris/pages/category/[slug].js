@@ -2,9 +2,8 @@
 /** @jsxRuntime classic */
 import React, { useEffect, useState } from 'react'; // eslint-disable-line no-unused-vars
 import { jsx } from 'theme-ui';
-//import parseTiptapContent from '../../src/utils/parseTipTapEditorData';
-import parseTiptapContent from 'apps/iris/src/helpers/parseTipTapEditorData';
-import isBrowser from 'apps/iris/src/helpers/isBrowser';
+import parseTiptapContent from 'apps/iris/src/utils/parseTipTapEditorData';
+import isBrowser from 'apps/iris/src/utils/isBrowser';
 import { client } from 'apps/iris/store/client';
 import gql from 'graphql-tag';
 import PostGrid from 'apps/iris/components/PostGrid';

@@ -4,6 +4,8 @@ import React from 'react'; // eslint-disable-line no-unused-vars
 import { jsx } from 'theme-ui';
 import Layout from 'apps/iris/components/Layout';
 import BlogCard from 'apps/iris/components/BlogCard';
+import { client } from 'apps/iris/store/client';
+import gql from 'graphql-tag';
 
 const FormatDetails = ({ data }) => {
   const { posts } = data;
