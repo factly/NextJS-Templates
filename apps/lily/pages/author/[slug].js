@@ -78,29 +78,22 @@ function UserDetailsAll({ data }) {
           color: '#667085',
           alignItems: 'center'
         }}>
-          <p sx={{
-            fontSize: '20px'
-          }}>https://tulip.org</p>
-
           <a
             title="Share on Linkedin"
             href={`https://www.linkedin.com/sharer.php?u=${encodeURIComponent(process.browser ? window.location.href : null)}}`}
             target="_blank"
             rel="noopener noreferrer">
-            <FaLinkedin /></a>
+            <FaLinkedin sx={{ color: '#979797', '&:hover': { color: '#000' } }} /></a>
 
           <a
             title="Share on Twitter"
             href={`https://www.twitter.com/share?url=${encodeURIComponent(process.browser ? window.location.href : null)}`}
             target="_blank"
             rel="noopener noreferrer">
-            <FaTwitter /></a>
-
+            <FaTwitter sx={{ color: '#979797', '&:hover': { color: '#000' } }} /></a>
         </div>
-        <hr />
       </div>
     )
-    // return (
     //   <div sx={{ mb: (theme) => `${theme.space.spacing5}`, px: (theme) => theme.space.layout2 }}>
     //     {item.medium && (
     //       <img
