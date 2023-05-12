@@ -11,10 +11,10 @@ const postGrid = ({ type, posts, item }) => {
     <section>
       <div className="container wrapper">
         <div class="section hero">
-          <div class="card tag-card p-lg is-hero" style={{ borderTop: '3px solid #D91C38' }}>
+          <div class="card tag-card p-lg is-hero" style={{ borderTop: '3px solid #D91C38', gap: '32px' }}>
             <div class="tag-card__media flex">
-              {item.medium?.url?.proxy && (
-                <img
+              {item.medium?.url?.proxy ? (
+                <img sx={{ margin: 'auto' }}
                   class="tag-card__img lazyautosizes lazyloaded"
                   srcset={`${item.medium?.url?.proxy} 100w,
                   ${item.medium?.url?.proxy} 300w`}
@@ -22,13 +22,26 @@ const postGrid = ({ type, posts, item }) => {
                   alt={item.name}
                   sizes="120px"
                 />
+              ) : (
+                <div
+                  sx={{
+                    borderRadius: '50%',
+                    width: 40,
+                    height: 40,
+                    mx: 'auto',
+                    padding: (theme) => `${theme.space.spacing8}`,
+                    background: '#000',
+                    mb: '1rem',
+                  }}
+                />
               )}
+
             </div>
 
             <div class="tag-card__content text-acc-1">
               <h1 class="tag-card__title m-b-sm">{item.name}</h1>
               <div class="tag-card__descr text-acc-3">{item.description}</div>
-              <div class="tag-card__count m-t fw-600" sx={{ fontSize: '1rem', fontWeight: '700' }}>{posts.length} posts</div>
+              <div sx={{ fontSize: '16px' }} class="tag-card__count m-t fw-600">{posts.length} posts</div>
             </div>
           </div>
         </div>
