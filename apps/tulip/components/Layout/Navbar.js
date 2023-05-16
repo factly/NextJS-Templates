@@ -32,6 +32,10 @@ export default function NavBar({ logo, data }) {
   const handleClick = () => {
     setShowMenu((prevState) => !prevState);
   };
+  const defaultMenuItems = [
+    { url: '/categories', title: 'Categories', name: 'Categories' },
+    { url: '/authors', title: 'Authors', name: 'Authors' },
+  ];
   return (
     <React.Fragment>
       <div>
@@ -54,10 +58,41 @@ export default function NavBar({ logo, data }) {
             </a>
           </Link>
         </div>
-        <div sx={{ display: 'flex', gap: '24px', justifyContent: 'center', flexWrap: 'wrap', mb: '12px', textDecoration: 'underline', textTransform: 'uppercase', fontSize: '12px', fontWeight: 700 }}>
-          <Link href="/">Home</Link>
-          <Link href="/authors">Authors</Link>
-          <Link href="/categories">Categories</Link>
+        <div className="c-header__bottom">
+          <div className="l-grid">
+            <nav className="c-nav-wrap">
+              <ul sx={{ textAlign: 'center' }} className="c-nav c-nav--main u-plain-list">
+                <li className="c-nav__item c-nav__item--primary">
+                  <Link href="/" className="c-nav__link  c-nav__link--current ">
+                    Home
+                  </Link>
+                </li>
+                {!mainMenu?.menu &&
+                  defaultMenuItems.map((item) => (
+                    <li className="c-nav__item c-nav__item--primary" key={item.title}>
+                      <Link
+                        href={item.url}
+                        key={item.title}
+                        className="c-nav__link  c-nav__link--current "
+                      >
+                        {item.name}
+                      </Link>
+                    </li>
+                  ))}
+                {mainMenu?.menu.map((item) => (
+                  <li className="c-nav__item c-nav__item--primary" key={item.title}>
+                    <Link
+                      href={item.url}
+                      key={item.title}
+                      className="c-nav__link  c-nav__link--current "
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
         </div>
         <div
           sx={{
@@ -101,3 +136,4 @@ export default function NavBar({ logo, data }) {
     </React.Fragment>
   );
 }
+

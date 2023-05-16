@@ -592,11 +592,11 @@ table {
 }
 
 .l-grid {
-  width: 100%;
+  /* width: 100%; */
   margin: auto;
   display: grid;
-  max-width: var(--grid-width);
-  padding: 0 var(--grid-margin);
+  /* max-width: var(--grid-width);
+  padding: 0 var(--grid-margin); */
 }
 
 @media (min-width: 64em) {
@@ -1372,6 +1372,7 @@ table tbody + tbody {
   overflow-x: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  justify-content: center;
 }
 
 .c-nav::-webkit-scrollbar {

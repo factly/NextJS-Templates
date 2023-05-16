@@ -5,6 +5,11 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
 import { jsx } from 'theme-ui';
 import Link from 'next/link';
+import { AiOutlineTwitter } from 'react-icons/ai'
+import { TiSocialFacebook } from 'react-icons/ti'
+import { AiOutlineInstagram } from 'react-icons/ai'
+import { RiLinkedinBoxFill } from 'react-icons/ri'
+import { FaYoutube } from 'react-icons/fa'
 
 const Footer = () => (
   <footer
@@ -14,7 +19,7 @@ const Footer = () => (
       bg: '#eff8fa',
     }}
   >
-    <h2 sx={{ textAlign: 'center', display: 'flex', justifyContent: 'center', mb: '1rem' }}>
+    <h2 sx={{ textAlign: 'center', display: 'flex', justifyContent: 'center' }}>
       {' '}
       <Link
         href="/"
@@ -34,8 +39,15 @@ const Footer = () => (
         TULIP
       </Link>
     </h2>
-    <p sx={{ textAlign: 'center' }}>
-      © 2022 Dodo Theme - Created and maintained by Factly Media and Research
+    <div sx={{ display: 'flex', justifyContent: 'center', gap: '16px', mt: '32px', a: { background: '#fff', borderRadius: '50%', padding: '12px' } }}>
+      <Link href=''><AiOutlineTwitter /></Link>
+      <Link href=''><TiSocialFacebook /></Link>
+      <Link href=''><AiOutlineInstagram /></Link>
+      <Link href=''><RiLinkedinBoxFill /></Link>
+      <Link href=''><FaYoutube /></Link>
+    </div>
+    <p sx={{ textAlign: 'center', mt: '32px' }}>
+      © 2022 Tulip Theme - Created and maintained by Factly Media and Research
     </p>
   </footer>
 );
