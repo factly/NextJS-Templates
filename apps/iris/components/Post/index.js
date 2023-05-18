@@ -79,7 +79,7 @@ const Post = ({ post }) => {
                         <time class="post-date" dateTime={parseDate(post.published_at)}>
                           {parseDate(post.published_at)}
                         </time>
-                        {/* <span class="read-time">3 min read</span> */}
+                        <span class="read-time">3 min read</span>
                       </div>
                     </div>
                   </div>{' '}
@@ -237,6 +237,7 @@ const Post = ({ post }) => {
                           </Link>
                         )}
                       </h3>
+                      <div className="c-reading-time c-topper__reading-time">2 min read</div>{' '}
                       <div class="bio">{post.users.length > 0 && post.users[0].description}</div>
                     </div>
                   </div>

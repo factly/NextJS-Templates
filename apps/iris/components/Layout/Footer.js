@@ -39,9 +39,9 @@ const Footer = () => (
     </h2>
     <p>Harpy is a modern classic blog theme. Use this theme for company blog, magazine, niche or personal blog</p>
     <div sx={{ display: 'flex', justifyContent: 'center', gap: '16px', mt: '32px' }}>
-      <Link href=''><AiOutlineTwitter /></Link>
-      <Link href=''><TiSocialFacebook /></Link>
-      <Link href=''><AiOutlineInstagram /></Link>
+      <Link href='https://twitter.com'><AiOutlineTwitter /></Link>
+      <Link href='https://www.facebook.com'><TiSocialFacebook /></Link>
+      <Link href='https://www.instagram.com'><AiOutlineInstagram /></Link>
       <Link href=''><AiFillGithub /></Link>    </div>
     <p sx={{ fontSize: '0.875rem', mt: '32px' }}>
       © {new Date().getFullYear()} Iris Theme - Created and maintained by Factly Media and Research
