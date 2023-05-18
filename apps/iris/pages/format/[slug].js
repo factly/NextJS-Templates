@@ -3,8 +3,8 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
 import { jsx } from 'theme-ui';
 import Layout from 'apps/iris/components/Layout';
-import BlogCard from 'apps/iris/components/BlogCard';
 import { client } from 'apps/iris/store/client';
+import StoryCard from 'apps/iris/components/StoryCard';
 import gql from 'graphql-tag';
 
 const FormatDetails = ({ data }) => {
@@ -41,7 +41,7 @@ const FormatDetails = ({ data }) => {
               }}
             >
               {posts.nodes.map((item, index) => (
-                <BlogCard
+                <StoryCard
                   key={index}
                   cardStyle="iframely"
                   storyData={item}
