@@ -14,13 +14,6 @@ export async function getServerSideProps(context) {
   const { data } = await client.query({
     query: gql`
       query Homepage {
-        space {
-          name
-          logo {
-           url
-          }
-          description
-        }
         featuredCategories(featuredCount: 4, postLimit: 20) {
           nodes {
             name

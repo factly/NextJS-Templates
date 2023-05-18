@@ -2,7 +2,6 @@
 /** @jsxRuntime classic */
 import React from 'react'; // eslint-disable-line no-unused-vars
 import { jsx } from 'theme-ui';
-import Layout from './Layout';
 import StoryCard from './StoryCard';
 import Link from 'next/link';
 import parseDate from '../src/utils/parseDate';
@@ -271,15 +270,14 @@ import Image from 'next/image';
 
 // export default Homepage;
 
-
 const Homepage = ({ data }) => {
   const { post, posts, space, featuredCategories } = data;
-
   const featuredPost = posts.nodes[0];
   const featuredPosts = posts.nodes.slice(1, 3);
 
   return (
-    <Layout>
+    <section>
+      {/* <Seo title={space.name} /> */}
       <main id="sc-main" className="sc-main sc-outer">
         <div className="sc-inner">
           {posts.nodes.length > 0 ? (
@@ -319,9 +317,6 @@ const Homepage = ({ data }) => {
                       <StoryCard post={post} />
                     ))}{' '}
                   </div>
-
-                  {/* data.map((x) => <Hello key={x.id}>{x}</Hello>); */}
-
                 </>
               )}
             </section>
@@ -330,15 +325,15 @@ const Homepage = ({ data }) => {
               <section className="sc-section">
                 <h2 className="sc-section-title">About</h2>
 
-                <div className="sc-about">
-                  <Image className="sc-about-icon" src={space?.logo?.url?.proxy} alt={space.name} />
+                {/* <div className="sc-about">
+                  <img className="sc-about-icon" src={space?.logo?.url?.proxy} alt={space.name} />
 
                   <section className="sc-about-wrapper">
                     <h3 className="sc-about-title">{space.name}</h3>
 
                     <p className="sc-about-description">{space.description}</p>
                   </section>
-                </div>
+                </div> */}
               </section>
 
               {posts.nodes.length > 1 && (
@@ -359,7 +354,7 @@ const Homepage = ({ data }) => {
 
                   <div className="sc-topic">
                     {featuredCategories.nodes.map((category) => (
-                      <Link className="sc-topic-item" to={`/category/${category.slug}`}>
+                      <Link className="sc-topic-item" href={`/category/${category.slug}`}>
                         <h3 className="sc-topic-name">{category.name}</h3>
                         {/* <span className="sc-topic-count">7 issues</span> */}
                       </Link>
@@ -371,8 +366,8 @@ const Homepage = ({ data }) => {
           </div>
         </div>
       </main>
-    </Layout>
+    </section>
   );
-};
+}
 
 export default Homepage;

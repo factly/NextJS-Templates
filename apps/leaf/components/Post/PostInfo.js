@@ -4,10 +4,10 @@ import React from 'react'; // eslint-disable-line no-unused-vars
 
 import { jsx } from 'theme-ui';
 import { FaRegClock } from 'react-icons/fa';
-import parseDate from 'src/utils/parseDate';
+import parseDate from 'apps/leaf/src/utils/parseDate';
 import Link from 'next/link';
 
-/* 
+/*
  TODO 1. Add Author image above their names
  TODO 2. Improve multiple authors and categories
  TODO 3. Check for layout spacing issues

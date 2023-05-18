@@ -1,24 +1,14 @@
-import * as React from 'react';
-import { isBrowser } from 'src/utils/isBrowser'
+import React from 'react';
 
-export const parseTiptapContent = (description) => {
-  if (!isBrowser || !description) return null;
+const parseTiptapContent = (description) => {
+  // const doc = new DOMParser().parseFromString(description, 'text/html');
+  // if (doc.querySelector('.embed-container')) {
+  //   doc.querySelector('.embed-container').innerHTML = doc
+  //     .querySelector('.embed-container')
+  //     .getAttribute('data-html');
+  // }
 
-  const doc = new DOMParser().parseFromString(description, 'text/html');
-  if (doc.querySelector('.wp-block-embed__wrapper, .embed-container, .wp-block-embed-youtube')) {
-    doc.querySelector(
-      '.wp-block-embed__wrapper, .embed-container, .wp-block-embed-youtube',
-    ).innerHTML = doc
-      .querySelector('.wp-block-embed__wrapper, .embed-container, .wp-block-embed-youtube')
-      .getAttribute('data-html');
-  }
-
-  return (
-    <div
-      dangerouslySetInnerHTML={{ __html: doc.querySelector('body').innerHTML }}
-      className="c-content"
-    />
-  );
+  return <div dangerouslySetInnerHTML={{ __html: description }} />;
 };
 
 export default parseTiptapContent;
