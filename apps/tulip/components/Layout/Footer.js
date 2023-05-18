@@ -40,11 +40,11 @@ const Footer = () => (
       </Link>
     </h2>
     <div sx={{ display: 'flex', justifyContent: 'center', gap: '16px', mt: '32px', a: { background: '#fff', borderRadius: '50%', padding: '12px' } }}>
-      <Link href=''><AiOutlineTwitter /></Link>
-      <Link href=''><TiSocialFacebook /></Link>
-      <Link href=''><AiOutlineInstagram /></Link>
-      <Link href=''><RiLinkedinBoxFill /></Link>
-      <Link href=''><FaYoutube /></Link>
+      <Link href='https://twitter.com'><AiOutlineTwitter /></Link>
+      <Link href='https://www.facebook.com'><TiSocialFacebook /></Link>
+      <Link href='https://www.instagram.com'><AiOutlineInstagram /></Link>
+      <Link href='https://www.linkedin.com'><RiLinkedinBoxFill /></Link>
+      <Link href='https://www.youtube.com'><FaYoutube /></Link>
     </div>
     <p sx={{ textAlign: 'center', mt: '32px' }}>
       © 2022 Tulip Theme - Created and maintained by Factly Media and Research

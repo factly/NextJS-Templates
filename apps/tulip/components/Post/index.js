@@ -72,7 +72,7 @@ const Post = ({ post, observer }) => {
                 {parseDate(post.published_at)}
                 {/* <span className="c-timestamp__detail"> . 12:00 AM</span> */}
               </time>{' '}
-              {/* <div className="c-reading-time c-topper__reading-time">2 min read</div>{' '} */}
+              <div className="c-reading-time c-topper__reading-time">2 min read</div>{' '}
             </div>
             <ul className="c-share u-plain-list">
               <li className="c-share__item">
