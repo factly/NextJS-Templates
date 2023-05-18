@@ -37,7 +37,7 @@ const Footer = () => (
         IRIS
       </Link>
     </h2>
-    <p>Harpy is a modern classic blog theme. Use this theme for company blog, magazine, niche or personal blog</p>
+    <p>Iris is a modern classic blog theme. Use this theme for company blog, magazine, niche or personal blog</p>
     <div sx={{ display: 'flex', justifyContent: 'center', gap: '16px', mt: '32px' }}>
       <Link href='https://twitter.com'><AiOutlineTwitter /></Link>
       <Link href='https://www.facebook.com'><TiSocialFacebook /></Link>
