@@ -100,7 +100,7 @@ const Post = ({ post }) => {
               className="social-share__item js-share"
               tabindex="0"
               target="_blank"
-              href="https://twitter.com/share?text=${post.title}&amp;url=${post.slug}"
+              href="https://twitter.com"
               title="Share on Twitter"
               aria-label="Share on Twitter"
             >
@@ -111,7 +111,7 @@ const Post = ({ post }) => {
             <a
               className="social-share__item js-share"
               tabindex="0"
-              href="https://www.facebook.com/sharer.php?u=${post.slug}"
+              href="https://www.facebook.com"
               title="Share on Facebook"
               aria-label="Share on Facebook"
             >
@@ -123,7 +123,7 @@ const Post = ({ post }) => {
               className="social-share__item js-share"
               tabindex="0"
               target="_blank"
-              href="https://www.linkedin.com/shareArticle?mini=true&amp;url=${post.slug}&amp;title=${post.title}&amp;summary=${post.title}"
+              href="https://www.linkedin.com"
               title="Share on Linkedin"
               aria-label="Share on Linkedin"
             >

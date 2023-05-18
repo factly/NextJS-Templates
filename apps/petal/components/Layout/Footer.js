@@ -21,8 +21,8 @@ const Footer = () => (
     <h2 sx={{ mt: '2rem', fontSize: '32px' }}>Kite</h2>
     <p sx={{ mt: '1rem' }}>Kite is a modern, clean and dashboard style Premium theme. Build a community around your content or create your own platform.</p>
     <div sx={{ display: 'flex', fontSize: '24px', gap: '1rem', mt: '1rem', a: { bg: '#f5f5f5', borderRadius: '50%', padding: '8px' } }}>
-      <Link href=''><TbBrandFacebook /></Link>
-      <Link href=''><TbBrandTwitter /></Link>
+      <Link href='https://www.facebook.com'><TbBrandFacebook /></Link>
+      <Link href='https://www.twitter.com'><TbBrandTwitter /></Link>
     </div>
     <p sx={{ fontSize: '0.875rem', mt: '1rem', mb: "2rem" }}>
       © {new Date().getFullYear()} Kite - Created and maintained by Factly Media and Research

@@ -5502,6 +5502,7 @@ form[data-members-form].success .notify-success {
 .content-wrap {
   margin: 0 auto 2em;
   margin-bottom: var(--gap-lg);
+  margin-top: var(--gap-lg);
   max-width: 40rem;
   max-width: calc(var(--gap-rem) * 40);
 }
