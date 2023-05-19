@@ -11,9 +11,9 @@ import {
   FaTwitterSquare,
 } from 'react-icons/fa';
 
-import PostGrid from 'components/PostGrid';
+import PostGrid from 'apps/leaf/components/PostGrid';
 import gql from 'graphql-tag';
-import { client } from 'store/client';
+import { client } from 'apps/leaf/store/client';
 import { FaTwitter, FaFacebook } from 'react-icons/fa';
 import Head from 'next/head';
 

@@ -2,7 +2,7 @@
 /** @jsxRuntime classic */
 import React from 'react';
 import gql from 'graphql-tag';
-import StoryCard from 'components/StoryCard';
+import StoryCard from 'apps/leaf/components/StoryCard';
 import { client } from 'store/client';
 import { jsx } from 'theme-ui';
 import Head from 'next/head';

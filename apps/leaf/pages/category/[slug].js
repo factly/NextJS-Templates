@@ -4,8 +4,8 @@ import React, { useState, useEffect } from 'react'; // eslint-disable-line no-un
 import { jsx } from 'theme-ui';
 import gql from 'graphql-tag';
 import parseTiptapContent from 'apps/leaf/src/utils/parseTipTapEditorData';
-import PostGrid from 'components/PostGrid';
-import { client } from 'store/client';
+import PostGrid from 'apps/leaf/components/PostGrid';
+import { client } from 'apps/leaf/store/client';
 import Head from 'next/head';
 
 function CategoryDetailsAll({ data }) {
