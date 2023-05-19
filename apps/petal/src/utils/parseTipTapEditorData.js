@@ -8,7 +8,7 @@ const parseTiptapContent = (description) => {
   //       .getAttribute('data-html');
   //   }
 
-  return <div dangerouslySetInnerHTML={{ __html: description }} />;
+  return <div dangerouslySetInnerHTML={{ __html: description }} className='content' />;
 };
 
 export default parseTiptapContent;
