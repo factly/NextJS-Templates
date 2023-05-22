@@ -14,105 +14,12 @@ import StoryCard from '../components/StoryCard';
 import Layout from '../components/Layout';
 import isBrowser from '../src/utils/isBrowser';
 
-// export default function PostDetails({ post, posts }) {
-//   const filteredPosts = posts.nodes.filter((p) => p.id !== post.id).slice(0, 6);
-
-//   const [showSocialIcon, setShowSocialIcon] = React.useState(false);
-//   const [postActiveIndex, setPostActiveIndex] = React.useState(parseInt(post.id));
-//   const [observer, setObserver] = React.useState({
-//     observe: () => { },
-//   });
-
-//   const handleShowSocialIcon = (entry) => {
-//     if (entry.intersectionRatio > 0) {
-//       setShowSocialIcon(false);
-//     } else {
-//       setShowSocialIcon(true);
-//     }
-//   };
-
-//   const handleSetActiveLink = (entry) => {
-//     const id = entry.target.getAttribute('slug');
-//     if (entry.intersectionRatio > 0) {
-//       setPostActiveIndex(id);
-//     }
-//   };
-
-//   const createObserver = () => {
-//     const o = new IntersectionObserver((entries) => {
-//       entries.forEach((entry) => {
-//         if (entry.target.hasAttribute('social-icon')) {
-//           handleShowSocialIcon(entry);
-//         }
-//         if (entry.target.hasAttribute('post')) {
-//           handleSetActiveLink(entry);
-//         }
-//       });
-//     });
-//     setObserver(o);
-//   };
-//   React.useEffect(() => {
-//     createObserver();
-//     // eslint-disable-next-line react-hooks/exhaustive-deps
-//   }, []);
-//   // for sharing links
-//   const title = encodeURIComponent(post.title);
-//   let url;
-//   if (process.browser) {
-//     url = encodeURIComponent(window.location.href);
-//   }
-//   return (
-//     <>
-//       <Head>
-//         <title> {post.title} </title>
-//         <meta name="description" content={post.excerpt} />
-//         <meta property="og:title" content={post.title} />
-//         <meta property="og:description" content={post.excerpt} />
-//         {post.medium && <meta property="og:image" content={post.medium?.url.proxy} />}
-//         <meta property="og:url" content={url} />
-//         <meta property="og:type" content="article" />
-//         {post.schemas &&
-//           post.schemas.map((schema, i) => (
-//             <script
-//               key={i}
-//               type="application/ld+json"
-//               dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-//             ></script>
-//           ))}
-//       </Head>
-//       <div
-//         sx={{
-//           display: 'flex',
-//           flexDirection: 'row',
-//           justifyContent: 'center',
-//           position: 'relative',
-//         }}
-//       >
-//         <div
-//           sx={{
-//             display: 'flex',
-//             flexDirection: 'column',
-//             width: '100%',
-//             maxWidth: 1024,
-//             mx: 'auto',
-//             p: [
-//               (theme) => `${theme.space.spacing3}`,
-//               null,
-//               null,
-//               (theme) => `${theme.space.spacing8}`,
-//             ],
-//             pl: (theme) => [null, null, `${theme.space.spacing8}`],
-//           }}
-//         >
-//           <Post post={post} observer={observer} />
-//         </div>
-//       </div>
-//     </>
-//   );
-// }
-
 
 const PostDetails = ({ post, posts }) => {
+  console.log({ posts })
+
+  const latestPosts = posts.nodes.slice(0, 5).filter(({ id }) => id !== post.id).slice(0, 4);
+
   //const { posts, space, post, recentPosts } = data;
   //const postEdge = posts.nodes.filter(({ node }) => node.id === post.id)[0];
   // const relatedPosts = posts.nodes
@@ -186,16 +93,16 @@ const PostDetails = ({ post, posts }) => {
 
         <div className="c-section c-section--latest">
           <div className="l-grid">
-            {/* <div className="c-section-heading">
+            <div className="c-section-heading">
               <h2 className="c-section-heading__title">Latest</h2>
-            </div> */}
+            </div>
           </div>
 
-          {/* <div className="l-grid l-grid--4-columns">
-            {recentPosts.nodes.slice(0, 4).map((post) => (
+          <div className="l-grid l-grid--4-columns">
+            {latestPosts.map((post) => (
               <StoryCard storyData={post} />
             ))}
-          </div> */}
+          </div>
         </div>
       </div>
     </section>
@@ -312,6 +219,12 @@ export async function getServerSideProps({ params }) {
               id
             }
             tags {
+              id
+              name
+              slug
+              description
+            }
+            categories {
               id
               name
               slug

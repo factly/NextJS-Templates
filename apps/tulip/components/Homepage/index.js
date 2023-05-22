@@ -4,6 +4,7 @@ import React from 'react'; // eslint-disable-line no-unused-vars
 import { jsx } from 'theme-ui';
 import Featured from './Featured';
 import FeaturedCategory from './FeaturedCategory';
+import Seo from '../Seo';
 
 const Homepage = ({ data }) => {
   const { posts, featuredCategories, space, categories, factchecks } = data;
