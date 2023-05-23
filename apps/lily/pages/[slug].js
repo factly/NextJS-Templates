@@ -15,6 +15,8 @@ import isBrowser from '../src/utils/isBrowser';
 
 
 const PostDetails = ({ post, posts }) => {
+
+
   //const { posts, space, post, recentPosts } = data;
 
   // for sharing links
@@ -37,11 +39,6 @@ const PostDetails = ({ post, posts }) => {
         <main id="site-main" className="site-main">
           <Post key={`details${post.id}`} post={post} />
           <aside className="read-more-wrap outer">
-            {/* <div className="read-more inner">
-              {recentPosts.nodes.slice(0, 3).map((post) => (
-                <StoryCard post={post} />
-              ))}
-            </div> */}
           </aside>
         </main>
       </div>
