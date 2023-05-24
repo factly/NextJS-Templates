@@ -34,14 +34,14 @@ const StoryCard = ({ post, type = 'basic' }) => {
             <div className="tag-list flex flex-wrap m-b-sm">
               <Link
                 className="tag-list__item m-r-sm has-accent flex flex-cc"
-                href={`/category/${post.categories[0]?.slug}/`}
-                aria-label={post.categories[0]?.name}
+                href={`/category/${post.categories?.slug}/`}
+                aria-label={post.categories?.name}
               >
                 <span
                   className="tag-list__item--accent"
                   style={{ backgroundColor: '#D91C38' }}
                 ></span>
-                {post.categories[0]?.name}
+                {post.categories?.name}
               </Link>
             </div>
 

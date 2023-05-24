@@ -6,6 +6,7 @@ import { jsx } from 'theme-ui';
 import Link from 'next/link';
 
 const StoryCard = ({ post, type = 'basic' }) => {
+  console.log({ post })
   return (
     <>
       {type === 'basic' && (
@@ -28,7 +29,7 @@ const StoryCard = ({ post, type = 'basic' }) => {
           <div className="post-card-content">
             <Link className="post-card-content-link" href={`/${post.slug}/`}>
               <header className="post-card-header">
-                {post.categories.length > 0 && (
+                {post.categories?.length > 0 && (
                   <div className="post-card-tags">
                     <span className="post-card-primary-tag">{post.categories[0].name}</span>
                   </div>
@@ -70,7 +71,7 @@ const StoryCard = ({ post, type = 'basic' }) => {
           <div className="post-card-content">
             <Link className="post-card-content-link" href={`/${post.slug}/`}>
               <header className="post-card-header">
-                {post.categories.length > 0 && (
+                {post.categories?.length > 0 && (
                   <div className="post-card-tags">
                     <span className="post-card-primary-tag">{post.categories[0].name}</span>
                   </div>
@@ -111,7 +112,7 @@ const StoryCard = ({ post, type = 'basic' }) => {
           <div className="post-card-content">
             <Link className="post-card-content-link" href={`/${post.slug}/`}>
               <header className="post-card-header">
-                {post.categories.length > 0 && (
+                {post.categories?.length > 0 && (
                   <div className="post-card-tags">
                     <span className="post-card-primary-tag">{post.categories[0].name}</span>
                   </div>

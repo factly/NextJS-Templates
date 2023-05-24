@@ -14,7 +14,7 @@ import StoryCard from '../components/StoryCard';
 import isBrowser from '../src/utils/isBrowser';
 
 
-const PostDetails = ({ post, posts }) => {
+const PostDetails = ({ post, posts, recentPosts, space }) => {
 
 
   //const { posts, space, post, recentPosts } = data;
@@ -38,8 +38,16 @@ const PostDetails = ({ post, posts }) => {
       <div className="site-content">
         <main id="site-main" className="site-main">
           <Post key={`details${post.id}`} post={post} />
+          <div sx={{ maxWidth: '1200px', mx: 'auto', display: 'flex', justifyContent: ['center', null, 'start'] }}>
+            <h2>Recent posts</h2>
+          </div>
           <aside className="read-more-wrap outer">
           </aside>
+          <div className="read-more inner">
+            {recentPosts.nodes.slice(0, 3).map((post) => (
+              <StoryCard post={post} />
+            ))}
+          </div>
         </main>
       </div>
     </section>
@@ -157,6 +165,12 @@ export async function getServerSideProps({ params }) {
               id
             }
             tags {
+              id
+              name
+              slug
+              description
+            }
+            categories {
               id
               name
               slug

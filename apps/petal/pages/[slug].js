@@ -5,11 +5,12 @@ import { jsx } from 'theme-ui';
 import Post from '../components/Post';
 import { client } from '../store/client';
 import gql from 'graphql-tag';
+import StoryCard from '../components/StoryCard';
 
 /**
  * TODO: Add loader for infinite-scroller
  */
-const PostDetails = ({ post, posts }) => {
+const PostDetails = ({ post, posts, recentPosts }) => {
   return (
     <section>
       {/* <Seo
@@ -21,6 +22,14 @@ const PostDetails = ({ post, posts }) => {
       /> */}
       <div className="container wrapper">
         <Post post={post} />
+      </div>
+      <div sx={{ px: '2rem', display: 'flex', }}>
+        <h2 sx={{ fontSize: '24px' }}>You may also like</h2>
+      </div>
+      <div sx={{ p: '2rem' }} className="grid post-feed js-post-feed">
+        {recentPosts.nodes.slice(0, 3).map((post) => (
+          <StoryCard post={post} />
+        ))}{' '}
       </div>
     </section>
   );
@@ -137,6 +146,12 @@ export async function getServerSideProps({ params }) {
               id
             }
             tags {
+              id
+              name
+              slug
+              description
+            }
+            categories {
               id
               name
               slug
