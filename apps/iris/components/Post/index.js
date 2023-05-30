@@ -75,10 +75,11 @@ const Post = ({ post }) => {
                           {post.users[0].display_name}
                         </Link>
                       </div>
-                      <div class="date-time">
+                      <div sx={{ mt: '6px' }} class="date-time">
                         <time class="post-date" dateTime={parseDate(post.published_at)}>
                           {parseDate(post.published_at)}
                         </time>
+                        <span className="m-l-sm m-r-sm">—</span>
                         <span class="read-time">3 min read</span>
                       </div>
                     </div>
