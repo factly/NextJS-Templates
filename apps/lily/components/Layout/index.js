@@ -12,13 +12,13 @@ const Layout = ({ children, data }) => {
     <>
       {data && data.menu && <Navbar data={data} />}
       <main
-        style={{ maxWidth: '1560px' }}
+        //style={{ maxWidth: '1560px' }}
         sx={{
           width: 'full',
           fontSize: [(theme) => `${theme.fontSizes.h6}`, null, (theme) => `${theme.fontSizes.h5}`],
           color: (theme) => `${theme.colors.textPrimary}`,
           lineHeight: 'normal',
-          pt: [(theme) => `${theme.space.spacing5}`, 0, 0],
+          //pt: [(theme) => `${theme.space.spacing5}`, 0, 0],
           minHeight: 'calc(100vh - 60px)',
           mx: 'auto',
           display: 'flex',
