@@ -2,14 +2,10 @@
 /** @jsxRuntime classic */
 
 import React from 'react';
-import Link from 'next/link';
 import gql from 'graphql-tag';
 import { jsx } from 'theme-ui';
-import { FaTwitterSquare, FaFacebookSquare, FaWhatsappSquare } from 'react-icons/fa';
 import Post from '../components/Post';
 import { client } from '../store/client';
-import Head from 'next/head';
-import parseDate from '../src/utils/parseDate';
 import StoryCard from '../components/StoryCard';
 import isBrowser from '../src/utils/isBrowser';
 

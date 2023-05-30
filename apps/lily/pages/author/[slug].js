@@ -44,25 +44,25 @@ function UserDetailsAll({ data }) {
     return (
       <div sx={{
         paddingLeft: '2rem',
-        mb: '3rem',
-
+        my: '3rem',
+        maxWidth: '1200px'
       }}>
         <div sx={{
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          width: '80px',
-          height: '80px',
+          width: '10rem',
+          height: '10rem',
           background: 'black',
-          borderRadius: '40px',
+          borderRadius: '50%',
         }}>
           <img src={user.medium?.url?.proxy} alt="" />
 
         </div>
         <div sx={{
-          fontWeight: 500,
-          fontSize: '36px',
+          fontWeight: 600,
+          fontSize: '4.4rem',
           lineHeight: '28px',
           color: '#101828',
           mt: '20px'
@@ -94,53 +94,6 @@ function UserDetailsAll({ data }) {
         </div>
       </div>
     )
-    //   <div sx={{ mb: (theme) => `${theme.space.spacing5}`, px: (theme) => theme.space.layout2 }}>
-    //     {item.medium && (
-    //       <img
-    //         src={item.medium?.url.proxy}
-    //         alt=""
-    //         sx={{
-    //           borderRadius: '50%',
-    //           width: 40,
-    //           height: 40,
-    //           mx: 'auto',
-    //           padding: (theme) => `${theme.space.spacing8}`,
-    //         }}
-    //       />
-    //     )}
-    //     <h1
-    //       sx={{
-    //         fontSize: (theme) => `${theme.fontSizes.h4}`,
-    //         mb: (theme) => `${theme.space.spacing5}`,
-    //         textTransform: 'capitalize',
-    //       }}
-    //     >
-    //       {name}
-    //     </h1>
-    //     {item.description && (
-    //       <p sx={{ pb: (theme) => `${theme.space.spacing5}` }}>{item.description}</p>
-    //     )}
-
-    //     <div sx={{ display: 'flex' }}>
-    //       {item.social_media_urls &&
-    //         Object.keys(item.social_media_urls).map((name) => (
-    //           <a
-    //             key={name}
-    //             title={name}
-    //             href={item.social_media_urls[name]}
-    //             target="_blank"
-    //             rel="noopener noreferrer"
-    //             sx={{ mr: (theme) => `${theme.space.spacing3}` }}
-    //           >
-    //             {getIcon(name)}
-    //           </a>
-    //         ))}
-    //       <a href={`mailto:${item.email}`} title="email">
-    //         {getIcon('email')}
-    //       </a>
-    //     </div>
-    //   </div>
-    // );
   };
   return (
     <>

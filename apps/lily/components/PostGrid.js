@@ -33,7 +33,7 @@ const PostGrid = ({ type, posts, formats, item, header, useSlug = true }) => {
     >
       <div
         className="main-content"
-        sx={{ order: [2, null, null, null, 1], maxWidth: 1560, width: '100%', mx: 'auto' }}
+        sx={{ order: [2, null, null, null, 1], maxWidth: 1200, width: '100%', mx: 'auto' }}
       >
         <div
           sx={{
@@ -48,7 +48,7 @@ const PostGrid = ({ type, posts, formats, item, header, useSlug = true }) => {
               sx={{
                 display: 'grid',
                 gridTemplateColumns: ['1fr', null, 'repeat( 2, 1fr )', 'repeat(6, minmax(0, 1fr))'],
-                px: ['1.5rem', null, '1.5rem'],
+                px: ['2rem', null, '2rem'],
                 //mt: (theme) => `${theme.space.spacing7}`,
                 gridGap: (theme) => `${theme.space.spacing7}`,
               }}

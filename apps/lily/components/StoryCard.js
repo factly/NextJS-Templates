@@ -6,7 +6,6 @@ import { jsx } from 'theme-ui';
 import Link from 'next/link';
 
 const StoryCard = ({ post, type = 'basic' }) => {
-  console.log({ post })
   return (
     <>
       {type === 'basic' && (

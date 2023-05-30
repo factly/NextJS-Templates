@@ -78,9 +78,9 @@ const Post = ({ post }) => {
                   <time className="byline-meta-date" dateTime={parseDate(post.published_at)}>
                     {parseDate(post.published_at)}
                   </time>
-                  {/* <span className="byline-reading-time">
+                  <span className="byline-reading-time">
                     <span className="bull">•</span> 2 min read
-                  </span>  */}
+                  </span>
                 </div>
               </div>
             </section>
