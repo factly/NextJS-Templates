@@ -29,20 +29,19 @@ const StoryCard = ({ post, type = 'basic' }) => {
               alt={post.title}
             />
           </Link>
-
           <div className="post-card__content">
             <div className="tag-list flex flex-wrap m-b-sm">
-              <Link
+              {post.categories && <Link
                 className="tag-list__item m-r-sm has-accent flex flex-cc"
-                href={`/category/${post.categories?.slug}/`}
-                aria-label={post.categories?.name}
+                href={`/category/${post.categories[0].slug}/`}
+                aria-label={post.categories[0].name}
               >
                 <span
                   className="tag-list__item--accent"
                   style={{ backgroundColor: '#D91C38' }}
                 ></span>
-                {post.categories?.name}
-              </Link>
+                {post.categories[0].name}
+              </Link>}
             </div>
 
             <h2 className="post-card__title">
@@ -50,6 +49,8 @@ const StoryCard = ({ post, type = 'basic' }) => {
                 {post.title}
               </Link>
             </h2>
+
+            <p sx={{ fontSize: '14px', mt: '1rem' }}><span sx={{ color: 'green' }}>Public</span> -  2 min read</p>
 
             <div className="post-card__details flex items-center m-b">
               {/* <span className="visibility m-r">public</span> */}
