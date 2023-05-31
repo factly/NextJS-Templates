@@ -1928,7 +1928,8 @@ blockquote::before {
   position: relative;
 }
 .nav-wrap a:not(.btn) {
-  padding: 16px 0;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 .nav-wrap a.nav-icon::after {
   content: none;
@@ -1955,9 +1956,9 @@ blockquote::before {
   border: none;
   background-color: transparent;
 }
-.nav-wrap button:hover {
+/* .nav-wrap button:hover {
   color: var(--dega-accent-color);
-}
+} */
 
 @media screen and (min-width: 1151px) {
   .nav-wrap li .dropdown-menu {
