@@ -106,7 +106,7 @@ function UserDetailsAll({ data }) {
             </a>
           </div>
         </div>
-      </div >
+      </div>
 
     );
   };

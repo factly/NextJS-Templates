@@ -13,6 +13,8 @@ import {
 import { client } from 'apps/iris/store/client';
 import gql from 'graphql-tag';
 import PostGrid from 'apps/iris/components/PostGrid';
+import Head from 'next/head';
+
 
 function UserDetailsFormat({ data }) {
 
@@ -35,11 +37,15 @@ function UserDetailsFormat({ data }) {
     }
   };
 
+  const name = data.user.display_name
+    ? `${data.user.display_name}`
+    : `${data.user.first_name} ${data.user.last_name}`;
+
   const header = (item) => {
 
-    const name = item?.display_name
-      ? `${item.display_name}`
-      : `${item?.first_name} ${item?.last_name}`;
+    // const name = item?.display_name
+    //   ? `${item.display_name}`
+    //   : `${item?.first_name} ${item?.last_name}`;
     return (
       <div sx={{ mb: (theme) => `${theme.space.spacing5}` }}>
         {item?.medium && (
@@ -93,14 +99,19 @@ function UserDetailsFormat({ data }) {
     );
   };
   return (
-    <PostGrid
-      type="author"
-      posts={posts.nodes}
-      formats={formats.nodes}
-      item={user}
-      header={header}
-      useSlug={false}
-    />
+    <>
+      <Head>
+        <title>{name}</title>
+      </Head>
+      <PostGrid
+        type="author"
+        posts={posts.nodes}
+        formats={formats.nodes}
+        item={user}
+        header={header}
+        useSlug={false}
+      />
+    </>
   );
 }
 

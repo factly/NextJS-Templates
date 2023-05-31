@@ -5,6 +5,8 @@ import { jsx } from 'theme-ui';
 import Post from '../components/Post';
 import gql from 'graphql-tag';
 import { client } from '../store/client';
+import Head from 'next/head';
+import isBrowser from '../src/utils/isBrowser';
 
 const PostDetails = ({ post, posts, recentPosts }) => {
   // const { posts, space, post, recentPosts } = data;
@@ -18,15 +20,28 @@ const PostDetails = ({ post, posts, recentPosts }) => {
   //   url = encodeURIComponent(window.location.href);
   // }
 
+  let url;
+  if (isBrowser) {
+    url = encodeURIComponent(window.location.href);
+  }
+
   return (
     <section>
-      {/* <Seo
-        title={post.title}
-        description={post.excerpt}
-        image={`${post.medium?.url?.proxy}`}
-        canonical={`${space.site_address}/${post.slug}`}
-        type="article"
-      /> */}
+      <Head>
+        <title> {post.title} </title>
+        <meta name="description" content={post.excerpt} />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.excerpt} />
+        <meta property="og:image" content={post.medium?.url?.proxy} />
+        <meta property="og:url" content={url} />
+        <meta property="og:type" content="article" />
+        {post.schemas &&
+          post.schemas?.map((schema, i) => (
+            <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}>
+
+            </script>
+          ))}
+      </Head>
       <main id="sc-main" className="sc-main">
         <Post post={post} />
       </main>

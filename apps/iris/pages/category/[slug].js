@@ -7,6 +7,7 @@ import isBrowser from 'apps/iris/src/utils/isBrowser';
 import { client } from 'apps/iris/store/client';
 import gql from 'graphql-tag';
 import PostGrid from 'apps/iris/components/PostGrid';
+import Head from 'next/head';
 
 const CategoryDetailsFormat = ({ data }) => {
   const { category, formats, posts } = data;
@@ -65,13 +66,18 @@ const CategoryDetailsFormat = ({ data }) => {
     );
   };
   return (
-    <PostGrid
-      type="category"
-      posts={posts.nodes}
-      formats={formats.nodes}
-      item={category}
-      header={header}
-    />
+    <>
+      <Head>
+        <title> {data.category.name} </title>
+      </Head>
+      <PostGrid
+        type="category"
+        posts={posts.nodes}
+        formats={formats.nodes}
+        item={category}
+        header={header}
+      />
+    </>
   );
 };
 

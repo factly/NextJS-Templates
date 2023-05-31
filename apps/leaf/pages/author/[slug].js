@@ -10,7 +10,6 @@ import {
   FaLinkedin,
   FaTwitterSquare,
 } from 'react-icons/fa';
-
 import PostGrid from 'apps/leaf/components/PostGrid';
 import gql from 'graphql-tag';
 import { client } from 'apps/leaf/store/client';
@@ -103,6 +102,9 @@ function UserDetailsAll({ data }) {
   };
   return (
     <>
+      <Head>
+        <title>{name}</title>
+      </Head>
       <PostGrid
         type="author"
         posts={data.posts.nodes}

@@ -25,8 +25,8 @@ const PostGrid = ({ type, posts, item }) => {
                   className="author-profile-pic-placeholder"
                   sx={{
                     borderRadius: '50%',
-                    width: 40,
-                    height: 40,
+                    width: '10rem',
+                    height: '10rem',
                     padding: (theme) => `${theme.space.spacing8}`,
                     background: '#000',
                     mb: '1rem',

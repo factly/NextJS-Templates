@@ -5,18 +5,13 @@ import React from 'react';
 import Link from 'next/link';
 import gql from 'graphql-tag';
 import { jsx } from 'theme-ui';
-import { FaTwitterSquare, FaFacebookSquare, FaWhatsappSquare } from 'react-icons/fa';
 import Post from '../components/Post';
 import { client } from '../store/client';
-import Head from 'next/head';
-import parseDate from '../src/utils/parseDate';
 import StoryCard from '../components/StoryCard';
-import Layout from '../components/Layout';
 import isBrowser from '../src/utils/isBrowser';
-
+import Head from 'next/head';
 
 const PostDetails = ({ post, posts }) => {
-  console.log({ posts })
 
   const latestPosts = posts.nodes.slice(0, 5).filter(({ id }) => id !== post.id).slice(0, 4);
 
@@ -60,7 +55,7 @@ const PostDetails = ({ post, posts }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   // for sharing links
-  const title = encodeURIComponent(post.title);
+
   let url;
   if (isBrowser) {
     url = encodeURIComponent(window.location.href);
@@ -68,13 +63,21 @@ const PostDetails = ({ post, posts }) => {
 
   return (
     <section>
-      {/* <Seo
-        title={post.title}
-        description={post.excerpt}
-        image={`${post.medium?.url?.proxy}`}
-        canonical={`${space.site_address}/${post.slug}`}
-        type="article"
-      /> */}
+      <Head>
+        <title> {post.title} </title>
+        <meta name="description" content={post.excerpt} />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.excerpt} />
+        <meta property="og:image" content={post.medium?.url?.proxy} />
+        <meta property="og:url" content={url} />
+        <meta property="og:type" content="article" />
+        {post.schemas &&
+          post.schemas?.map((schema, i) => (
+            <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}>
+
+            </script>
+          ))}
+      </Head>
       <div>
         <Post key={`details${post.id}`} post={post} observer={observer} />
         <div className="c-section c-section--related">

@@ -11,6 +11,8 @@ import {
 import Post from '../components/Post';
 import { client } from '../store/client';
 import parseDate from 'apps/lily/src/utils/parseDate';
+import Head from 'next/head';
+import isBrowser from '../src/utils/isBrowser';
 
 
 const PostDetails = ({ post: degaPost, space, post, recentPosts }) => {
@@ -26,15 +28,28 @@ const PostDetails = ({ post: degaPost, space, post, recentPosts }) => {
   //   url = encodeURIComponent(window.location.href);
   // }
 
+  let url;
+  if (isBrowser) {
+    url = encodeURIComponent(window.location.href);
+  }
+
   return (
     <section>
-      {/* <Seo
-        title={degaPost.title}
-        description={degaPost.excerpt}
-        image={`${degaPost.medium?.url?.proxy}`}
-        canonical={`${space.site_address}/${degaPost.slug}`}
-        type="article"
-      /> */}
+      <Head>
+        <title> {post.title} </title>
+        <meta name="description" content={post.excerpt} />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.excerpt} />
+        <meta property="og:image" content={post.medium?.url?.proxy} />
+        <meta property="og:url" content={url} />
+        <meta property="og:type" content="article" />
+        {post.schemas &&
+          post.schemas?.map((schema, i) => (
+            <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}>
+
+            </script>
+          ))}
+      </Head>
       <div
         sx={{
           display: 'flex',
