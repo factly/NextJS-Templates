@@ -40,9 +40,14 @@ const Navbar = ({ data }) => {
         <div className="container">
           <div className="row">
             <div className="col-xs-12 header__left flex items-center">
-              <Link className="header__brand nav-current" href="/">
+              {/* <Link className="header__brand nav-current" href="/">
                 {' '}
                 <img src={space.logo?.url?.proxy} alt="logo" />
+              </Link> */}
+              <Link href="/" passHref>
+                <a sx={{ mx: 'auto', fontSize: '32px', fontWeight: '700', '&:hover': { color: '#7450f7' } }}>
+                  PETAL
+                </a>
               </Link>
               <div className="flex-1"></div>
 
@@ -65,7 +70,7 @@ const Navbar = ({ data }) => {
             </div>
 
             <div className="col-md-6 col-lg-8 header__center middle-xs flex-1" tabindex="0">
-              <ul sx={{ justifyContent: 'end' }} className="nav" role="menu">
+              <ul className="nav" role="menu">
                 <li role="menuitem">
                   <Link href="/">
                     <span>Home</span>
@@ -79,6 +84,20 @@ const Navbar = ({ data }) => {
                 <li role="menuitem">
                   <Link href="/categories">
                     <span>Categories</span>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div className="col-md-6 col-lg-8 header__center middle-xs flex-1" tabindex="0">
+              <ul sx={{ justifyContent: 'flex-end', li: { fontSize: '0.9rem', px: '1.5em', py: '4px', borderRadius: '2em' } }} className="nav" role="menu">
+                <li>
+                  <Link href="/">
+                    <span sx={{ border: '1px solid #1E1E1E', px: '1.5em', py: '4px', borderRadius: '2em', '&:hover': { border: '1px solid #f07436', color: '#f07436' } }}>Sign in</span>
+                  </Link>
+                </li>
+                <li sx={{ bg: '#7450f7', color: '#fff' }}>
+                  <Link href="/">
+                    <span>Sign up</span>
                   </Link>
                 </li>
               </ul>
