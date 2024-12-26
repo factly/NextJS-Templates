@@ -24,7 +24,8 @@
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "iris:build",
-        "dev": true
+        "dev": true,
+        "port": 10000
       },
       "configurations": {
         "development": {
