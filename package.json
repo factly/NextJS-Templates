@@ -5,7 +5,12 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "build:iris": "nx build iris",
+    "build:leaf": "nx build leaf",
+    "build:lily": "nx build lily",
+    "build:petal": "nx build petal",
+    "build:tulip": "nx build tulip"
   },
   "private": true,
   "dependencies": {
