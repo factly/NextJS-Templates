@@ -20,3 +20,36 @@ services:
         value: production
       - key: PORT
         value: 4201
+
+  - type: web
+    name: lily
+    runtime: node
+    buildCommand: yarn install && yarn nx build lily --prod
+    startCommand: yarn nx run lily:serve:production --port=$PORT --hostname=0.0.0.0
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 4202
+
+  - type: web
+    name: petal
+    runtime: node
+    buildCommand: yarn install && yarn nx build petal --prod
+    startCommand: yarn nx run petal:serve:production --port=$PORT --hostname=0.0.0.0
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 4203
+
+  - type: web
+    name: tulip
+    runtime: node
+    buildCommand: yarn install && yarn nx build tulip --prod
+    startCommand: yarn nx run tulip:serve:production --port=$PORT --hostname=0.0.0.0
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 4204
