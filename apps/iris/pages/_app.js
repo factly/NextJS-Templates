@@ -1,3 +1,4 @@
+// pages/_app.js
 import React from 'react';
 import { ThemeProvider } from 'theme-ui';
 import Router from 'next/router';
@@ -13,75 +14,81 @@ import { client } from '../store/client';
 import { gql } from 'graphql-tag';
 import App from 'next/app';
 
+// NProgress configuration remains the same
 NProgress.configure({ showSpinner: false });
-Router.events.on('routeChangeStart', () => {
-  NProgress.start();
-});
-Router.events.on('routeChangeComplete', () => {
-  NProgress.done();
-});
+Router.events.on('routeChangeStart', () => NProgress.start());
+Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
-function MyApp({ Component, pageProps, props }) {
+function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
-      <Layout data={props?.layoutData}>
-        <Component {...pageProps} {...props} />
+      <Layout data={pageProps?.layoutData}>
+        <Component {...pageProps} />
       </Layout>
     </ThemeProvider>
   );
 }
 
 MyApp.getInitialProps = async (appContext) => {
+  // Get default app props
   const appProps = await App.getInitialProps(appContext);
-  const { data: layoutData } = await client.query({
-    query: gql`
-      query Homepage {
-        menu {
-          nodes {
-            menu
-            id
-            slug
-            name
+
+  try {
+    const { data: layoutData } = await client.query({
+      query: gql`
+        query Homepage {
+          menu {
+            nodes {
+              menu
+              id
+              slug
+              name
+            }
           }
-        }
-        space {
-          description
-          name
-          site_title
-          tag_line
-          site_address
-          fav_icon {
-            url
-            dimensions
-          }
-          logo {
-            url
-            dimensions
-          }
-        }
-        categories {
-          nodes {
-            id
-            slug
-            name
+          space {
             description
-            meta_fields
-            medium {
+            name
+            site_title
+            tag_line
+            site_address
+            fav_icon {
+              url
+              dimensions
+            }
+            logo {
               url
               dimensions
             }
           }
+          categories {
+            nodes {
+              id
+              slug
+              name
+              description
+              meta_fields
+              medium {
+                url
+                dimensions
+              }
+            }
+          }
         }
-      }
-    `,
-  });
-  return {
-    props: {
+      `,
+    });
+
+    return {
       ...appProps,
-      layoutData,
-    },
-  };
+      pageProps: {
+        ...appProps.pageProps,
+        layoutData,
+      },
+    };
+  } catch (error) {
+    console.error('Error fetching layout data:', error);
+    return appProps;
+  }
 };
 
 export default MyApp;
