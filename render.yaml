@@ -9,3 +9,14 @@ services:
         value: production
       - key: PORT
         value: 4200
+
+  - type: web
+    name: leaf
+    runtime: node
+    buildCommand: yarn install && yarn nx build leaf --prod
+    startCommand: yarn nx run leaf:serve:production --port=$PORT --hostname=0.0.0.0
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 4201
