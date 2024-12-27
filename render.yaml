@@ -3,7 +3,7 @@ services:
     name: iris
     runtime: node
     buildCommand: yarn install && yarn nx build iris --prod
-    startCommand: node dist/apps/iris/.next/standalone/apps/iris/server.js
+    startCommand: yarn nx run iris:serve:production --port=$PORT --hostname=0.0.0.0
     envVars:
       - key: NODE_ENV
         value: production

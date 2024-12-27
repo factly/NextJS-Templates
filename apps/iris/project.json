@@ -27,7 +27,8 @@
       "options": {
         "buildTarget": "iris:build",
         "dev": true,
-        "port": 4200
+        "port": "4200",
+        "hostname": "0.0.0.0"
       },
       "configurations": {
         "development": {
@@ -37,7 +38,7 @@
         "production": {
           "buildTarget": "iris:build:production",
           "dev": false,
-          "port": 4200
+          "port": "process.env.PORT || 4200"
         }
       }
     },
