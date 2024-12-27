@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@nrwl/next:build",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "defaultConfiguration": "production",
       "options": {
         "root": "apps/iris",
@@ -24,7 +26,8 @@
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "iris:build",
-        "dev": true
+        "dev": true,
+        "port": 4200
       },
       "configurations": {
         "development": {
@@ -33,7 +36,8 @@
         },
         "production": {
           "buildTarget": "iris:build:production",
-          "dev": false
+          "dev": false,
+          "port": 4200
         }
       }
     },
@@ -45,9 +49,13 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/iris/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": [
+          "apps/iris/**/*.{ts,tsx,js,jsx}"
+        ]
       }
     }
   },
