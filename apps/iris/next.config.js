@@ -16,6 +16,10 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: true,
   },
+  compiler: {
+    // Enables the styled-components SWC transform
+    styledComponents: true,
+  },
   reactStrictMode: true,
   generateBuildId: async () => {
     // You can, for example, get the latest git commit hash here
