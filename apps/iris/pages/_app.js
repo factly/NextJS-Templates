@@ -1,4 +1,3 @@
-// pages/_app.js
 import React from 'react';
 import { ThemeProvider } from 'theme-ui';
 import Router from 'next/router';
@@ -14,19 +13,22 @@ import { client } from '../store/client';
 import { gql } from 'graphql-tag';
 import App from 'next/app';
 
-// NProgress configuration remains the same
+// NProgress configuration
 NProgress.configure({ showSpinner: false });
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
+// Remove the jsx import as it's not needed
 function MyApp({ Component, pageProps }) {
-  return (
-    <ThemeProvider theme={theme}>
-      <Layout data={pageProps?.layoutData}>
-        <Component {...pageProps} />
-      </Layout>
-    </ThemeProvider>
+  return React.createElement(
+    ThemeProvider,
+    { theme: theme },
+    React.createElement(
+      Layout,
+      { data: pageProps?.layoutData },
+      React.createElement(Component, pageProps)
+    )
   );
 }
 
