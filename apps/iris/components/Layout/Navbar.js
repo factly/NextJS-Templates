@@ -103,20 +103,15 @@ const Navbar = ({ data }) => {
                 </ul>
               </li>
             </ul>
-            <ul className="no-style-list dropdown-menu">
-              <li className="nav-item" role="menuitem">
-                <a href="/">Sign in</a>
-              </li>
-              <li sx={{ bg: '#0060df', a: { color: '#fff', '&:hover': { color: '#000' } }, borderRadius: '40px', px: '12px', py: '4px' }} className="nav-item" role="menuitem">
-                <a sx={{ padding: '0px' }} href="/">Sign up</a>
-              </li>
-            </ul>
-            <ul className="nav-right no-style-list" role="menu"></ul>
-            <div sx={{ justifyContent: 'center' }} className="icons-wrap">
-              <button href="javascript:;" className="nav-icon search-icon flex js-search-button">
+            <ul  className="search_field" >
+            <input type="text" placeholder="search" />
+            {/* <ul className="nav-right no-style-list" role="menu"></ul> */}
+            <div sx={{ justifyContent: 'center' }}>
+              <button href="javascript:;" className="nav-icon search-icon flex m-x-auto js-search-button">
                 <FaSearch />
               </button>
             </div>
+            </ul>
           </nav>
         </div>
       </header>
