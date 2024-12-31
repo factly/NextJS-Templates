@@ -1626,8 +1626,8 @@ table tbody + tbody {
 
 .c-content :where(p, ol, ul, blockquote) {
   font-family: var(--font-family-sansSerif);
-  font-size: var(--font-size-scale-body-copy);
-  line-height: var(--line-height-scale-body-copy);
+  font-size: var(--font-size-scale-3);
+  line-height: var(--line-height-scale-4);
 }
 
 .c-content :where(h1, h2, h3) + * {
@@ -1904,8 +1904,8 @@ table tbody + tbody {
 
 .c-card__headline {
   font-family: var(--font-family-sansSerif);
-  font-size: var(--font-size-scale-5);
-  line-height: var(--line-height-scale-5);
+  font-size: var(--font-size-scale-3);
+  line-height: var(--line-height-scale-3);
   font-weight: var(--font-weight-semibold);
 }
 
@@ -2101,15 +2101,15 @@ table tbody + tbody {
 
 .c-topper__headline {
   font-family: var(--font-family-sansSerif);
-  font-size: var(--font-size-scale-6);
+  font-size: var(--font-size-scale-5);
   line-height: var(--line-height-scale-6);
   font-weight: var(--font-weight-bold);
 }
 
 @media (min-width: 64em) {
   .c-topper__headline {
-    font-size: var(--font-size-scale-8);
-    line-height: var(--line-height-scale-9);
+    font-size: var(--font-size-scale-7);
+    line-height: var(--line-height-scale-7);
     font-weight: var(--font-weight-semibold);
   }
 }
@@ -2122,8 +2122,8 @@ table tbody + tbody {
 
 @media (min-width: 64em) {
   .c-topper__standfirst {
-    font-size: var(--font-size-scale-5);
-    line-height: var(--line-height-scale-6);
+    font-size: var(--font-size-scale-3);
+    line-height: var(--line-height-scale-4);
   }
 }
 
