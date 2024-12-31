@@ -56,7 +56,7 @@ const Post = ({ post }) => {
                       </Link>
                     )}{' '}
                   </div>
-                  <h1 class="heading-large post-title">{post.title}</h1>
+                  <h1 class="text-2xl post-title">{post.title}</h1>
                   <div class="post-meta-wrap flex">
                     <div class="author-avatar-wrap">
                       {post.users.length > 0 && (
@@ -100,7 +100,8 @@ const Post = ({ post }) => {
                   />
                 </div>
                 <div class="featured-image-caption text-center"></div>
-                <div class="post-content">{parseTiptapContent(post.description_html)}</div>
+                <div class="post-content tetx-lg ">{parseTiptapContent(post.description_html)}</div>
+                {console.log(parseTiptapContent(post.description_html))}
                 <div class="post-footer">
                   <div class="share-wrap">
                     <div class="share-title h5 text-center">Share this article:</div>

@@ -200,11 +200,11 @@ div {
 .read-more-state:checked ~ .read-more-wrap .read-more-target {
   opacity: 1;
   font-size: inherit;
-} 
+}
 
 .read-more-state ~ .read-more-trigger:before {
   content: 'show more';
-} 
+}
 
 .read-more-state:checked ~ .read-more-trigger:before {
   content: 'show less';
@@ -349,6 +349,7 @@ input:focus + .sliderF {
 .parsed blockquote {
   background-color: #edf2f7;
   border-left: 2px solid #ea364a;
+  background: #000;
   padding: 1rem 2rem;
 }
 .ed-embeds,
