@@ -1627,7 +1627,7 @@ input[type='url'].input-lg {
   }
 }
 blockquote {
-  font-size: 1.75rem;
+  font-size: 1.2rem;
   margin: 2.5rem 0;
   padding: 2rem 2rem 2rem 4rem;
   font-weight: 500;
@@ -1772,7 +1772,7 @@ blockquote::before {
 }
 .site-header {
   padding: 20px 40px;
-  margin: 0 0 4rem;
+  margin: 0 0 2.5rem;
   background-color: transparent;
   transition: all 0.3s ease-in-out;
 }
@@ -2211,7 +2211,7 @@ blockquote::before {
   border-radius: var(--size-4);
   overflow: hidden;
   position: relative;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 .post-card .post-img-wrap img {
   position: absolute;
@@ -2221,11 +2221,29 @@ blockquote::before {
   left: 0;
   object-fit: cover;
 }
+/* .most-recent .post-card .post-img-wrap {
+  width: 325px;
+  height: 250px;
+} */
 .post-card .post-title {
   margin-top: 1rem;
+  font-size: 32px;
+}
+
+
+.most-recent .post-card .post-title {
+  font-size: 1.2rem;
+  margin: 12px 0;
 }
 .post-card .post-title a {
   color: var(--c-text-main);
+  line-height: 28px;
+  text-overflow: ellipsis;
+  display: -webkit-box; /* Enables multi-line ellipsis */
+  -webkit-line-clamp: 3; /* Limits to 2 lines */
+  -webkit-box-orient: vertical; /* Defines the box orientation */
+  overflow: hidden; /* Ensures overflow is hidden */
+  width: 100%; /* Ensures it spans full width */
 }
 .post-card .post-excerpt {
   margin-bottom: 24px;
@@ -2236,7 +2254,7 @@ blockquote::before {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   font-size: 1.125rem;
-  line-height: 1.6;
+  line-height: 23px;
 }
 .post-card .post-meta-wrap {
   margin-top: 1.5rem;
@@ -2297,10 +2315,10 @@ blockquote::before {
 
 .tag-wrap a {
   display: inline-flex;
-  padding: 0 20px;
+  padding: 0 16px;
   height: 32px;
   line-height: 32px;
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   font-weight: 500;
   position: relative;
   color: var(--c-text-main);
@@ -2580,6 +2598,7 @@ blockquote::before {
 }
 .post-content p {
   line-height: 1.7;
+  font-size: 1.12rem;
 }
 .post-content a {
   color: var(--c-text-main);
@@ -2602,6 +2621,8 @@ blockquote::before {
 }
 .post-content blockquote {
   line-height: 1.4;
+  margin: 24px 0;
+
 }
 .post-content > * {
   margin-bottom: 4rem;
@@ -2612,7 +2633,7 @@ blockquote::before {
 .post-content h4,
 .post-content h5,
 .post-content h6 {
-  margin-bottom: 1rem;
+  margin: 1rem 0;
 }
 .post-content > h1 {
   margin-top: 5rem;
@@ -4233,3 +4254,87 @@ input[type='text'].search-input {
 .message-manual {
   margin-bottom: 2rem;
 }
+
+/* Utility Classes for Font Sizes */
+
+/* Base font sizes */
+.text-xs {
+  font-size: 0.75rem; /* 12px */
+}
+.text-sm {
+  font-size: 0.875rem; /* 14px */
+}
+.text-base {
+  font-size: 1rem; /* 16px */
+}
+.text-lg {
+  font-size: 1.125rem; /* 18px */
+}
+.text-xl {
+  font-size: 1.25rem; /* 20px */
+}
+.text-2xl {
+  font-size: 1.5rem; /* 24px */
+}
+.text-3xl {
+  font-size: 1.875rem; /* 30px */
+}
+.text-4xl {
+  font-size: 2.25rem; /* 36px */
+}
+.text-5xl {
+  font-size: 3rem; /* 48px */
+}
+.text-6xl {
+  font-size: 4rem; /* 64px */
+}
+
+/* Responsive font sizes */
+@media (min-width: 640px) {
+  .text-sm {
+    font-size: 0.875rem;
+  }
+  .text-base {
+    font-size: 1rem;
+  }
+  .text-lg {
+    font-size: 1.125rem;
+  }
+  .text-xl {
+    font-size: 1.25rem;
+  }
+  .text-2xl {
+    font-size: 1.5rem;
+  }
+  .text-3xl {
+    font-size: 1.875rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .text-lg {
+    font-size: 1.25rem;
+  }
+  .text-xl {
+    font-size: 1.5rem;
+  }
+  .text-2xl {
+    font-size: 1.75rem;
+  }
+  .text-3xl {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .text-xl {
+    font-size: 1.75rem;
+  }
+  .text-2xl {
+    font-size: 2rem;
+  }
+  .text-3xl {
+    font-size: 2.5rem;
+  }
+}
+

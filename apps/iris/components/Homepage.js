@@ -36,7 +36,7 @@ const Homepage = ({ data }) => {
               </div>
               <div className="col-xl-5 col-lg-6 small-posts-wrap">
                 {featuredPosts.slice(1).map((post) => (
-                  <StoryCard type="small" post={post} />
+                  <StoryCard type="small" post={post} key={post.id} />
                 ))}
               </div>
             </div>
@@ -50,7 +50,7 @@ const Homepage = ({ data }) => {
               </div>
 
               {recentPosts.map((post) => (
-                <div className="col-lg-4 col-md-6 col-sm-6 js-post-card-wrap">
+                <div className="col-lg-3 col-md-6 col-sm-6 js-post-card-wrap most-recent" key={post.id} >
                   <StoryCard post={post} />
                 </div>
               ))}
