@@ -53,7 +53,7 @@ export default function NavBar({ logo, data }) {
               <img
                 src={space?.logo?.url?.proxy || `/logo.png`}
                 alt={space.site_title}
-                sx={{ maxWidth: '10rem', display: 'block', mx: 'auto' }}
+                sx={{ maxWidth: '7rem', display: 'block', mx: 'auto' }}
               />
             </a>
           </Link>
