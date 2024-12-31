@@ -45,14 +45,14 @@ const StoryCard = ({ post, type = 'basic' }) => {
             </div>
 
             <h2 className="post-card__title">
-              <Link href={`/${post.slug}/`} aria-label={post.title}>
+              <Link className="text_ellipsis" href={`/${post.slug}/`} aria-label={post.title}>
                 {post.title}
               </Link>
             </h2>
 
-            <p sx={{ fontSize: '14px', mt: '1rem' }}><span sx={{ color: 'green' }}>Public</span> -  2 min read</p>
+            <p sx={{ fontSize: '14px', mt: '1rem', }} className="m-b-sm" ><span sx={{ color: 'green' }}>Public</span> -  2 min read</p>
 
-            <div className="post-card__details flex items-center m-b">
+            {/* <div className="post-card__details flex items-center m-b"> */}
               {/* <span className="visibility m-r">public</span> */}
               {/* <span className="m-r fw-400">–</span> */}
               {/* <span className="read-time">1 min read</span> */}
@@ -63,9 +63,9 @@ const StoryCard = ({ post, type = 'basic' }) => {
                     </svg>
                   </i>{' '}
                   <span className="m-l-xs">4</span> */}
-            </div>
+            {/* </div> */}
 
-            <div className="post-card__exc m-b" sx={{ fontSize: '1rem' }}>{post.excerpt}</div>
+            <div className="post-card__exc m-b text_ellipsis" sx={{ fontSize: '1rem' }}>{post.excerpt}</div>
 
             <div className="flex-1"></div>
 

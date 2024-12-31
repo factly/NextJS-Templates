@@ -100,7 +100,7 @@ const Post = ({ post }) => {
                   />
                 </div>
                 <div class="featured-image-caption text-center"></div>
-                <div class="post-content tetx-lg ">{parseTiptapContent(post.description_html)}</div>
+                <div class="post-content text-lg ">{parseTiptapContent(post.description_html)}</div>
                 {console.log(parseTiptapContent(post.description_html))}
                 <div class="post-footer">
                   <div class="share-wrap">
