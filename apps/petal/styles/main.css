@@ -4591,6 +4591,7 @@ blockquote.kg-blockquote-alt {
 }
 .hero__title {
   max-width: 50rem;
+  font-size: 2rem;
 }
 .hero__media {
   margin: 0 auto 2em;
@@ -5497,6 +5498,18 @@ form[data-members-form].success .notify-success {
   display: flex;
   flex-direction: column;
 }
+.content .css-gbvdx2  p{
+  margin-top: 0;
+  font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 182%; /* 29.12px */
+letter-spacing: 0.16px;
+}
+
+.content .css-gbvdx2 img{
+  margin: 12px 0;
+}
 .content > :last-child {
   margin-bottom: 0;
 }
@@ -5588,8 +5601,8 @@ form[data-members-form].success .notify-success {
   border-radius: var(--global-radius);
   display: flex;
   flex-direction: column;
-  padding: 1em;
-  padding: var(--gap);
+  /* padding: 1em; */
+  /* padding: var(--gap); */
 }
 .post-card[focus-within] {
   box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.1);
@@ -5605,8 +5618,7 @@ form[data-members-form].success .notify-success {
 }
 @media only screen and (min-width: 48em) {
   .post-card {
-    padding: 2em;
-    padding: var(--gap-lg);
+    padding: 0;
   }
 }
 .post-card__media {
@@ -5620,7 +5632,7 @@ form[data-members-form].success .notify-success {
 }
 @media only screen and (min-width: 48em) {
   .post-card__media {
-    margin-bottom: 1.5em;
+    /* margin-bottom: 1.5em; */
   }
 }
 .post-card__media img {
@@ -5648,12 +5660,14 @@ form[data-members-form].success .notify-success {
   display: flex;
   flex: 1;
   flex-direction: column;
+  padding: 1em;
+  padding-top: 0;
 }
 .post-card .tag-list {
   margin-bottom: 0.75em;
 }
 .post-card__title {
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   font-weight: 600;
   font-weight: var(--font-weight-600);
 }
@@ -6339,7 +6353,7 @@ form[data-members-form].success .notify-success {
 .social-share {
   display: flex;
   margin-bottom: 2em;
-  margin-bottom: var(--gap-lg);
+  margin-bottom: var(--gap-sm);
 }
 .social-share a,
 .social-share button {
@@ -7822,3 +7836,13 @@ form.loading button.btn--secondary:after {
   right: 0;
   top: 0;
 }
+
+.text_ellipsis{
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  width: 100%;
+}
+

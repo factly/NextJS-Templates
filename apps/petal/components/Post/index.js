@@ -52,7 +52,7 @@ const Post = ({ post }) => {
             )}
             <li className="breadcrumb-item breadcrumb-item-current">{post.title}</li>
           </ul>
-          <div className="hero__content flex flex-col flex-cc m-b-lg">
+          <div className="hero__content flex flex-col flex-cc m-b-md">
             <div className="tag-list flex flex-wrap m-b-sm">
               {post.categories.length > 0 && (
                 <Link
@@ -70,7 +70,7 @@ const Post = ({ post }) => {
               )}
             </div>
 
-            <h1 className="hero__title text-center">{post.title}</h1>
+            <h1 className="hero__title  text-center">{post.title}</h1>
 
             <div sx={{ fontSize: '1rem' }} className="hero__post-info flex flex-cc text-acc-3 fw-500">
               <time className="byline-meta-date" dateTime={parseDate(post.published_at)}>
