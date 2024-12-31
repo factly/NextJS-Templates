@@ -2633,7 +2633,7 @@ blockquote::before {
 .post-content h4,
 .post-content h5,
 .post-content h6 {
-  margin-bottom: 1rem;
+  margin: 1rem 0;
 }
 .post-content > h1 {
   margin-top: 5rem;
