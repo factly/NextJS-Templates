@@ -3151,3 +3151,49 @@ table tbody + tbody {
   font-style: italic;
   padding: 0 var(--space-20);
 }
+
+.search_field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  width: 25vw;
+  appearance: none;
+  border-radius: 4px;
+  padding: 6px 16px ;
+  padding-left: 0;
+  /* margin-left: auto; */
+  /* transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; */
+}
+
+@media (max-width: 39.99em) {
+  .search_field {
+    width: 90vw;
+  }
+}
+
+.search_field input {
+  padding: 6px 12px;
+  font-size: 16px;
+  height: fit-content;
+  margin: auto 0;
+  font-weight: 400;
+  line-height: 1.5;
+  border: none;
+  border-radius: 0;
+}
+
+.search_field input:focus {
+  outline: none;
+  border: none;
+}
+.search_field button:focus {
+  outline: none;
+  border: none;
+}
+m-x-auto{
+  margin: 0 auto;
+}

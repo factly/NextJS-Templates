@@ -16,7 +16,7 @@ const Featured = ({ posts }) => {
 
             <div className="left c-stack-stories">
               {featuredPosts.map((post) => (
-                <StoryCard storyData={post} />
+                <StoryCard storyData={post} key={post.id} />
               ))}
             </div>
 
@@ -27,7 +27,7 @@ const Featured = ({ posts }) => {
                 <h2 className="c-section-heading__title c-section-heading__title--small">Latest</h2>
               </div>
               {latestPosts.map((post) => (
-                <StoryCard cardStyle="small" storyData={post} />
+                <StoryCard cardStyle="small" storyData={post} key={post.id} />
               ))}{' '}
             </div>
           </>
@@ -43,7 +43,7 @@ const Featured = ({ posts }) => {
 
             <div className="l-grid l-grid--4-columns">
               {posts.map((post) => (
-                <StoryCard storyData={post} />
+                <StoryCard storyData={post} key={post.id} />
               ))}{' '}
             </div>
           </div>
