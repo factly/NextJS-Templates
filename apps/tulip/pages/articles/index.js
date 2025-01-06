@@ -130,9 +130,7 @@ export async function getServerSideProps({ params }) {
     });
 
     if (!data) {
-      return {
-        notFound: true,
-      };
+      throw new Error('Error');
     }
 
     return {
