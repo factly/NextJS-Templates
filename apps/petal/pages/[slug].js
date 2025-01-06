@@ -13,17 +13,21 @@ import StoryCard from '../components/StoryCard';
 const PostDetails = ({ post, posts, recentPosts }) => {
   return (
     <section>
-      <div className="container wrapper">
-        <Post post={post} />
-      </div>
-      <div sx={{ px: '2rem', display: 'flex' }}>
-        <h2 sx={{ fontSize: '24px' }}>You may also like</h2>
-      </div>
-      <div sx={{ p: '2rem' }} className="grid post-feed js-post-feed">
-        {recentPosts.nodes.slice(0, 3).map((post) => (
-          <StoryCard post={post} key={post.id} />
-        ))}{' '}
-      </div>
+      {post && (
+        <>
+          <div className="container wrapper">
+            <Post post={post} />
+          </div>
+          <div sx={{ px: '2rem', display: 'flex' }}>
+            <h2 sx={{ fontSize: '24px' }}>You may also like</h2>
+          </div>
+          <div sx={{ p: '2rem' }} className="grid post-feed js-post-feed">
+            {recentPosts.nodes.slice(0, 3).map((post) => (
+              <StoryCard post={post} key={post.id} />
+            ))}{' '}
+          </div>
+        </>
+      )}
     </section>
   );
 };
@@ -192,9 +196,7 @@ export async function getServerSideProps({ params }) {
     });
 
     if (!data || !data.post) {
-      return {
-        notFound: true,
-      };
+      throw new Error('Post not found');
     }
 
     return {

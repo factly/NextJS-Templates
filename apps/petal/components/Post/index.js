@@ -1,6 +1,6 @@
 /** @jsx jsx */
 /** @jsxRuntime classic */
-import React, { useRef, useEffect, createRef } from 'react'; // eslint-disable-line no-unused-vars
+import React from 'react'; // eslint-disable-line no-unused-vars
 import { jsx } from 'theme-ui';
 import Link from 'next/link';
 import {
@@ -10,8 +10,6 @@ import {
   FaLinkedin,
   FaCopy,
 } from 'react-icons/fa';
-import isBrowser from 'apps/petal/src/utils/isBrowser';
-import Head from 'next/head';
 import parseDate from 'apps/petal/src/utils/parseDate';
 
 /**
@@ -21,23 +19,9 @@ import parseDate from 'apps/petal/src/utils/parseDate';
  */
 
 const Post = ({ post }) => {
-  const title = encodeURIComponent(post.title);
-  let url;
-  if (isBrowser) {
-    url = encodeURIComponent(window.location.href);
-  }
-
   return (
     <>
       {/* <Seo title={post.title} description={post.excerpt} /> */}
-      <Head>
-        {post.schemas &&
-          post.schemas.map((schema, i) => (
-            <script key={i} type="application/ld+json">
-              {JSON.stringify(schema)}
-            </script>
-          ))}
-      </Head>
 
       <div className="container wrapper">
         <div className="hero">
@@ -47,10 +31,14 @@ const Post = ({ post }) => {
             </li>
             {post.categories.length > 0 && (
               <li className="breadcrumb-item">
-                <Link href={`/category/${post.categories[0].slug}/`}>{post.categories[0].name}</Link>
+                <Link href={`/category/${post.categories[0].slug}/`}>
+                  {post.categories[0].name}
+                </Link>
               </li>
             )}
-            <li className="breadcrumb-item breadcrumb-item-current">{post.title}</li>
+            <li className="breadcrumb-item breadcrumb-item-current">
+              {post.title}
+            </li>
           </ul>
           <div className="hero__content flex flex-col flex-cc m-b-md">
             <div className="tag-list flex flex-wrap m-b-sm">
@@ -72,8 +60,14 @@ const Post = ({ post }) => {
 
             <h1 className="hero__title  text-center">{post.title}</h1>
 
-            <div sx={{ fontSize: '1rem' }} className="hero__post-info flex flex-cc text-acc-3 fw-500">
-              <time className="byline-meta-date" dateTime={parseDate(post.published_at)}>
+            <div
+              sx={{ fontSize: '1rem' }}
+              className="hero__post-info flex flex-cc text-acc-3 fw-500"
+            >
+              <time
+                className="byline-meta-date"
+                dateTime={parseDate(post.published_at)}
+              >
                 {parseDate(post.published_at)}
               </time>
               <span className="m-l-sm m-r-sm">—</span>
@@ -155,16 +149,26 @@ const Post = ({ post }) => {
           </div>
 
           <div className="content">
-            <p sx={{ my: '1rem' }} className="content-excerpt">{post.excerpt}</p>
+            <p sx={{ my: '1rem' }} className="content-excerpt">
+              {post.excerpt}
+            </p>
 
-            <div sx={{ p: { fontSize: ['1rem', null, '1.25rem'], mt: '2rem', }, h2: { mb: '1rem' } }} dangerouslySetInnerHTML={{ __html: post.description_html }}></div>
+            <div
+              sx={{
+                p: { fontSize: ['1rem', null, '1.25rem'], mt: '2rem' },
+                h2: { mb: '1rem' },
+              }}
+              dangerouslySetInnerHTML={{ __html: post.description_html }}
+            ></div>
           </div>
         </article>
 
         <div className="content-wrap">
           {post.users.length > 0 && (
             <div className="post-authors p flex-wrap bg-default">
-              <div className="section__title text-acc-3 m-b-sm">Published by</div>
+              <div className="section__title text-acc-3 m-b-sm">
+                Published by
+              </div>
               <span className="special-delimiter"></span>
               <div className="card author-card" data-type="post">
                 <Link
@@ -183,7 +187,9 @@ const Post = ({ post }) => {
 
                 <div className="author-card__content flex-1 flex flex-col text-acc-1">
                   <div className="author-card__name fw-600 text-lg m-b-xs">
-                    <Link href={`/author/${post.users[0].slug}/`}>{post.users[0].display_name}</Link>
+                    <Link href={`/author/${post.users[0].slug}/`}>
+                      {post.users[0].display_name}
+                    </Link>
                   </div>
 
                   <div className="author-card__descr text-acc-2 m-b">
