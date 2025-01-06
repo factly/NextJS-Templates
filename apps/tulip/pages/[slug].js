@@ -12,8 +12,11 @@ import isBrowser from '../src/utils/isBrowser';
 import Head from 'next/head';
 
 const PostDetails = ({ post, posts }) => {
-
-  const latestPosts = posts.nodes.slice(0, 5).filter(({ id }) => id !== post.id).slice(0, 4);
+  const latestPosts =
+    posts?.nodes
+      ?.slice(0, 5)
+      .filter(({ id }) => id !== post.id)
+      ?.slice(0, 4) || [];
 
   //const { posts, space, post, recentPosts } = data;
   //const postEdge = posts.nodes.filter(({ node }) => node.id === post.id)[0];
@@ -29,7 +32,7 @@ const PostDetails = ({ post, posts }) => {
   const [showSocialIcon, setShowSocialIcon] = React.useState(false);
 
   const [observer, setObserver] = React.useState({
-    observe: () => { },
+    observe: () => {},
   });
 
   const handleShowSocialIcon = (entry) => {
@@ -73,9 +76,11 @@ const PostDetails = ({ post, posts }) => {
         <meta property="og:type" content="article" />
         {post.schemas &&
           post.schemas?.map((schema, i) => (
-            <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}>
-
-            </script>
+            <script
+              key={i}
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            ></script>
           ))}
       </Head>
       <div>
@@ -103,7 +108,7 @@ const PostDetails = ({ post, posts }) => {
 
           <div className="l-grid l-grid--4-columns">
             {latestPosts.map((post) => (
-              <StoryCard storyData={post} />
+              <StoryCard storyData={post} key={post.id} />
             ))}
           </div>
         </div>
@@ -115,99 +120,18 @@ const PostDetails = ({ post, posts }) => {
 export default PostDetails;
 
 export async function getServerSideProps({ params }) {
-  const { data } = await client.query({
-    query: gql`
-      query PostQuery($slug: String) {
-        post(slug: $slug, include_pages: true) {
-          published_date
-          is_page
-          description
-          description_html
-          excerpt
-          id
-          schemas
-          slug
-          status
-          subtitle
-          title
-          updated_at
-          users {
-            email
-            first_name
-            last_name
-            display_name
-            slug
-            id
-          }
-          tags {
-            id
-            name
-            slug
-            description
-          }
-          medium {
-            alt_text
-            id
-            url
-            dimensions
-          }
-          format {
-            name
-            slug
-            id
-            description
-          }
-          claims {
-            checked_date
-            claim_date
-            claim_sources
-            claimant {
-              description
-              id
-              name
-              slug
-              tag_line
-            }
-            description
-            id
-            fact
-            review_sources
-            slug
-            claim
-            rating {
-              description
-              id
-              name
-              numeric_value
-              slug
-              medium {
-                alt_text
-                id
-                url
-                dimensions
-              }
-            }
-          }
-          categories {
-            description
-            created_at
-            id
-            name
-            slug
-            medium {
-              alt_text
-              id
-              url
-              dimensions
-            }
-          }
-        }
-        posts {
-          nodes {
+  try {
+    const { data } = await client.query({
+      query: gql`
+        query PostQuery($slug: String) {
+          post(slug: $slug, include_pages: true) {
             published_date
+            is_page
             description
+            description_html
             excerpt
             id
+            schemas
             slug
             status
             subtitle
@@ -227,12 +151,6 @@ export async function getServerSideProps({ params }) {
               slug
               description
             }
-            categories {
-              id
-              name
-              slug
-              description
-            }
             medium {
               alt_text
               id
@@ -245,25 +163,121 @@ export async function getServerSideProps({ params }) {
               id
               description
             }
+            claims {
+              checked_date
+              claim_date
+              claim_sources
+              claimant {
+                description
+                id
+                name
+                slug
+                tag_line
+              }
+              description
+              id
+              fact
+              review_sources
+              slug
+              claim
+              rating {
+                description
+                id
+                name
+                numeric_value
+                slug
+                medium {
+                  alt_text
+                  id
+                  url
+                  dimensions
+                }
+              }
+            }
+            categories {
+              description
+              created_at
+              id
+              name
+              slug
+              medium {
+                alt_text
+                id
+                url
+                dimensions
+              }
+            }
+          }
+          posts {
+            nodes {
+              published_date
+              description
+              excerpt
+              id
+              slug
+              status
+              subtitle
+              title
+              updated_at
+              users {
+                email
+                first_name
+                last_name
+                display_name
+                slug
+                id
+              }
+              tags {
+                id
+                name
+                slug
+                description
+              }
+              categories {
+                id
+                name
+                slug
+                description
+              }
+              medium {
+                alt_text
+                id
+                url
+                dimensions
+              }
+              format {
+                name
+                slug
+                id
+                description
+              }
+            }
           }
         }
-      }
-    `,
-    variables: {
-      slug: params.slug,
-    },
-  });
+      `,
+      variables: {
+        slug: params.slug,
+      },
+    });
 
-  if (!data || !data.post) {
+    if (!data || !data.post) {
+      return {
+        notFound: true,
+      };
+    }
+
     return {
-      notFound: true,
+      props: {
+        post: data.post,
+        posts: data.posts,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        post: {},
+        posts: { nodes: [], total: 0 },
+      },
     };
   }
-
-  return {
-    props: {
-      post: data.post,
-      posts: data.posts,
-    },
-  };
 }
