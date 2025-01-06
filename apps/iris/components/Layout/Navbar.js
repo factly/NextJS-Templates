@@ -1,10 +1,12 @@
+'use client';
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /** @jsx jsx */
 /** @jsxRuntime classic */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { jsx } from 'theme-ui';
 import { FaSearch } from 'react-icons/fa';
+import { useRouter } from 'next/navigation';
 
 /**
  * @component Navbar
@@ -18,18 +20,25 @@ import { FaSearch } from 'react-icons/fa';
 const Navbar = ({ data }) => {
   const { menu, space } = data;
   const mainMenu = menu.nodes.filter((i) => i.slug === 'main')[0];
+  const router = useRouter();
 
   const defaultMenuItems = [
     { url: '/categories', title: 'Categories', name: 'Categories' },
     { url: '/authors', title: 'Authors', name: 'Authors' },
   ];
+  const [query, setQuery] = useState('');
 
   return (
     <React.Fragment>
-      <header sx={{ px: ['2rem', null, '4rem'] }} className="site-header has-theme-icon">
-        <div sx={{ justifyContent: 'space-between' }} className="header-inner flex">
+      <header
+        sx={{ px: ['2rem', null, '2rem'] }}
+        className="site-header has-theme-icon"
+      >
+        <div
+          sx={{ justifyContent: 'space-between' }}
+          className="header-inner flex"
+        >
           <div className="header-logo flex">
-
             {/* Harpy theme logo */}
 
             {/* <Link href="/" className="logo-img theme-light-logo">
@@ -38,12 +47,16 @@ const Navbar = ({ data }) => {
             <Link href="/" className="logo-img theme-dark-logo">
               <img src={space.logo?.url?.proxy} alt={space.name} />
             </Link> */}
-            <Link href='/'>
+            <Link href="/">
               <h1 sx={{ fontSize: '42px' }}>IRIS</h1>
             </Link>
           </div>
 
-          <input id="mobile-menu-toggle" className="mobile-menu-checkbox" type="checkbox" />
+          <input
+            id="mobile-menu-toggle"
+            className="mobile-menu-checkbox"
+            type="checkbox"
+          />
           <label
             for="mobile-menu-toggle"
             className="mobile-menu-icon"
@@ -55,14 +68,24 @@ const Navbar = ({ data }) => {
             <span className="sr-only">Menu toggle button</span>
           </label>
 
-          <nav sx={{ li: { textAlign: 'center' } }} className="nav-wrap flex" role="navigation" aria-label="Main navigation">
+          <nav
+            sx={{ li: { textAlign: 'center' } }}
+            className="nav-wrap flex"
+            role="navigation"
+            aria-label="Main navigation"
+          >
             <ul className="nav-left no-style-list" role="menu">
               <li className="nav-item" role="menuitem">
                 <Link href="/" className="nav-link">
                   Home
                 </Link>
               </li>
-              {!mainMenu?.menu &&
+              <li className="nav-item" role="menuitem">
+                <Link href="/articles" className="nav-link">
+                  Articles
+                </Link>
+              </li>
+              {/* {!mainMenu?.menu &&
                 defaultMenuItems.map((item) => (
                   <li className="nav-item" role="menuitem">
                     <Link href={item.url} className="nav-link">
@@ -76,9 +99,9 @@ const Navbar = ({ data }) => {
                     {item.name}
                   </Link>
                 </li>
-              ))}
+              ))} */}
 
-              <li className=" has-dropdown">
+              {/* <li className=" has-dropdown">
                 <a href="#" className="nav-link more-link">
                   More{' '}
                   <svg
@@ -101,22 +124,35 @@ const Navbar = ({ data }) => {
                     <a href="/">Tags</a>
                   </li>
                 </ul>
-              </li>
+              </li> */}
             </ul>
-            <ul className="no-style-list dropdown-menu">
-              <li className="nav-item" role="menuitem">
-                <a href="/">Sign in</a>
-              </li>
-              <li sx={{ bg: '#0060df', a: { color: '#fff', '&:hover': { color: '#000' } }, borderRadius: '40px', px: '12px', py: '4px' }} className="nav-item" role="menuitem">
-                <a sx={{ padding: '0px' }} href="/">Sign up</a>
-              </li>
+            <ul className="search_field">
+              <input
+                type="text"
+                placeholder="search"
+                value={query}
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.keyCode === 13) {
+                    // Call your route function here
+                    const q = query;
+                    setQuery(() => '');
+                    router.push(`/articles?query=${q}`);
+                  }
+                }}
+              />
+              {/* <ul className="nav-right no-style-list" role="menu"></ul> */}
+              <div sx={{ justifyContent: 'center' }}>
+                <button
+                  href="javascript:;"
+                  className="nav-icon search-icon flex m-x-auto js-search-button"
+                >
+                  <FaSearch />
+                </button>
+              </div>
             </ul>
-            <ul className="nav-right no-style-list" role="menu"></ul>
-            <div sx={{ justifyContent: 'center' }} className="icons-wrap">
-              <button href="javascript:;" className="nav-icon search-icon flex js-search-button">
-                <FaSearch />
-              </button>
-            </div>
           </nav>
         </div>
       </header>

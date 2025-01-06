@@ -27,11 +27,13 @@ const StoryCard = ({ post, type = 'basic' }) => {
           <div className="post-info-wrap">
             <div className="tag-wrap">
               {post.categories.length > 0 && (
-                <Link href={`/category/${post.categories[0].slug}/`}>{post.categories[0].name}</Link>
+                <Link href={`/category/${post.categories[0].slug}/`}>
+                  {post.categories[0].name}
+                </Link>
               )}
             </div>
             <h3 sx={{ fontSize: '1.25rem', mb: '1rem' }} className="post-title">
-              <Link href={`/${post.slug}/`} >{post.title}</Link>
+              <Link href={`/${post.slug}/`}>{post.title}</Link>
             </h3>
             <div className="post-excerpt">
               <p className="text-base"> {post.excerpt} </p>
@@ -39,7 +41,10 @@ const StoryCard = ({ post, type = 'basic' }) => {
             <div className="post-meta-wrap flex">
               <div className="author-avatar-wrap">
                 {post.users.length > 0 && (
-                  <Link href={`/author/${post.users[0].slug}/`} className="author-image">
+                  <Link
+                    href={`/author/${post.users[0].slug}/`}
+                    className="author-image"
+                  >
                     <img
                       src={post.users[0].medium?.url?.proxy}
                       loading="lazy"
@@ -51,11 +56,16 @@ const StoryCard = ({ post, type = 'basic' }) => {
               <div className="meta-info">
                 <div className="author-names">
                   {post.users.length > 0 && (
-                    <Link href={`/author/${post.users[0].slug}/`}>{post.users[0].display_name}</Link>
+                    <Link href={`/author/${post.users[0].slug}/`}>
+                      {post.users[0].display_name}
+                    </Link>
                   )}
                 </div>
                 <div className="date-time">
-                  <time className="post-date" dateTime={parseDate(post.published_at)}>
+                  <time
+                    className="post-date"
+                    dateTime={parseDate(post.published_at)}
+                  >
                     {parseDate(post.published_at)}
                   </time>
                   {/* <span className="read-time">3 min read</span> */}
@@ -69,16 +79,24 @@ const StoryCard = ({ post, type = 'basic' }) => {
       {type === 'small' && (
         <article className="post-card post-small flex">
           <Link href={`/${post.slug}/`} className="post-img-wrap">
-            <img loading="lazy" src={post.medium?.url?.proxy} alt={post.title} />
+            <img
+              loading="lazy"
+              src={post.medium?.url?.proxy}
+              alt={post.title}
+            />
           </Link>
           <div className="post-info-wrap">
             <div className="tag-wrap ">
               {post.categories.length > 0 && (
-                <Link href={`/category/${post.categories[0].slug}/`}>{post.categories[0].name}</Link>
+                <Link href={`/category/${post.categories[0].slug}/`}>
+                  {post.categories[0].name}
+                </Link>
               )}
             </div>
             <h2 className="h4 post-title">
-              <Link href={`/${post.slug}/`} className="text-base" >{post.title}</Link>
+              <Link href={`/${post.slug}/`} className="text-base">
+                {post.title}
+              </Link>
             </h2>
           </div>
         </article>

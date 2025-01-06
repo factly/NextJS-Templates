@@ -13,12 +13,12 @@ const Homepage = ({ data }) => {
       {/* <Seo title={space.name} /> */}
       <>
         {posts.nodes.length === 0 && <div>There are no posts to show!</div>}
-        <Featured posts={posts.nodes} />
+        <Featured posts={posts.nodes}  />
         {/* Featured categories Section  */}
         {featuredCategories?.nodes?.length > 0 && (
           <div>
             {featuredCategories.nodes.map((category) => {
-              return <FeaturedCategory category={category} posts={category.posts.nodes} />;
+              return <FeaturedCategory category={category} posts={category.posts.nodes} key={category.id} />;
             })}
           </div>
         )}

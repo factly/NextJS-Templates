@@ -13,7 +13,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { jsx } from 'theme-ui';
-import { FaHome, FaBars, FaTimes } from 'react-icons/fa';
+import { FaHome, FaBars, FaTimes, FaSearch } from 'react-icons/fa';
 
 /**
  * @component Navbar
@@ -45,12 +45,20 @@ const Navbar = ({ data }) => {
                 <img src={space.logo?.url?.proxy} alt="logo" />
               </Link> */}
               <Link href="/" passHref>
-                <a sx={{ mx: 'auto', fontSize: '32px', fontWeight: '700', '&:hover': { color: '#7450f7' } }}>
+                <span sx={{ mx: 'auto', fontSize: '32px', fontWeight: '700', '&:hover': { color: '#7450f7' } }}>
                   PETAL
-                </a>
+                </span>
               </Link>
               <div className="flex-1"></div>
 
+              <div className="search_field mobile" >
+                <input type="text" placeholder="search" />
+                <div sx={{ justifyContent: 'center' }}>
+                  <button href="javascript:;" className="nav-icon search-icon flex m-x-auto js-search-button">
+                    <FaSearch />
+                  </button>
+                </div>
+              </div>
               <button
                 className={`header__menu--toggle flex-cc js-menu-toggle ${isOpen ? 'is-active' : ''
                   }`}
@@ -88,19 +96,13 @@ const Navbar = ({ data }) => {
                 </li>
               </ul>
             </div>
-            <div className="col-md-6 col-lg-8 header__center middle-xs flex-1" tabindex="0">
-              <ul sx={{ justifyContent: 'flex-end', li: { fontSize: '0.9rem', px: '1.5em', py: '4px', borderRadius: '2em' } }} className="nav" role="menu">
-                <li>
-                  <Link href="/">
-                    <span sx={{ border: '1px solid #1E1E1E', px: '1.5em', py: '4px', borderRadius: '2em', '&:hover': { border: '1px solid #f07436', color: '#f07436' } }}>Sign in</span>
-                  </Link>
-                </li>
-                <li sx={{ bg: '#7450f7', color: '#fff' }}>
-                  <Link href="/">
-                    <span>Sign up</span>
-                  </Link>
-                </li>
-              </ul>
+            <div className="search_field desktop" >
+              <input type="text" placeholder="search" />
+              <div sx={{ justifyContent: 'center' }}>
+                <button href="javascript:;" className="nav-icon search-icon flex m-x-auto js-search-button">
+                  <FaSearch />
+                </button>
+              </div>
             </div>
           </div>
         </div>

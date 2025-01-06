@@ -3,9 +3,9 @@
 /** @jsxRuntime classic */
 import React, { useState, useEffect } from 'react';
 import { jsx } from 'theme-ui';
-import { FaHome, FaBars } from 'react-icons/fa';
 import Link from 'next/link';
 import ActiveLink from '../ActiveLink';
+import { FaSearch } from 'react-icons/fa';
 
 export default function NavBar({ logo, data }) {
   const { menu, categories, space } = data;
@@ -49,18 +49,18 @@ export default function NavBar({ logo, data }) {
           }}
         >
           <Link href="/" passHref>
-            <a sx={{ mx: 'auto' }}>
+            <span sx={{ mx: 'auto' }}>
               <img
                 src={space?.logo?.url?.proxy || `/logo.png`}
                 alt={space.site_title}
                 sx={{ maxWidth: '7rem', display: 'block', mx: 'auto' }}
               />
-            </a>
+            </span>
           </Link>
         </div>
         <div className="c-header__bottom">
           <div className="l-grid">
-            <nav className="c-nav-wrap">
+            <nav className="c-nav-wrap" sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
               <ul sx={{ textAlign: 'center' }} className="c-nav c-nav--main u-plain-list">
                 <li className="c-nav__item c-nav__item--primary">
                   <Link href="/" className="c-nav__link  c-nav__link--current ">
@@ -91,6 +91,14 @@ export default function NavBar({ logo, data }) {
                   </li>
                 ))}
               </ul>
+                <div className="search_field" sx={{ display: 'flex', mx: 'auto' }}>
+                  <input type="text" placeholder="search" />
+                  <div sx={{ justifyContent: 'center' }}>
+                    <button href="javascript:;" className="nav-icon search-icon flex m-x-auto js-search-button">
+                      <FaSearch />
+                    </button>
+                  </div>
+                </div>
             </nav>
           </div>
         </div>
@@ -108,7 +116,7 @@ export default function NavBar({ logo, data }) {
         >
           {mainMenu?.menu.map((item) => (
             <ActiveLink href={item.url} key={item.title} passHref activeClassName="active">
-              <a
+              <span
                 sx={{
                   p: '1rem 1.5rem',
                   display: 'block',
@@ -128,7 +136,7 @@ export default function NavBar({ logo, data }) {
                 }}
               >
                 {item.name}
-              </a>
+              </span>
             </ActiveLink>
           ))}
         </div>

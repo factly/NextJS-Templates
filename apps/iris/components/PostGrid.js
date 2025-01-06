@@ -15,7 +15,11 @@ const PostGrid = ({ type, posts, formats, item, header, useSlug = true }) => {
       <h1
         sx={{
           textAlign: 'center',
-          fontSize: [(theme) => `${theme.fontSizes.h5}`, null, (theme) => `${theme.fontSizes.h4}`],
+          fontSize: [
+            (theme) => `${theme.fontSizes.h5}`,
+            null,
+            (theme) => `${theme.fontSizes.h4}`,
+          ],
           mb: (theme) => `${theme.space.spacing5}`,
           textTransform: 'capitalize',
         }}
@@ -47,7 +51,12 @@ const PostGrid = ({ type, posts, formats, item, header, useSlug = true }) => {
       >
         <div
           className="main-content"
-          sx={{ order: [2, null, null, null, 1], maxWidth: 1560, width: '100%', mx: 'auto' }}
+          sx={{
+            order: [2, null, null, null, 1],
+            maxWidth: 1560,
+            width: '100%',
+            mx: 'auto',
+          }}
         >
           <div
             sx={{
@@ -58,11 +67,20 @@ const PostGrid = ({ type, posts, formats, item, header, useSlug = true }) => {
           >
             {/* {header ? header(item) : defaultHeader(item)} */}
 
-
-            <div sx={{ display: 'flex', flexDirection: 'column', mx: 'auto', textAlign: 'center', maxWidth: '700px', mb: '4rem' }}>
-              {type === 'author' && (
-                item.medium?.url?.proxy ? (
-                  <img sx={{ mb: '1rem' }}
+            <div
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                mx: 'auto',
+                textAlign: 'center',
+                maxWidth: '700px',
+                mb: '4rem',
+              }}
+            >
+              {type === 'author' &&
+                (item.medium?.url?.proxy ? (
+                  <img
+                    sx={{ mb: '1rem' }}
                     className="author-profile-pic"
                     src={item.medium?.url?.proxy}
                     alt={item.name}
@@ -77,40 +95,59 @@ const PostGrid = ({ type, posts, formats, item, header, useSlug = true }) => {
                       padding: (theme) => `${theme.space.spacing8}`,
                       background: '#000',
                       mb: '1rem',
-                      mx: 'auto'
+                      mx: 'auto',
                     }}
                   />
-                )
-              )}
+                ))}
               <div class="tag-card__content text-acc-1">
-                <h1 sx={{ fontSize: '36px', mb: '1rem' }} class="tag-card__title m-b-sm">Mourya</h1>
+                <h1
+                  sx={{ fontSize: '36px', mb: '1rem' }}
+                  class="tag-card__title m-b-sm"
+                >
+                  Mourya
+                </h1>
                 <div class="tag-card__descr text-acc-3">{item.description}</div>
-                <div sx={{ fontSize: '16x', fontWeight: '700', mb: '1rem' }} class="tag-card__count m-t fw-600">{posts.length} posts</div>
+                <div
+                  sx={{ fontSize: '16x', fontWeight: '700', mb: '1rem' }}
+                  class="tag-card__count m-t fw-600"
+                >
+                  {posts.length} posts
+                </div>
               </div>
               {/* <div className="post-card-excerpt">{item.description}</div> */}
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-              <div sx={{ display: 'flex', gap: '8px', fontSize: '24px', justifyContent: 'center', mt: '1rem' }}>
-                <a href={''}><AiOutlineTwitter sx={{ color: '#000' }} /></a>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam
+              </p>
+              <div
+                sx={{
+                  display: 'flex',
+                  gap: '8px',
+                  fontSize: '24px',
+                  justifyContent: 'center',
+                  mt: '1rem',
+                }}
+              >
+                <a href={''}>
+                  <AiOutlineTwitter sx={{ color: '#000' }} />
+                </a>
 
-                <a href={''}
-                ><MdFacebook sx={{ color: '#000' }} /></a>
+                <a href={''}>
+                  <MdFacebook sx={{ color: '#000' }} />
+                </a>
               </div>
             </div>
 
-
             {filteredPosts.length > 0 ? (
-              <div
-                sx={{
-                  display: 'grid',
-                  gridTemplateColumns: ['1fr', null, 'repeat( 2, 1fr )', 'repeat( 3, 1fr)'],
-                  // px: [null, null, (theme) => `${theme.space.spacing6}`],
-                  px: ['24px', null, '24px'],
-                  mt: (theme) => `${theme.space.spacing7}`,
-                  gridGap: (theme) => `${theme.space.spacing7}`,
-                }}
-              >
+              <div className="row js-post-list-wrap post-list-wrap">
                 {filteredPosts.map((item, index) => (
-                  <StoryCard key={index} type="basic" post={item} />
+                  <div
+                    className="col-lg-3 col-md-6 col-sm-6 js-post-card-wrap most-recent"
+                    key={item.id}
+                  >
+                    <StoryCard key={index} type="basic" post={item} />
+                  </div>
                 ))}
               </div>
             ) : (
@@ -122,7 +159,5 @@ const PostGrid = ({ type, posts, formats, item, header, useSlug = true }) => {
     </section>
   );
 };
-
-
 
 export default PostGrid;
