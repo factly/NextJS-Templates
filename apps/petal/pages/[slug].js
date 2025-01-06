@@ -6,36 +6,13 @@ import Post from '../components/Post';
 import { client } from '../store/client';
 import gql from 'graphql-tag';
 import StoryCard from '../components/StoryCard';
-import Head from 'next/head';
-import isBrowser from '../src/utils/isBrowser';
+
 /**
  * TODO: Add loader for infinite-scroller
  */
 const PostDetails = ({ post, posts, recentPosts }) => {
-  const title = encodeURIComponent(post.title);
-  let url;
-  if (isBrowser) {
-    url = encodeURIComponent(window.location.href);
-  }
   return (
     <section>
-      <Head>
-        <title> {post.title} </title>
-        <meta name="description" content={post.excerpt} />
-        <meta property="og:title" content={post.title} />
-        <meta property="og:description" content={post.excerpt} />
-        <meta property="og:image" content={post.medium?.url?.proxy} />
-        <meta property="og:url" content={url} />
-        <meta property="og:type" content="article" />
-        {post.schemas &&
-          post.schemas?.map((schema, i) => (
-            <script
-              key={i}
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-            ></script>
-          ))}
-      </Head>
       <div className="container wrapper">
         <Post post={post} />
       </div>
