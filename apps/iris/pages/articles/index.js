@@ -29,7 +29,7 @@ const FormatDetails = ({ data }) => {
                   display: 'flex',
                   alignItems: 'center',
                   gap: '12px',
-                  marginY: '20px',
+                  marginBottom: '20px',
                 }}
               >
                 <div
