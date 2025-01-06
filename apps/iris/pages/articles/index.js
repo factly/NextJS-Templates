@@ -5,25 +5,14 @@ import { jsx } from 'theme-ui';
 import { client } from 'apps/iris/store/client';
 import StoryCard from 'apps/iris/components/StoryCard';
 import gql from 'graphql-tag';
+import { useSearchParams } from 'next/navigation';
 
 const FormatDetails = ({ data }) => {
   const { posts } = data;
+  const searchParams = useSearchParams();
   //const filteredPosts = allDegaPost.nodes.filter((post) => post.published_date !== null);
   return (
     <div sx={{ mx: 'auto', maxWidth: 1560 }}>
-      <h1
-        sx={{
-          mt: (theme) => `${theme.space.layout4}`,
-          mb: (theme) => `${theme.space.layout2}`,
-          textAlign: 'center',
-          fontSize: [
-            (theme) => `${theme.fontSizes.h5}`,
-            (theme) => `${theme.fontSizes.h4}`,
-          ],
-        }}
-      >
-        {posts[0]?.format.name}
-      </h1>
       <div
         sx={{
           display: 'flex',
@@ -34,6 +23,39 @@ const FormatDetails = ({ data }) => {
       >
         {posts.nodes.length > 0 ? (
           <div className="container">
+            {searchParams.get('query') && (
+              <div
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '12px',
+                  marginY: '20px',
+                }}
+              >
+                <div
+                  sx={{
+                    width: '4px',
+                    height: '40px',
+                    backgroundColor: 'primary',
+                  }}
+                />
+                <h1
+                  sx={{
+                    fontSize: '24px',
+                    margin: '0',
+                    color: 'text',
+                    display: 'flex',
+                    gap: '8px',
+                  }}
+                >
+                  <span sx={{ fontWeight: 500 }}>Search Results:</span>
+                  <span sx={{ fontWeight: 700, textTransform: 'uppercase' }}>
+                    {searchParams.get('query')}
+                  </span>
+                  <span sx={{ fontWeight: 400 }}>({posts.total || 0})</span>
+                </h1>
+              </div>
+            )}
             <div className="row js-post-list-wrap post-list-wrap">
               {posts.nodes.map((item, index) => (
                 <div
@@ -60,6 +82,7 @@ export async function getServerSideProps({ params }) {
     query: gql`
       query ($slug: [String!]) {
         posts(formats: { slugs: $slug }) {
+          total
           nodes {
             users {
               id

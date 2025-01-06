@@ -1,10 +1,12 @@
+'use client';
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /** @jsx jsx */
 /** @jsxRuntime classic */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { jsx } from 'theme-ui';
 import { FaSearch } from 'react-icons/fa';
+import { useRouter } from 'next/navigation';
 
 /**
  * @component Navbar
@@ -18,16 +20,18 @@ import { FaSearch } from 'react-icons/fa';
 const Navbar = ({ data }) => {
   const { menu, space } = data;
   const mainMenu = menu.nodes.filter((i) => i.slug === 'main')[0];
+  const router = useRouter();
 
   const defaultMenuItems = [
     { url: '/categories', title: 'Categories', name: 'Categories' },
     { url: '/authors', title: 'Authors', name: 'Authors' },
   ];
+  const [query, setQuery] = useState('');
 
   return (
     <React.Fragment>
       <header
-        sx={{ px: ['2rem', null, '4rem'] }}
+        sx={{ px: ['2rem', null, '2rem'] }}
         className="site-header has-theme-icon"
       >
         <div
@@ -123,7 +127,22 @@ const Navbar = ({ data }) => {
               </li> */}
             </ul>
             <ul className="search_field">
-              <input type="text" placeholder="search" />
+              <input
+                type="text"
+                placeholder="search"
+                value={query}
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.keyCode === 13) {
+                    // Call your route function here
+                    const q = query;
+                    setQuery(() => '');
+                    router.push(`/articles?query=${q}`);
+                  }
+                }}
+              />
               {/* <ul className="nav-right no-style-list" role="menu"></ul> */}
               <div sx={{ justifyContent: 'center' }}>
                 <button
