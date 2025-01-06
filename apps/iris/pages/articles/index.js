@@ -18,7 +18,7 @@ const FormatDetails = ({ data }) => {
           display: 'flex',
           flexDirection: 'column',
           pb: (theme) => `${theme.space.spacing6}`,
-          pt: [null, null, null, (theme) => `${theme.space.spacing7}`],
+          pt: !searchParams.get('query') && [null, null, null, (theme) => `${theme.space.spacing7}`],
         }}
       >
         {posts.nodes.length > 0 ? (
