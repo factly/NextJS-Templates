@@ -146,7 +146,12 @@ const Navbar = ({ data }) => {
               {/* <ul className="nav-right no-style-list" role="menu"></ul> */}
               <div sx={{ justifyContent: 'center' }}>
                 <button
-                  href="javascript:;"
+                  onClick={() => {
+                    if (query === '') return;
+                    const q = query;
+                    setQuery(() => '');
+                    router.push(`/articles?query=${q}`);
+                  }}
                   className="nav-icon search-icon flex m-x-auto js-search-button"
                 >
                   <FaSearch />
