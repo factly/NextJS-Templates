@@ -9,9 +9,8 @@ import { useSearchParams } from 'next/navigation';
 
 function FormatPage({ data }) {
   const searchParams = useSearchParams();
-  const filteredPosts = data.posts.nodes.filter(
-    (post) => post.published_date !== null
-  );
+  const filteredPosts =
+    data?.posts?.nodes?.filter((post) => post.published_date !== null) || [];
 
   return (
     <>
