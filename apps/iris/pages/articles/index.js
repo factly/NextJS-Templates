@@ -18,7 +18,12 @@ const FormatDetails = ({ data }) => {
           display: 'flex',
           flexDirection: 'column',
           pb: (theme) => `${theme.space.spacing6}`,
-          pt: !searchParams.get('query') && [null, null, null, (theme) => `${theme.space.spacing7}`],
+          pt: !searchParams.get('query') && [
+            null,
+            null,
+            null,
+            (theme) => `${theme.space.spacing7}`,
+          ],
         }}
       >
         {posts.nodes.length > 0 ? (
@@ -78,59 +83,67 @@ const FormatDetails = ({ data }) => {
 export default FormatDetails;
 
 export async function getServerSideProps({ params }) {
-  const { data } = await client.query({
-    query: gql`
-      query ($slug: [String!]) {
-        posts(formats: { slugs: $slug }) {
-          total
-          nodes {
-            users {
+  try {
+    const { data } = await client.query({
+      query: gql`
+        query ($slug: [String!]) {
+          posts(formats: { slugs: $slug }) {
+            total
+            nodes {
+              users {
+                id
+                first_name
+                last_name
+                display_name
+                slug
+              }
+              categories {
+                slug
+                name
+              }
+              medium {
+                alt_text
+                url
+                dimensions
+              }
+              format {
+                name
+                slug
+              }
+              published_date
               id
-              first_name
-              last_name
-              display_name
+              excerpt
+              status
+              subtitle
+              title
               slug
             }
-            categories {
-              slug
-              name
-            }
-            medium {
-              alt_text
-              url
-              dimensions
-            }
-            format {
-              name
-              slug
-            }
-            published_date
-            id
-            excerpt
-            status
-            subtitle
-            title
-            slug
           }
         }
-      }
-    `,
-    variables: {
-      slug: ['fact-check', 'article'],
-    },
-  });
+      `,
+      variables: {
+        slug: ['fact-check', 'article'],
+      },
+    });
 
-  if (!data) {
+    if (!data) {
+      return {
+        notFound: true,
+      };
+    }
+
+    // console.log({ ...data });
+
     return {
-      notFound: true,
+      props: {
+        data,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        data: { posts: { nodes: [], total: 0 } },
+      },
     };
   }
-
-  // console.log({ ...data });
-
-  return {
-    props: {
-      data,
-    },
-  };
 }
