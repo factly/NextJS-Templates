@@ -5,7 +5,6 @@ import gql from 'graphql-tag';
 import StoryCard from 'apps/petal/components/StoryCard';
 import { client } from 'apps/petal/store/client';
 import { jsx } from 'theme-ui';
-import Head from 'next/head';
 import { useSearchParams } from 'next/navigation';
 
 function FormatPage({ data }) {
@@ -16,9 +15,6 @@ function FormatPage({ data }) {
 
   return (
     <>
-      <Head>
-        <title> {filteredPosts[0]?.format.name} </title>
-      </Head>
       <div sx={{ mx: 'auto', maxWidth: 1560 }}>
         <div
           sx={{

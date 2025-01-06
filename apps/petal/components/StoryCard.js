@@ -31,33 +31,41 @@ const StoryCard = ({ post, type = 'basic' }) => {
           </Link>
           <div className="post-card__content">
             <div className="tag-list flex flex-wrap m-b-sm">
-              {post.categories && <Link
-                className="tag-list__item m-r-sm has-accent flex flex-cc"
-                href={`/category/${post.categories[0].slug}/`}
-                aria-label={post.categories[0].name}
-              >
-                <span
-                  className="tag-list__item--accent"
-                  style={{ backgroundColor: '#D91C38' }}
-                ></span>
-                {post.categories[0].name}
-              </Link>}
+              {post.categories && (
+                <Link
+                  className="tag-list__item m-r-sm has-accent flex flex-cc"
+                  href={`/category/${post.categories[0].slug}/`}
+                  aria-label={post.categories[0].name}
+                >
+                  <span
+                    className="tag-list__item--accent"
+                    style={{ backgroundColor: '#D91C38' }}
+                  ></span>
+                  {post.categories[0].name}
+                </Link>
+              )}
             </div>
 
             <h2 className="post-card__title">
-              <Link className="text_ellipsis" href={`/${post.slug}/`} aria-label={post.title}>
+              <Link
+                className="text_ellipsis"
+                href={`/${post.slug}/`}
+                aria-label={post.title}
+              >
                 {post.title}
               </Link>
             </h2>
 
-            <p sx={{ fontSize: '14px', mt: '1rem', }} className="m-b-sm" ><span sx={{ color: 'green' }}>Public</span> -  2 min read</p>
+            <p sx={{ fontSize: '14px', mt: '1rem' }} className="m-b-sm">
+              <span sx={{ color: 'green' }}>Public</span> - 2 min read
+            </p>
 
             {/* <div className="post-card__details flex items-center m-b"> */}
-              {/* <span className="visibility m-r">public</span> */}
-              {/* <span className="m-r fw-400">–</span> */}
-              {/* <span className="read-time">1 min read</span> */}
-              {/* <span className="m-l m-r fw-400">–</span> */}
-              {/* <i className="icon icon-message-circle icon--xs">
+            {/* <span className="visibility m-r">public</span> */}
+            {/* <span className="m-r fw-400">–</span> */}
+            {/* <span className="read-time">1 min read</span> */}
+            {/* <span className="m-l m-r fw-400">–</span> */}
+            {/* <i className="icon icon-message-circle icon--xs">
                     <svg className="icon__svg">
                       <use xlinkHref="/assets/icons/feather-sprite.svg?v=d13910294f#message-circle"></use>
                     </svg>
@@ -65,12 +73,20 @@ const StoryCard = ({ post, type = 'basic' }) => {
                   <span className="m-l-xs">4</span> */}
             {/* </div> */}
 
-            <div className="post-card__exc m-b text_ellipsis" sx={{ fontSize: '1rem' }}>{post.excerpt}</div>
+            <div
+              className="post-card__exc m-b text_ellipsis"
+              sx={{ fontSize: '1rem' }}
+            >
+              {post.excerpt}
+            </div>
 
             <div className="flex-1"></div>
 
             <div className="post-card__ftr">
-              <time dateTime={parseDate(post.published_at)} className="post-card__date flex-1">
+              <time
+                dateTime={parseDate(post.published_at)}
+                className="post-card__date flex-1"
+              >
                 {parseDate(post.published_at)}
               </time>
 
@@ -82,7 +98,9 @@ const StoryCard = ({ post, type = 'basic' }) => {
                     title={post.users[0].display_name}
                     aria-label={post.users[0].display_name}
                   >
-                    <span className="author-mini__tooltip">{post.users[0].display_name}</span>
+                    <span className="author-mini__tooltip">
+                      {post.users[0].display_name}
+                    </span>
                     <img
                       className="author-mini__img lazyautosizes ls-is-cached lazyloaded"
                       //  data-sizes="auto"
@@ -100,7 +118,9 @@ const StoryCard = ({ post, type = 'basic' }) => {
       )}
 
       {type === 'sidebar' && (
-        <div sx={{ display: 'flex', gap: '1.5rem', py: '0.75rem', px: '1.5rem' }}>
+        <div
+          sx={{ display: 'flex', gap: '1.5rem', py: '0.75rem', px: '1.5rem' }}
+        >
           <div style={{ flex: '0 0 240px' }}>
             <div
               sx={{
@@ -110,7 +130,9 @@ const StoryCard = ({ post, type = 'basic' }) => {
                 width: '100%',
               }}
             >
-              <div sx={{ position: 'absolute', width: '100%', height: ' 100%' }}>
+              <div
+                sx={{ position: 'absolute', width: '100%', height: ' 100%' }}
+              >
                 <Link
                   href={post.slug}
                   sx={{
@@ -163,7 +185,9 @@ const StoryCard = ({ post, type = 'basic' }) => {
                 },
               }}
             >
-              <Link href={`/category/${post.categories[0].slug}`}>{post.categories[0].name}</Link>
+              <Link href={`/category/${post.categories[0].slug}`}>
+                {post.categories[0].name}
+              </Link>
             </div>
             <div>
               <Link href={post.slug}>
@@ -180,5 +204,3 @@ const StoryCard = ({ post, type = 'basic' }) => {
 };
 
 export default StoryCard;
-
-

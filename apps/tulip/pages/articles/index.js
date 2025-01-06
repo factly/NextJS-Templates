@@ -5,7 +5,6 @@ import gql from 'graphql-tag';
 import StoryCard from 'apps/tulip/components/StoryCard';
 import { client } from 'apps/tulip/store/client';
 import { jsx } from 'theme-ui';
-import Head from 'next/head';
 import { useSearchParams } from 'next/navigation';
 
 function FormatPage({ data }) {
@@ -14,12 +13,8 @@ function FormatPage({ data }) {
     (post) => post.published_date !== null
   );
 
-  console.log('filteredPosts', filteredPosts);
   return (
     <>
-      <Head>
-        <title> {filteredPosts[0]?.format.name} </title>
-      </Head>
       <div sx={{ mx: 'auto', maxWidth: 1560 }}>
         <div
           sx={{
