@@ -5,7 +5,13 @@ import Head from 'next/head';
 import { jsx } from 'theme-ui';
 import FactCheckWidget from './FactCheckWidget';
 import Link from 'next/link';
-import { FaEnvelope, FaFacebook, FaFacebookF, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import {
+  FaEnvelope,
+  FaFacebook,
+  FaFacebookF,
+  FaLinkedin,
+  FaTwitter,
+} from 'react-icons/fa';
 import parseDate from 'apps/tulip/src/utils/parseDate';
 import parseTiptapContent from 'apps/tulip/src/utils/parseTipTapEditorData';
 
@@ -20,14 +26,14 @@ import parseTiptapContent from 'apps/tulip/src/utils/parseTipTapEditorData';
  * TODO: Check Claim fact data type on dega studio
  */
 
-const Post = ({ post, observer }) => {
+const Post = ({ post }) => {
   const postSection = useRef(null);
   const headerSocialIcon = createRef();
 
   useEffect(() => {
     // observer.observe(postSection.current);
     // observer.observe(headerSocialIcon.current);
-  }, [observer, postSection, headerSocialIcon]);
+  }, [postSection, headerSocialIcon]);
 
   return (
     <>
@@ -44,7 +50,9 @@ const Post = ({ post, observer }) => {
         <div className="c-topper__content">
           <div className="c-topper__tag c-tag">
             {post.categories.length > 0 && (
-              <Link href={`/category/${post.categories[0].slug}`}>{post.categories[0].name}</Link>
+              <Link href={`/category/${post.categories[0].slug}`}>
+                {post.categories[0].name}
+              </Link>
             )}
           </div>
 
@@ -72,7 +80,9 @@ const Post = ({ post, observer }) => {
                 {parseDate(post.published_at)}
                 {/* <span className="c-timestamp__detail"> . 12:00 AM</span> */}
               </time>{' '}
-              <div className="c-reading-time c-topper__reading-time">2 min read</div>{' '}
+              <div className="c-reading-time c-topper__reading-time">
+                2 min read
+              </div>{' '}
             </div>
             <ul className="c-share u-plain-list">
               <li className="c-share__item">
@@ -81,10 +91,10 @@ const Post = ({ post, observer }) => {
                   href={`https://twitter.com/share?text=${post.title}}&amp;url=${post.slug}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                // onClick={() => {
-                //   window.open(this.href, 'twitter-share', 'width=550, height=235');
-                //   return false;
-                // }}
+                  // onClick={() => {
+                  //   window.open(this.href, 'twitter-share', 'width=550, height=235');
+                  //   return false;
+                  // }}
                 >
                   <div className="icon icon--ei-sc-twitter icon--s c-share__icon">
                     <FaTwitter className="icon__cnt" />
@@ -99,10 +109,10 @@ const Post = ({ post, observer }) => {
                   href={`https://www.facebook.com/sharer/sharer.php?u=${post.slug}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                // onClick={() => {
-                //   window.open(this.href, 'facebook-share', 'width=580, height=296');
-                //   return false;
-                // }}
+                  // onClick={() => {
+                  //   window.open(this.href, 'facebook-share', 'width=580, height=296');
+                  //   return false;
+                  // }}
                 >
                   <div className="icon icon--ei-sc-facebook icon--s c-share__icon">
                     <FaFacebookF className="icon__cnt" />
@@ -117,10 +127,10 @@ const Post = ({ post, observer }) => {
                   href={`https://www.linkedin.com/shareArticle?mini=true&amp;url=${post.slug}&amp;title=${post.title}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                // onClick={() => {
-                //   window.open(this.href, 'linkedin-share', 'width=580, height=296');
-                //   return false;
-                // }}
+                  // onClick={() => {
+                  //   window.open(this.href, 'linkedin-share', 'width=580, height=296');
+                  //   return false;
+                  // }}
                 >
                   <div className="icon icon--ei-sc-linkedin icon--s c-share__icon">
                     <FaLinkedin className="icon__cnt" />

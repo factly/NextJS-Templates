@@ -1,15 +1,11 @@
 /** @jsx jsx */
 /** @jsxRuntime classic */
 
-import React from 'react';
-import Link from 'next/link';
 import gql from 'graphql-tag';
 import { jsx } from 'theme-ui';
 import Post from '../components/Post';
 import { client } from '../store/client';
 import StoryCard from '../components/StoryCard';
-import isBrowser from '../src/utils/isBrowser';
-import Head from 'next/head';
 
 const PostDetails = ({ post, posts }) => {
   const latestPosts =
@@ -29,62 +25,12 @@ const PostDetails = ({ post, posts }) => {
   //   .slice(0, 4);
   //const { previous: previousPost, next: nextPost } = postEdge;
 
-  const [showSocialIcon, setShowSocialIcon] = React.useState(false);
-
-  const [observer, setObserver] = React.useState({
-    observe: () => {},
-  });
-
-  const handleShowSocialIcon = (entry) => {
-    if (entry.intersectionRatio > 0) {
-      setShowSocialIcon(false);
-    } else {
-      setShowSocialIcon(true);
-    }
-  };
-
-  const createObserver = () => {
-    const o = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.target.hasAttribute('social-icon')) {
-          handleShowSocialIcon(entry);
-        }
-      });
-    });
-    setObserver(o);
-  };
-  React.useEffect(() => {
-    createObserver();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
   // for sharing links
-
-  let url;
-  if (isBrowser) {
-    url = encodeURIComponent(window.location.href);
-  }
 
   return (
     <section>
-      <Head>
-        <title> {post.title} </title>
-        <meta name="description" content={post.excerpt} />
-        <meta property="og:title" content={post.title} />
-        <meta property="og:description" content={post.excerpt} />
-        <meta property="og:image" content={post.medium?.url?.proxy} />
-        <meta property="og:url" content={url} />
-        <meta property="og:type" content="article" />
-        {post.schemas &&
-          post.schemas?.map((schema, i) => (
-            <script
-              key={i}
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-            ></script>
-          ))}
-      </Head>
       <div>
-        <Post key={`details${post.id}`} post={post} observer={observer} />
+        <Post key={`details${post.id}`} post={post} />
         <div className="c-section c-section--related">
           <div className="l-grid">
             {/* <div className="c-section-heading">
