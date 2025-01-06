@@ -6,12 +6,15 @@ import { jsx } from 'theme-ui';
 import Link from 'next/link';
 import ActiveLink from '../ActiveLink';
 import { FaSearch } from 'react-icons/fa';
+import { useRouter } from 'next/navigation';
 
 export default function NavBar({ logo, data }) {
   const { menu, categories, space } = data;
   const mainMenu = menu.nodes.filter((i) => i.slug === 'main')[0];
   const [showMenu, setShowMenu] = useState(false);
   const [width, setWidth] = useState(0);
+  const [query, setQuery] = useState('');
+  const router = useRouter();
 
   const updateWidth = () => {
     const windowWidth = window.innerWidth;
@@ -60,14 +63,32 @@ export default function NavBar({ logo, data }) {
         </div>
         <div className="c-header__bottom">
           <div className="l-grid">
-            <nav className="c-nav-wrap" sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
-              <ul sx={{ textAlign: 'center' }} className="c-nav c-nav--main u-plain-list">
+            <nav
+              className="c-nav-wrap"
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                flexDirection: 'column',
+              }}
+            >
+              <ul
+                sx={{ textAlign: 'center' }}
+                className="c-nav c-nav--main u-plain-list"
+              >
                 <li className="c-nav__item c-nav__item--primary">
                   <Link href="/" className="c-nav__link  c-nav__link--current ">
                     Home
                   </Link>
                 </li>
-                {!mainMenu?.menu &&
+                <li className="c-nav__item c-nav__item--primary">
+                  <Link
+                    href="/articles"
+                    className="c-nav__link  c-nav__link--current "
+                  >
+                    Articles
+                  </Link>
+                </li>
+                {/* {!mainMenu?.menu &&
                   defaultMenuItems.map((item) => (
                     <li className="c-nav__item c-nav__item--primary" key={item.title}>
                       <Link
@@ -89,16 +110,42 @@ export default function NavBar({ logo, data }) {
                       {item.name}
                     </Link>
                   </li>
-                ))}
+                ))} */}
               </ul>
-                <div className="search_field" sx={{ display: 'flex', mx: 'auto' }}>
-                  <input type="text" placeholder="search" />
-                  <div sx={{ justifyContent: 'center' }}>
-                    <button href="javascript:;" className="nav-icon search-icon flex m-x-auto js-search-button">
-                      <FaSearch />
-                    </button>
-                  </div>
+              <div
+                className="search_field"
+                sx={{ display: 'flex', mx: 'auto' }}
+              >
+                <input
+                  type="text"
+                  placeholder="search"
+                  value={query}
+                  onChange={(e) => {
+                    setQuery(e.target.value);
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.keyCode === 13) {
+                      // Call your route function here
+                      const q = query;
+                      setQuery(() => '');
+                      router.push(`/articles?query=${q}`);
+                    }
+                  }}
+                />
+                <div sx={{ justifyContent: 'center' }}>
+                  <button
+                    onClick={() => {
+                      if (query === '') return;
+                      const q = query;
+                      setQuery(() => '');
+                      router.push(`/articles?query=${q}`);
+                    }}
+                    className="nav-icon search-icon flex m-x-auto js-search-button"
+                  >
+                    <FaSearch />
+                  </button>
                 </div>
+              </div>
             </nav>
           </div>
         </div>
@@ -111,11 +158,16 @@ export default function NavBar({ logo, data }) {
             fontSize: '0.75rem',
             overflowX: 'scroll',
             scrollbarWidth: 'none',
-            mb: '2rem'
+            mb: '2rem',
           }}
         >
           {mainMenu?.menu.map((item) => (
-            <ActiveLink href={item.url} key={item.title} passHref activeClassName="active">
+            <ActiveLink
+              href={item.url}
+              key={item.title}
+              passHref
+              activeClassName="active"
+            >
               <span
                 sx={{
                   p: '1rem 1.5rem',
@@ -144,4 +196,3 @@ export default function NavBar({ logo, data }) {
     </React.Fragment>
   );
 }
-
