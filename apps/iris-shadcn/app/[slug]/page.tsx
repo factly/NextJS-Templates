@@ -376,7 +376,7 @@ const PostFooter = ({ post }: { post: Post }) => {
               href={social.url(postUrl, postTitle)}
               target="_blank"
               rel="noopener noreferrer"
-              className={"flex p-4 items-center justify-center bg-zinc-100 rounded-full"}
+              className={"flex p-4 items-center justify-center rounded-full"}
               title={`Share on ${social.name}`}
             >
               <Image src={social.icon} alt={social.name} width={20} height={20} className="w-5 h-5" />
@@ -386,7 +386,7 @@ const PostFooter = ({ post }: { post: Post }) => {
       </div>
 
       <h3 className="h4 about-author-section-title my-8 text-2xl font-bold">Written by</h3>
-      <div className="about-author flex items-center gap-4 mt-4 bg-zinc-100 p-8 rounded-3xl">
+      <div className="about-author flex items-center gap-4 mt-4 p-8 rounded-3xl">
         {post.users?.[0] && (
           <>
             <div className="avatar-wrap">

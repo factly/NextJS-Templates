@@ -3,7 +3,8 @@ import gql from "graphql-tag";
 import FeaturedPost from "@/components/FeaturedPost";
 import SidePosts from "@/components/SidePosts";
 import PostGrid from "@/components/PostGrid";
-const fetchData = async () => {
+const fetchData = async (limit = 12, page = 1) => {
+  'use server';
   const { data } = await client.query({
     query: gql`
       query Homepage {
@@ -39,7 +40,7 @@ const fetchData = async () => {
             }
           }
         }
-        posts {
+        posts(limit: ${limit}, page: ${page}) {
           total
           nodes {
             users {
@@ -98,7 +99,7 @@ const fetchData = async () => {
 
   if (!data) {
     return {
-      notFound: true,
+      posts: [],
     };
   }
 
@@ -111,7 +112,6 @@ export default async function Home() {
 
   const { posts } = await fetchData();
   const featuredPosts = posts.slice(0, 6);
-  const recentPosts = posts.slice(6);
   return (
     <>
       <h1 className="text-2xl mx-6 mb-3 sm:mx-16 md:mx-20 lg:mx-32 font-bold text-black">Featured Posts</h1>
@@ -133,7 +133,7 @@ export default async function Home() {
         {/* Most recent posts */}
         <div className="col-span-1 lg:col-span-2">
           <h1 className="text-2xl font-bold text-black mt-10">Most Recent Posts</h1>
-          {<PostGrid posts={recentPosts} />}
+          {<PostGrid posts={posts} fetchPosts={fetchData} />}
         </div>
       </div>
     </>

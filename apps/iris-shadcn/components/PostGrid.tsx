@@ -16,26 +16,31 @@ import { parseDate } from "@/lib/dateutils";
 
 interface PostGridProps {
   posts: PostNode[];
+  fetchPosts: (limit: number, page: number) => Promise<{ posts: PostNode[] }>;
 }
 
-const PostGrid: React.FC<PostGridProps> = ({ posts }) => {
+const PostGrid: React.FC<PostGridProps> = ({ posts, fetchPosts }) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [allPosts, setAllPosts] = useState<PostNode[]>(posts);
+  const [page, setPage] = useState(1);
   // const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const bottomRef = useRef<HTMLDivElement | null>(null);
 
   // Fetch more posts dynamically
-  const fetchMorePosts = useCallback(() => {
+  const fetchMorePosts = useCallback(async () => {
     if (loading) return;
     setLoading(true);
 
     // Simulate a delay to mimic fetching
-    setTimeout(() => {
+    setTimeout(async () => {
       console.log("Fetching more posts...");
+      const { posts } = await fetchPosts(16, page + 1);
+      setPage((prevPage) => prevPage + 1);
+      setAllPosts((prevPosts) => [...prevPosts, ...posts]);
       setLoading(false);
     }, 1000);
-  }, [loading]);
+  }, [loading, fetchPosts, page]);
 
   // Intersection Observer
   useEffect(() => {
@@ -64,7 +69,7 @@ const PostGrid: React.FC<PostGridProps> = ({ posts }) => {
     <>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6 mx-auto w-full">
         {allPosts.map((post) => (
-          <Card key={post.slug} className="bg-transparent shadow-none border-none h-max">
+          <Card key={`${post.slug}-${post.id}-${page}`} className="bg-transparent shadow-none border-none h-max">
             <CardHeader className="h-[60%] p-0 mb-4">
               <Link href={`/${post.slug}/`}>
                 <Image
@@ -130,8 +135,12 @@ const PostGrid: React.FC<PostGridProps> = ({ posts }) => {
         ))}
 
       </div>
+      {loading && (
+        <div className="flex justify-center items-center mt-6">
+          <p className="text-lg font-semibold text-gray-600">Loading more posts...</p>
+        </div>
+      )}
       {/* Bottom ref for Intersection Observer */}
-
       <div ref={bottomRef} className="h-10" ></div>
     </>
   );
