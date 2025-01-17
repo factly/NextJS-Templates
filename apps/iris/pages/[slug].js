@@ -66,7 +66,7 @@ const PostDetails = ({ post: degaPost, space, post, recentPosts }) => {
             maxWidth: 1024,
             mx: 'auto',
           }}
-        >
+          >
           <Post key={`details${degaPost.id}`} post={degaPost} />
           <div>
             <div
@@ -191,6 +191,7 @@ const PostDetails = ({ post: degaPost, space, post, recentPosts }) => {
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>

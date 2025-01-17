@@ -101,7 +101,6 @@ const Post = ({ post }) => {
                 </div>
                 <div class="featured-image-caption text-center"></div>
                 <div class="post-content text-lg ">{parseTiptapContent(post.description_html)}</div>
-                {console.log(parseTiptapContent(post.description_html))}
                 <div class="post-footer">
                   <div class="share-wrap">
                     <div class="share-title h5 text-center">Share this article:</div>
